@@ -1,5 +1,6 @@
 {
-    "name": "icy-rain-2840",
+    // auto-deploy test
+  "name": "icy-rain-2840",
     "compatibility_date": "2026-05-04",
     "assets": {
           "directory": ".",
