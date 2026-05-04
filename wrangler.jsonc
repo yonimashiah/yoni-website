@@ -1,0 +1,8 @@
+{
+    "name": "icy-rain-2840",
+    "compatibility_date": "2026-05-04",
+    "assets": {
+          "directory": ".",
+          "not_found_handling": "single-page-application"
+    }
+}
