@@ -1098,7 +1098,7 @@ checkBtn.addEventListener('click',async()=>{
       acResult.innerHTML='<strong>תפוס בתאריך הזה</strong>'+formatted+'<br>אבל אל תוותרו — נשמח להציע לכם תאריך קרוב פנוי. שלחו לי הודעה ונדבר.<br><a href="https://wa.me/972503550455?text=היי%20יוני,%20בדקתי%20את%20'+encodeURIComponent(formatted)+'%20באתר%20-%20תפוס.%20מה%20הכי%20קרוב%20פנוי?">דברו איתי בוואטסאפ</a>';
     }else{
       acResult.className='ac-result show available';
-      acResult.innerHTML='<strong>פנוי ✓</strong>'+formatted+' פנוי בלוח הזמנים שלי.<br>השאירו פרטים בטופס היכרות קצר ואחזור אליכם.<br><a href="https://form.fillout.com/t/2pdQTYaLk7us?date='+encodeURIComponent(date)+'" target="_blank" rel="noopener">מלאו טופס היכרות</a>';
+      acResult.innerHTML='<strong>פנוי ✓</strong>'+formatted+' פנוי בלוח הזמנים שלי.<br>השאירו פרטים מהירים ואחזור אליכם תוך כמה שעות.<br><a href="javascript:void(0)" onclick="window.openLeadForm(\''+date+'\')">השאירו פרטים</a>';
     }
   }catch(err){
     acResult.className='ac-result show unavailable';
@@ -1244,6 +1244,23 @@ fab.addEventListener('click',function(){
   fab.classList.add('open');card.classList.add('show');
   var b=fab.querySelector('.wa-badge');if(b)b.style.display='none';
 });
+
+// פתיחת הטופס מבחוץ עם prefill תאריך (משמש בבודק הזמינות)
+window.openLeadForm=function(prefillDate){
+  if(!card.classList.contains('show')){
+    fab.classList.add('open');card.classList.add('show');
+    var b=fab.querySelector('.wa-badge');if(b)b.style.display='none';
+  }
+  if(prefillDate){
+    eventType.value='חתונה💍';
+    eventType.dispatchEvent(new Event('change'));
+    setTimeout(function(){dateInput.value=prefillDate;updateProgress();},100);
+  }
+  setTimeout(function(){
+    var firstField=form.querySelector('input[name="fullName"]');
+    if(firstField)firstField.focus();
+  },500);
+};
 closeBtn.addEventListener('click',closeCard);
 document.getElementById('waDirectBtn').addEventListener('click',function(){
   var msg='היי יוני, ראיתי את האתר שלך ורציתי לדבר איתך 🤍';
