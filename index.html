@@ -86,6 +86,21 @@ img{max-width:100%;height:auto;display:block}
   display:block;
   animation:revealSlide .8s cubic-bezier(.2,.8,.2,1);
 }
+/* רקע אחיד — סליידשואו ממשיך מאחור עם שכבה כהה־אטומה לקריאות */
+.about,.portfolio,.process,.final-cta{
+  background:rgba(15,12,9,.72) !important;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;
+}
+.about .eyebrow,.portfolio .eyebrow,.process .eyebrow,.final-cta .eyebrow{color:var(--accent-soft) !important}
+.about h2,.portfolio h2,.process h2,.final-cta h2{color:#fff !important}
+.about h2 em,.portfolio h2 em,.process h2 em,.final-cta h2 em{color:var(--accent-soft) !important}
+.about p,.portfolio p,.process p,.final-cta p,.section-head p{color:rgba(255,255,255,.78) !important}
+.about-content p,.process-step p,.tm-card p{color:rgba(255,255,255,.85) !important}
+.about-sig-name,.about-sig-role{color:rgba(255,255,255,.75) !important}
+.btn-primary{background:#fff !important;color:var(--ink) !important}
+.btn-secondary{border-color:rgba(255,255,255,.5) !important;color:#fff !important}
+.btn-secondary:hover{background:#fff !important;color:var(--ink) !important}
 @keyframes revealSlide{
   from{opacity:0;transform:translateY(50px)}
   to{opacity:1;transform:translateY(0)}
@@ -136,7 +151,7 @@ nav.scrolled .logo.dark{display:block}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   color:#fff;overflow:hidden;padding:60px 20px;
 }
-.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slides{position:fixed;inset:0;z-index:-2;pointer-events:none}
 .hero-slide{
   position:absolute;inset:0;
   background-size:cover;background-position:center;
@@ -146,10 +161,11 @@ nav.scrolled .logo.dark{display:block}
 }
 .hero-slide.active{opacity:1}
 @keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
-.hero::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.7) 100%);
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.65) 100%);
 }
+.hero{background:transparent !important}
 .slide-caption{
   position:absolute;bottom:24px;right:24px;z-index:3;
   color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.25em;text-transform:uppercase;
