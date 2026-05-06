@@ -133,13 +133,54 @@ nav.scrolled .btn-cta:hover{background:var(--ink);color:#fff}
 /* ===== HERO ===== */
 .hero{
   position:relative;height:100vh;min-height:760px;
-  background:url('https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/925b0097-11cc-4a66-b1f2-fe3ef925d4a0/Weddingday-407.jpg') center/cover;
+  background:#000;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:#fff;overflow:hidden;padding:0 20px;
+  color:#fff;overflow:hidden;padding:60px 20px;
 }
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;transition:opacity 1.6s ease-in-out;
+  animation:kenburns 12s ease-in-out infinite alternate;
+  transform-origin:center;
+}
+.hero-slide.active{opacity:1}
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
 .hero::before{
-  content:'';position:absolute;inset:0;
+  content:'';position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.7) 100%);
+}
+.slide-caption{
+  position:absolute;bottom:24px;right:24px;z-index:3;
+  color:rgba(255,255,255,.7);font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;transition:opacity .8s;
+}
+.slide-caption-num{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--accent-soft)}
+.slide-caption-line{width:30px;height:1px;background:rgba(255,255,255,.4)}
+.slide-dots{position:absolute;bottom:24px;left:24px;z-index:3;display:flex;gap:6px}
+.slide-dot{width:24px;height:2px;background:rgba(255,255,255,.3);cursor:pointer;transition:all .4s;border:none;padding:0}
+.slide-dot.active{background:#fff;width:36px}
+
+/* Hero nav buttons */
+.hero-nav{
+  position:relative;z-index:2;margin-top:36px;
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp 1.4s ease .55s both;
+}
+.hero-nav-btn{
+  background:transparent;color:#fff;
+  border:1px solid rgba(255,255,255,.5);
+  padding:16px 32px;text-decoration:none;
+  font-size:12px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;
+  cursor:pointer;font-family:'Heebo',sans-serif;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
+}
+.hero-nav-btn:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+@media(max-width:780px){
+  .hero-nav{gap:8px}
+  .hero-nav-btn{padding:13px 18px;font-size:10px;letter-spacing:.15em}
+  .slide-caption,.slide-dots{display:none}
 }
 .hero-inner{
   position:relative;z-index:2;text-align:center;
@@ -935,6 +976,17 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/51/391/51391394/homepage/homepage.jpg')" data-couple="Sivan & Aviad"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/882/44882046/homepage/homepage.jpg')" data-couple="Yarden & Roni"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/45/833/45833441/homepage/homepage.jpg')" data-couple="Morin & Asaf"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/955/44955459/homepage/homepage.jpg')" data-couple="Kira & Shir"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg')" data-couple="Moriya & Osher"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/38/640/38640626/homepage/homepage.jpg')" data-couple="Shiri & Eli"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/941/43941141/homepage/homepage.jpg')" data-couple="Aliya & Eitam"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/41/151/41151812/homepage/homepage.jpg')" data-couple="Shiraz & Yaniv"></div>
+  </div>
+
   <div class="hero-inner">
     <div class="eyebrow">Wedding Photography · Israel</div>
     <h1>סיפור האהבה שלכם<br><em>בתמונות שיישארו לנצח</em></h1>
@@ -962,7 +1014,20 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 
   <div id="acResult" class="av-result"></div>
 
-  <div class="scroll-cue">Scroll</div>
+  <nav class="hero-nav">
+    <a href="#about" class="hero-nav-btn">קצת עלי</a>
+    <a href="#portfolio" class="hero-nav-btn">הזוגות שלי</a>
+    <a href="#process" class="hero-nav-btn">התהליך</a>
+    <a href="#contact" class="hero-nav-btn">יצירת קשר</a>
+  </nav>
+
+  <div class="slide-caption" id="slideCaption">
+    <span class="slide-caption-num" id="slideNum">01</span>
+    <span class="slide-caption-line"></span>
+    <span id="slideName">Sivan & Aviad</span>
+  </div>
+
+  <div class="slide-dots" id="slideDots"></div>
 </section>
 
 <!-- ===== STATS ===== -->
@@ -1321,6 +1386,32 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>80)nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
 });
+
+// Hero Slideshow
+(function(){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dotsContainer=document.getElementById('slideDots');
+  const slideName=document.getElementById('slideName');
+  const slideNum=document.getElementById('slideNum');
+  if(!slides.length||!dotsContainer)return;
+  let current=0;
+  slides.forEach((s,i)=>{
+    const dot=document.createElement('button');
+    dot.className='slide-dot'+(i===0?' active':'');
+    dot.onclick=()=>goTo(i);
+    dot.setAttribute('aria-label','תמונה '+(i+1));
+    dotsContainer.appendChild(dot);
+  });
+  function goTo(i){
+    slides[current].classList.remove('active');
+    current=i;
+    slides[current].classList.add('active');
+    document.querySelectorAll('.slide-dot').forEach((d,j)=>d.classList.toggle('active',j===current));
+    if(slideName)slideName.textContent=slides[current].dataset.couple||'';
+    if(slideNum)slideNum.textContent=String(current+1).padStart(2,'0');
+  }
+  setInterval(()=>goTo((current+1)%slides.length),3000);
+})();
 
 // Date Availability Checker - מחובר ליומן Google דרך Make webhook
 const dateInput=document.getElementById('weddingDate');
