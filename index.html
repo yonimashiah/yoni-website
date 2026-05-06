@@ -175,18 +175,24 @@ section.stats,section.testimonials,section.pricing,section.ig-section,footer{dis
 nav#nav{
   position:absolute !important;
   top:0;right:0;left:0;z-index:50;
-  padding:24px 40px;
+  padding:30px 40px;
   display:flex;align-items:center;justify-content:center;
   background:transparent;border:none;
   pointer-events:none;
 }
 nav#nav a{pointer-events:auto}
 .logo{
-  display:block;height:72px;width:auto;
+  display:block;height:120px;width:auto;
   filter:drop-shadow(0 2px 12px rgba(0,0,0,.4));
 }
 .logo.dark{display:none}
-@media(max-width:780px){.logo{height:54px}}
+@media(max-width:780px){
+  nav#nav{padding:20px 20px}
+  .logo{height:88px}
+}
+@media(max-width:480px){
+  .logo{height:74px}
+}
 
 /* ===== HERO ===== */
 .hero{
