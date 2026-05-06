@@ -171,25 +171,22 @@ img{max-width:100%;height:auto;display:block}
 /* סקציות שלא מציגות יותר בכלל */
 section.stats,section.testimonials,section.pricing,section.ig-section,footer{display:none}
 
-/* ===== NAV (לוגו ממורכז בלבד — קבוע תמיד, ללא פס מפריד) ===== */
+/* ===== NAV (לוגו ממורכז — רק בקאבר, נעלם בגלילה) ===== */
 nav#nav{
-  position:fixed !important;
-  top:0;right:0;left:0;z-index:1000 !important;
-  padding:20px 40px;
+  position:absolute !important;
+  top:0;right:0;left:0;z-index:50;
+  padding:24px 40px;
   display:flex;align-items:center;justify-content:center;
-  transition:padding .4s ease;
-  /* גרדיאנט שקוף עדין — מתפוגג למטה כך שאין פס חתוך */
-  background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.18) 50%,transparent 100%);
-  border:none;
+  background:transparent;border:none;
+  pointer-events:none;
 }
-nav#nav.scrolled{
-  padding:14px 40px;
-  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.25) 60%,transparent 100%);
+nav#nav a{pointer-events:auto}
+.logo{
+  display:block;height:72px;width:auto;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,.4));
 }
-.logo{display:block;height:64px;width:auto;transition:height .4s,opacity .4s;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
 .logo.dark{display:none}
-nav#nav.scrolled .logo{height:54px}
-@media(max-width:780px){.logo{height:50px}nav#nav.scrolled .logo{height:42px}}
+@media(max-width:780px){.logo{height:54px}}
 
 /* ===== HERO ===== */
 .hero{
@@ -1531,11 +1528,7 @@ setTimeout(startAuto,1500);
 
 <script>
 // Sticky nav
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>80)nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
+// nav scrolled state — הוסר. הלוגו רק בקאבר ונעלם בגלילה
 
 // Hidden Doors System — סקציה נפתחת מתחת לקאבר וגלילה אליה
 (function(){
