@@ -80,50 +80,32 @@ img{max-width:100%;height:auto;display:block}
 .italic{font-style:italic}
 .container{max-width:1400px;margin:0 auto;padding:0 40px}
 
-/* ===== HIDDEN DOORS — מסכי ריבל ===== */
+/* ===== HIDDEN DOORS — נפתחות מתחת לקאבר ===== */
 .hideable{display:none}
 .hideable.is-open{
   display:block;
-  position:fixed;inset:0;z-index:200;
-  background:var(--bg);
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-  animation:revealIn .7s cubic-bezier(.2,.8,.2,1);
+  animation:revealSlide .8s cubic-bezier(.2,.8,.2,1);
 }
-@keyframes revealIn{
-  from{opacity:0;transform:translateY(60px)}
+@keyframes revealSlide{
+  from{opacity:0;transform:translateY(50px)}
   to{opacity:1;transform:translateY(0)}
 }
-.reveal-close{
-  position:fixed;top:24px;left:24px;z-index:210;
+
+/* כפתור חזרה לקאבר — צף בפינה השמאלית התחתונה כשסקציה פתוחה */
+.back-to-top{
+  position:fixed;bottom:24px;right:24px;z-index:210;
   width:54px;height:54px;border-radius:50%;
   border:1px solid var(--line);background:rgba(255,255,255,.95);
-  color:var(--ink);cursor:pointer;font-size:26px;
-  display:flex;align-items:center;justify-content:center;
+  color:var(--ink);cursor:pointer;font-size:22px;
+  display:none;align-items:center;justify-content:center;
   font-family:inherit;transition:all .3s;
-  box-shadow:0 8px 24px rgba(0,0,0,.1);
+  box-shadow:0 8px 24px rgba(0,0,0,.15);
 }
-.reveal-close:hover{background:var(--ink);color:#fff;transform:rotate(90deg)}
-.reveal-nav{
-  position:fixed;top:24px;right:24px;z-index:210;
-  display:flex;gap:6px;
-  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
-  padding:6px;border-radius:30px;border:1px solid var(--line);
-  box-shadow:0 8px 24px rgba(0,0,0,.1);
-}
-.reveal-nav-link{
-  font-size:11px;letter-spacing:.15em;
-  color:var(--ink);text-decoration:none;
-  padding:8px 16px;border-radius:30px;cursor:pointer;
-  transition:all .3s;border:none;background:transparent;font-family:inherit;
-}
-.reveal-nav-link.active{background:var(--ink);color:#fff}
-.reveal-nav-link:hover:not(.active){background:var(--line)}
-body.section-open{overflow:hidden}
-body.section-open #nav{opacity:0;pointer-events:none;transition:opacity .4s}
+.back-to-top.show{display:flex;animation:revealSlide .5s}
+.back-to-top:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
+
 @media(max-width:780px){
-  .reveal-nav{right:auto;top:auto;bottom:24px;left:50%;transform:translateX(-50%);font-size:10px}
-  .reveal-nav-link{padding:7px 12px;font-size:10px;letter-spacing:.1em}
-  .reveal-close{top:14px;left:14px;width:46px;height:46px;font-size:22px}
+  .back-to-top{bottom:90px;right:16px;width:46px;height:46px;font-size:20px}
 }
 
 /* סקציות שלא מציגות יותר בכלל */
@@ -1391,45 +1373,23 @@ window.addEventListener('scroll',()=>{
   else nav.classList.remove('scrolled');
 });
 
-// Hidden Doors System — סקציות נסתרות שנפתחות בלחיצה
+// Hidden Doors System — סקציה נפתחת מתחת לקאבר וגלילה אליה
 (function(){
-  const SECTIONS = {
-    about: 'קצת עלי',
-    portfolio: 'הזוגות שלי',
-    process: 'התהליך',
-    contact: 'יצירת קשר'
-  };
-  const ids = Object.keys(SECTIONS);
+  const ids = ['about','portfolio','process','contact'];
 
-  // הוספת מחלקה .hideable + כפתור סגירה + ניווט פנימי לכל סקציה
+  // הוספת מחלקה .hideable לכל הסקציות
   ids.forEach(id => {
     const sec = document.getElementById(id);
-    if(!sec) return;
-    sec.classList.add('hideable');
-
-    // כפתור סגירה
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'reveal-close';
-    closeBtn.textContent = '×';
-    closeBtn.setAttribute('aria-label', 'סגור');
-    closeBtn.onclick = closeSection;
-    sec.appendChild(closeBtn);
-
-    // ניווט פנימי בין הדלתות
-    const nav = document.createElement('nav');
-    nav.className = 'reveal-nav';
-    ids.forEach(navId => {
-      const link = document.createElement('button');
-      link.className = 'reveal-nav-link' + (navId === id ? ' active' : '');
-      link.textContent = SECTIONS[navId];
-      link.onclick = (e) => {
-        e.preventDefault();
-        if(navId !== id) openSection(navId);
-      };
-      nav.appendChild(link);
-    });
-    sec.appendChild(nav);
+    if(sec) sec.classList.add('hideable');
   });
+
+  // כפתור צף "חזרה לראש" (חזרה לקאבר)
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-to-top';
+  backBtn.innerHTML = '↑';
+  backBtn.setAttribute('aria-label', 'חזרה לראש');
+  backBtn.onclick = () => window.scrollTo({top:0, behavior:'smooth'});
+  document.body.appendChild(backBtn);
 
   // לחיצה על כפתורי הקאבר
   document.querySelectorAll('.hero-nav-btn').forEach(btn => {
@@ -1442,25 +1402,33 @@ window.addEventListener('scroll',()=>{
   });
 
   function openSection(id){
+    // הסתרת סקציות אחרות פתוחות
     document.querySelectorAll('.hideable.is-open').forEach(s => s.classList.remove('is-open'));
     const sec = document.getElementById(id);
     if(!sec) return;
     sec.classList.add('is-open');
-    document.body.classList.add('section-open');
-    sec.scrollTop = 0;
+    // גלילה חלקה לסקציה אחרי שהאנימציה התחילה
+    setTimeout(() => {
+      sec.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 100);
   }
 
-  function closeSection(){
-    document.querySelectorAll('.hideable.is-open').forEach(s => s.classList.remove('is-open'));
-    document.body.classList.remove('section-open');
-  }
+  // הצגת כפתור "חזרה לראש" כשגוללים מתחת לקאבר
+  window.addEventListener('scroll', () => {
+    const heroHeight = document.querySelector('.hero')?.offsetHeight || 700;
+    if(window.scrollY > heroHeight * 0.5){
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  });
 
+  // ESC חוזר לראש
   document.addEventListener('keydown', e => {
-    if(e.key === 'Escape') closeSection();
+    if(e.key === 'Escape') window.scrollTo({top:0, behavior:'smooth'});
   });
 
   window.openSection = openSection;
-  window.closeSection = closeSection;
 })();
 
 // Hero Slideshow
