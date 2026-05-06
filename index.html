@@ -91,9 +91,15 @@ img{max-width:100%;height:auto;display:block}
   background:transparent !important;
   color:#fff;
 }
-/* שכבה כהה דקה רק על הסקציה הפתוחה — עוזרת לקריאות בלי לחתוך */
+/* שכבה כהה — חזקה למעלה לקריאות הכותרת, רכה למטה */
 .hideable.is-open{
-  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.78) 100%) !important;
+  background:linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.7) 30%,rgba(0,0,0,.78) 100%) !important;
+}
+/* צל עדין על כל הכותרות לקריאות מקסימלית על כל רקע */
+.about h2,.portfolio h2,.process h2,.final-cta h2,
+.about .eyebrow,.portfolio .eyebrow,.process .eyebrow,.final-cta .eyebrow,
+.section-head p{
+  text-shadow:0 2px 24px rgba(0,0,0,.55);
 }
 .about .eyebrow,.portfolio .eyebrow,.process .eyebrow,.final-cta .eyebrow{color:var(--accent-soft) !important}
 .about h2,.portfolio h2,.process h2,.final-cta h2{color:#fff !important}
@@ -1080,7 +1086,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <div class="section-head">
       <div class="eyebrow">Selected Work</div>
       <h2>הזוגות <em>שלי</em></h2>
-      <p>כל זוג, סיפור משלו. גללו או חכו — הקרוסלה תתקדם לבד. לחיצה פותחת את הגלריה המלאה.</p>
+      <p>אלה כמה מהזוגות האהובים עליי. כל אחד עם הסיפור שלו, הרגעים שלו, האהבה שלו.</p>
     </div>
   </div>
   <div class="cs-wrap">
