@@ -80,6 +80,55 @@ img{max-width:100%;height:auto;display:block}
 .italic{font-style:italic}
 .container{max-width:1400px;margin:0 auto;padding:0 40px}
 
+/* ===== HIDDEN DOORS — מסכי ריבל ===== */
+.hideable{display:none}
+.hideable.is-open{
+  display:block;
+  position:fixed;inset:0;z-index:200;
+  background:var(--bg);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  animation:revealIn .7s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes revealIn{
+  from{opacity:0;transform:translateY(60px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.reveal-close{
+  position:fixed;top:24px;left:24px;z-index:210;
+  width:54px;height:54px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.95);
+  color:var(--ink);cursor:pointer;font-size:26px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:inherit;transition:all .3s;
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.reveal-close:hover{background:var(--ink);color:#fff;transform:rotate(90deg)}
+.reveal-nav{
+  position:fixed;top:24px;right:24px;z-index:210;
+  display:flex;gap:6px;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
+  padding:6px;border-radius:30px;border:1px solid var(--line);
+  box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.reveal-nav-link{
+  font-size:11px;letter-spacing:.15em;
+  color:var(--ink);text-decoration:none;
+  padding:8px 16px;border-radius:30px;cursor:pointer;
+  transition:all .3s;border:none;background:transparent;font-family:inherit;
+}
+.reveal-nav-link.active{background:var(--ink);color:#fff}
+.reveal-nav-link:hover:not(.active){background:var(--line)}
+body.section-open{overflow:hidden}
+body.section-open #nav{opacity:0;pointer-events:none;transition:opacity .4s}
+@media(max-width:780px){
+  .reveal-nav{right:auto;top:auto;bottom:24px;left:50%;transform:translateX(-50%);font-size:10px}
+  .reveal-nav-link{padding:7px 12px;font-size:10px;letter-spacing:.1em}
+  .reveal-close{top:14px;left:14px;width:46px;height:46px;font-size:22px}
+}
+
+/* סקציות שלא מציגות יותר בכלל */
+section.stats,section.testimonials,section.pricing,section.ig-section,footer{display:none}
+
 /* ===== NAV (לוגו ממורכז בלבד) ===== */
 nav{
   position:fixed;top:0;right:0;left:0;z-index:100;
@@ -1341,6 +1390,78 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>80)nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
 });
+
+// Hidden Doors System — סקציות נסתרות שנפתחות בלחיצה
+(function(){
+  const SECTIONS = {
+    about: 'קצת עלי',
+    portfolio: 'הזוגות שלי',
+    process: 'התהליך',
+    contact: 'יצירת קשר'
+  };
+  const ids = Object.keys(SECTIONS);
+
+  // הוספת מחלקה .hideable + כפתור סגירה + ניווט פנימי לכל סקציה
+  ids.forEach(id => {
+    const sec = document.getElementById(id);
+    if(!sec) return;
+    sec.classList.add('hideable');
+
+    // כפתור סגירה
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'reveal-close';
+    closeBtn.textContent = '×';
+    closeBtn.setAttribute('aria-label', 'סגור');
+    closeBtn.onclick = closeSection;
+    sec.appendChild(closeBtn);
+
+    // ניווט פנימי בין הדלתות
+    const nav = document.createElement('nav');
+    nav.className = 'reveal-nav';
+    ids.forEach(navId => {
+      const link = document.createElement('button');
+      link.className = 'reveal-nav-link' + (navId === id ? ' active' : '');
+      link.textContent = SECTIONS[navId];
+      link.onclick = (e) => {
+        e.preventDefault();
+        if(navId !== id) openSection(navId);
+      };
+      nav.appendChild(link);
+    });
+    sec.appendChild(nav);
+  });
+
+  // לחיצה על כפתורי הקאבר
+  document.querySelectorAll('.hero-nav-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const href = btn.getAttribute('href') || '';
+      const id = href.replace('#','');
+      if(id) openSection(id);
+    });
+  });
+
+  function openSection(id){
+    document.querySelectorAll('.hideable.is-open').forEach(s => s.classList.remove('is-open'));
+    const sec = document.getElementById(id);
+    if(!sec) return;
+    sec.classList.add('is-open');
+    document.body.classList.add('section-open');
+    sec.scrollTop = 0;
+  }
+
+  function closeSection(){
+    document.querySelectorAll('.hideable.is-open').forEach(s => s.classList.remove('is-open'));
+    document.body.classList.remove('section-open');
+  }
+
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeSection();
+  });
+
+  window.openSection = openSection;
+  window.closeSection = closeSection;
+})();
 
 // Hero Slideshow
 (function(){
