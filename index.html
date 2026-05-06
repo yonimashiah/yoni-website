@@ -86,18 +86,29 @@ img{max-width:100%;height:auto;display:block}
   display:block;
   animation:revealSlide .8s cubic-bezier(.2,.8,.2,1);
 }
-/* רקע אחיד — סליידשואו ממשיך מאחור עם שכבה כהה־אטומה לקריאות */
+/* רקע שקוף — הסליידשואו ממשיך אחיד מהקאבר עד הסקציה ללא הפרדה */
 .about,.portfolio,.process,.final-cta{
-  background:rgba(15,12,9,.72) !important;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  background:transparent !important;
   color:#fff;
+}
+/* שכבה כהה דקה רק על הסקציה הפתוחה — עוזרת לקריאות בלי לחתוך */
+.hideable.is-open{
+  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.78) 100%) !important;
 }
 .about .eyebrow,.portfolio .eyebrow,.process .eyebrow,.final-cta .eyebrow{color:var(--accent-soft) !important}
 .about h2,.portfolio h2,.process h2,.final-cta h2{color:#fff !important}
 .about h2 em,.portfolio h2 em,.process h2 em,.final-cta h2 em{color:var(--accent-soft) !important}
-.about p,.portfolio p,.process p,.final-cta p,.section-head p{color:rgba(255,255,255,.78) !important}
-.about-content p,.process-step p,.tm-card p{color:rgba(255,255,255,.85) !important}
+.about h3,.portfolio h3,.process h3,.final-cta h3{color:#fff !important}
+.about h4,.portfolio h4,.process h4,.final-cta h4{color:#fff !important}
+.about p,.portfolio p,.process p,.final-cta p,.section-head p{color:rgba(255,255,255,.82) !important}
+.about-content p,.process-step p,.tm-card p,.pr-card p{color:rgba(255,255,255,.85) !important}
 .about-sig-name,.about-sig-role{color:rgba(255,255,255,.75) !important}
+/* כרטיסים פנימיים — רקע שקוף עם מסגרת עדינה */
+.process-step,.pr-card,.tm-card,.cs-card{
+  background:rgba(255,255,255,.06) !important;
+  border:1px solid rgba(255,255,255,.15) !important;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
 .btn-primary{background:#fff !important;color:var(--ink) !important}
 .btn-secondary{border-color:rgba(255,255,255,.5) !important;color:#fff !important}
 .btn-secondary:hover{background:#fff !important;color:var(--ink) !important}
