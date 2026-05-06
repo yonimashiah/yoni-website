@@ -171,26 +171,25 @@ img{max-width:100%;height:auto;display:block}
 /* סקציות שלא מציגות יותר בכלל */
 section.stats,section.testimonials,section.pricing,section.ig-section,footer{display:none}
 
-/* ===== NAV (לוגו ממורכז בלבד — קבוע תמיד) ===== */
+/* ===== NAV (לוגו ממורכז בלבד — קבוע תמיד, ללא פס מפריד) ===== */
 nav#nav{
   position:fixed !important;
   top:0;right:0;left:0;z-index:1000 !important;
-  padding:18px 40px;
+  padding:20px 40px;
   display:flex;align-items:center;justify-content:center;
-  transition:all .4s ease;
-  /* גרדיאנט עדין שמעניק קריאות ללוגו על כל רקע */
-  background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.12) 70%,transparent 100%);
+  transition:padding .4s ease;
+  /* גרדיאנט שקוף עדין — מתפוגג למטה כך שאין פס חתוך */
+  background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.18) 50%,transparent 100%);
+  border:none;
 }
 nav#nav.scrolled{
-  background:rgba(251,248,243,.95);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  padding:12px 40px;
-  border-bottom:1px solid var(--line);
+  padding:14px 40px;
+  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.25) 60%,transparent 100%);
 }
-.logo{display:block;height:48px;width:auto;transition:opacity .4s}
+.logo{display:block;height:64px;width:auto;transition:height .4s,opacity .4s;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35))}
 .logo.dark{display:none}
-nav#nav.scrolled .logo.white{display:none}
-nav#nav.scrolled .logo.dark{display:block}
+nav#nav.scrolled .logo{height:54px}
+@media(max-width:780px){.logo{height:50px}nav#nav.scrolled .logo{height:42px}}
 
 /* ===== HERO ===== */
 .hero{
