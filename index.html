@@ -636,6 +636,65 @@ body::before{
 
 /* ===== PROCESS ===== */
 .process{padding:140px 0;background:var(--bg)}
+/* ===== TIMELINE — ציר זמן יוקרתי ===== */
+.timeline{
+  position:relative;max-width:780px;margin:0 auto;padding:0 30px;
+}
+.timeline::before{
+  content:'';position:absolute;top:60px;bottom:60px;
+  right:calc(30px + 60px);width:1px;
+  background:linear-gradient(180deg,rgba(196,168,122,0) 0%,rgba(196,168,122,.4) 12%,rgba(196,168,122,.4) 88%,rgba(196,168,122,0) 100%);
+}
+.timeline-item{
+  position:relative;display:flex;align-items:flex-start;
+  gap:36px;padding:32px 0;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.timeline-item.in-view{opacity:1;transform:translateY(0)}
+.timeline-num{
+  flex-shrink:0;width:120px;text-align:center;
+  font-family:'Cormorant Garamond',serif;font-size:64px;
+  font-style:italic;font-weight:400;line-height:1;
+  color:var(--accent-soft);
+  position:relative;z-index:2;
+  transition:transform .5s,color .3s,text-shadow .5s;
+}
+.timeline-num::after{
+  content:'';position:absolute;
+  top:50%;right:50%;transform:translate(50%,-50%);
+  width:14px;height:14px;border-radius:50%;
+  background:var(--accent-soft);
+  z-index:-1;opacity:0;transition:opacity .5s,box-shadow .5s;
+}
+.timeline-item.in-view .timeline-num::after{
+  opacity:.15;box-shadow:0 0 30px rgba(196,168,122,.5);
+}
+.timeline-item:hover .timeline-num{
+  transform:scale(1.08);color:#fff;
+  text-shadow:0 0 24px rgba(196,168,122,.8);
+}
+.timeline-content{flex:1;padding-top:14px}
+.timeline-content h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px !important;font-weight:500;
+  color:#fff !important;line-height:1.2;margin-bottom:14px;
+  transition:color .3s;
+}
+.timeline-item:hover .timeline-content h3{color:var(--accent-soft) !important}
+.timeline-content p{
+  color:rgba(255,255,255,.78) !important;
+  font-size:15px;line-height:1.85;margin:0;
+}
+@media(max-width:780px){
+  .timeline{padding:0 16px}
+  .timeline::before{right:calc(16px + 35px)}
+  .timeline-item{gap:18px;padding:24px 0}
+  .timeline-num{width:70px;font-size:42px}
+  .timeline-num::after{width:10px;height:10px}
+  .timeline-content h3{font-size:22px !important;margin-bottom:10px}
+  .timeline-content p{font-size:14px}
+}
 .process-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:60px;
   margin-top:80px;
@@ -1308,21 +1367,62 @@ setTimeout(startAuto,1500);
       <h2>התהליך <em>שלנו יחד</em></h2>
       <p>מהשיחה הראשונה ועד שאתם מחזיקים את האלבום ביד. הנה איך זה עובד אצלי, צעד אחר צעד.</p>
     </div>
-    <div class="process-grid">
-      <div class="process-card">
-        <div class="process-num">01</div>
-        <h3>פגישת היכרות</h3>
-        <p>שיחה ראשונית להבין את הסיפור שלכם, את האווירה שאתם רוצים, ומה חשוב לכם בצילום. הכל בלי לחץ ובלי התחייבות.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-num">01</div>
+        <div class="timeline-content">
+          <h3>שיחת היכרות ראשונית</h3>
+          <p>בשיחה טלפונית קצרה אני אכיר אתכם, אשמע על החזון והשאיפות שלכם ליום החתונה. אענה על כל השאלות ואחלוק מידע חשוב לגבי סגנון הצילום, התהליך והאפשרויות הקיימות.</p>
+        </div>
       </div>
-      <div class="process-card">
-        <div class="process-num">02</div>
-        <h3>תכנון לוח זמנים</h3>
-        <p>בונים יחד לוח זמנים מדויק לכל היום — מהתארגנות ועד ריקודים — שמשאיר זמן לרגעים יצירתיים בלי לרוץ.</p>
+      <div class="timeline-item">
+        <div class="timeline-num">02</div>
+        <div class="timeline-content">
+          <h3>הצעת מחיר אישית</h3>
+          <p>אחרי השיחה, אני בונה עבורכם הצעת מחיר מדויקת ומותאמת לצרכים שלכם, הכוללת את כל השירותים שיתאימו לכם ביום החתונה.</p>
+        </div>
       </div>
-      <div class="process-card">
-        <div class="process-num">03</div>
-        <h3>היום עצמו + מסירה</h3>
-        <p>אני שם לאורך כל היום. תוך 6-8 שבועות — אלבום מלא, גלריה אונליין לשיתוף, ומגנטים לזיכרון.</p>
+      <div class="timeline-item">
+        <div class="timeline-num">03</div>
+        <div class="timeline-content">
+          <h3>פגישת זום וחתימת חוזה</h3>
+          <p>ניפגש בזום כדי לעבור על כל הפרטים החשובים — לוח זמנים, מיקום הצילומים, וכל מה שצריך לדעת על החתונה. אחרי הפגישה ישלח חוזה לחתימה.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">04</div>
+        <div class="timeline-content">
+          <h3>שריון התאריך</h3>
+          <p>ברגע שחתמתם על החוזה, התאריך שלכם מובטח. בשלב הזה גם נבנה יחד לוח זמנים מדויק ליום החתונה, ונקבע לוקיישנים לצילומים.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">05</div>
+        <div class="timeline-content">
+          <h3>יום החתונה שלכם</h3>
+          <p>אני אגיע מוכן ליום הגדול שלכם. אתעד כל רגע מיוחד בצורה טבעית ונעימה, כך שתוכלו להרגיש בנוח מול המצלמה וליהנות מכל רגע.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">06</div>
+        <div class="timeline-content">
+          <h3>עריכה ועיבוד</h3>
+          <p>אחרי החתונה אני מתחיל בתהליך של עריכה מקצועית ועיבוד התמונות, כדי להבטיח שתוצאות הצילום יהיו מרהיבות ומדויקות.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">07</div>
+        <div class="timeline-content">
+          <h3>קבלת התמונות באפליקציה</h3>
+          <p>אחרי סיום העריכה, תקבלו לינק אישי לאפליקציה שבה תוכלו להוריד את התמונות, לשתף בקלות עם חברים ומשפחה, ולבחור תמונות לאלבום.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">08</div>
+        <div class="timeline-content">
+          <h3>מסירה תוך 30 ימי עסקים</h3>
+          <p>כל התמונות הסופיות יגיעו אליכם תוך 30 ימי עסקים מיום החתונה, כך שתוכלו להתחיל להתרגש שוב מכל הרגעים הקסומים.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1490,6 +1590,24 @@ window.addEventListener('scroll',()=>{
   });
 
   window.openSection = openSection;
+})();
+
+// Timeline Reveal — חשיפה הדרגתית כשנכנסים לתצוגה
+(function(){
+  const items = document.querySelectorAll('.timeline-item');
+  if(!items.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        // delay מתעצם ככל שהפריט מאוחר יותר ברצף הגלוי
+        const idx = Array.from(items).indexOf(e.target);
+        e.target.style.transitionDelay = (idx % 3) * 0.15 + 's';
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -10% 0px'});
+  items.forEach(item => obs.observe(item));
 })();
 
 // Hero Slideshow
