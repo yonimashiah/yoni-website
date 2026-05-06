@@ -171,23 +171,26 @@ img{max-width:100%;height:auto;display:block}
 /* סקציות שלא מציגות יותר בכלל */
 section.stats,section.testimonials,section.pricing,section.ig-section,footer{display:none}
 
-/* ===== NAV (לוגו ממורכז בלבד) ===== */
-nav{
-  position:fixed;top:0;right:0;left:0;z-index:100;
-  padding:24px 40px;
+/* ===== NAV (לוגו ממורכז בלבד — קבוע תמיד) ===== */
+nav#nav{
+  position:fixed !important;
+  top:0;right:0;left:0;z-index:1000 !important;
+  padding:18px 40px;
   display:flex;align-items:center;justify-content:center;
   transition:all .4s ease;
+  /* גרדיאנט עדין שמעניק קריאות ללוגו על כל רקע */
+  background:linear-gradient(180deg,rgba(0,0,0,.32) 0%,rgba(0,0,0,.12) 70%,transparent 100%);
 }
-nav.scrolled{
-  background:rgba(251,248,243,.92);
-  backdrop-filter:blur(12px);
-  padding:14px 40px;
+nav#nav.scrolled{
+  background:rgba(251,248,243,.95);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding:12px 40px;
   border-bottom:1px solid var(--line);
 }
-.logo{display:block;height:54px;width:auto;transition:opacity .4s}
+.logo{display:block;height:48px;width:auto;transition:opacity .4s}
 .logo.dark{display:none}
-nav.scrolled .logo.white{display:none}
-nav.scrolled .logo.dark{display:block}
+nav#nav.scrolled .logo.white{display:none}
+nav#nav.scrolled .logo.dark{display:block}
 
 /* ===== HERO ===== */
 .hero{
