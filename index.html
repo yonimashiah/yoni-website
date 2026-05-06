@@ -122,6 +122,21 @@ img{max-width:100%;height:auto;display:block}
 /* תמונה של "קצת עלי" — מוקטנת ומאוזנת */
 .about-grid{grid-template-columns:.85fr 1.15fr !important;gap:60px !important}
 .about-img{max-width:380px;margin-inline:auto;aspect-ratio:4/5}
+/* התאמה למובייל — תמונה וטקסט בעמודה אחת, התמונה צרה יותר */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr !important;gap:36px !important}
+  .about-img{max-width:280px !important;margin-inline:auto}
+  .about h2{font-size:clamp(32px,8vw,44px) !important;text-align:center}
+  .about-content .eyebrow{text-align:center}
+  .about-content p{font-size:15px !important;line-height:1.8 !important}
+  .about-sig{justify-content:center;text-align:center}
+}
+
+/* אחידות כותרות מוחלטת בכל הסקציות הפתוחות */
+.hideable.is-open h1,.hideable.is-open h2,.hideable.is-open h3,.hideable.is-open h4,.hideable.is-open h5{color:#fff !important}
+.hideable.is-open h1 em,.hideable.is-open h2 em,.hideable.is-open h3 em,.hideable.is-open h4 em{color:var(--accent-soft) !important;font-style:italic}
+.hideable.is-open .eyebrow{color:var(--accent-soft) !important}
+.hideable.is-open .section-head h2 em{color:var(--accent-soft) !important}
 /* כרטיסים פנימיים — רקע שקוף עם מסגרת עדינה */
 .process-step,.pr-card,.tm-card,.cs-card{
   background:rgba(255,255,255,.06) !important;
