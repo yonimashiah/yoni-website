@@ -80,55 +80,23 @@ img{max-width:100%;height:auto;display:block}
 .italic{font-style:italic}
 .container{max-width:1400px;margin:0 auto;padding:0 40px}
 
-/* ===== NAV ===== */
+/* ===== NAV (לוגו ממורכז בלבד) ===== */
 nav{
   position:fixed;top:0;right:0;left:0;z-index:100;
   padding:24px 40px;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:center;
   transition:all .4s ease;
-  backdrop-filter:blur(0px);
 }
 nav.scrolled{
   background:rgba(251,248,243,.92);
   backdrop-filter:blur(12px);
-  padding:16px 40px;
+  padding:14px 40px;
   border-bottom:1px solid var(--line);
 }
-.logo{
-  display:block;
-  height:54px;
-  width:auto;
-  transition:opacity .4s;
-}
+.logo{display:block;height:54px;width:auto;transition:opacity .4s}
 .logo.dark{display:none}
 nav.scrolled .logo.white{display:none}
 nav.scrolled .logo.dark{display:block}
-.nav-links{
-  display:flex;gap:42px;align-items:center;
-}
-.nav-links a{
-  color:#fff;text-decoration:none;font-size:13px;
-  font-weight:400;letter-spacing:.08em;
-  position:relative;padding:6px 0;
-  transition:color .3s;
-}
-nav.scrolled .nav-links a{color:var(--ink)}
-.nav-links a::after{
-  content:'';position:absolute;bottom:0;right:0;left:0;height:1px;
-  background:currentColor;transform:scaleX(0);transform-origin:right;
-  transition:transform .4s ease;
-}
-.nav-links a:hover::after{transform:scaleX(1)}
-.btn-cta{
-  padding:12px 28px;border:1px solid currentColor;
-  border-radius:0;background:transparent;color:#fff;
-  font-size:12px;letter-spacing:.15em;cursor:pointer;
-  text-transform:uppercase;font-family:inherit;font-weight:400;
-  transition:all .4s;text-decoration:none;display:inline-block;
-}
-nav.scrolled .btn-cta{color:var(--ink)}
-.btn-cta:hover{background:#fff;color:var(--ink)}
-nav.scrolled .btn-cta:hover{background:var(--ink);color:#fff}
 
 /* ===== HERO ===== */
 .hero{
@@ -965,13 +933,6 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <img src="/logo-white.png" class="logo white" alt="Yoni Mashiah Photographer">
     <img src="/logo-dark.png" class="logo dark" alt="Yoni Mashiah Photographer">
   </a>
-  <div class="nav-links">
-    <a href="#about">קצת עלי</a>
-    <a href="#portfolio">הזוגות שלי</a>
-    <a href="#process">התהליך</a>
-    <a href="#contact">יצירת קשר</a>
-  </div>
-  <a href="#contact" class="btn-cta">קבעו פגישה</a>
 </nav>
 
 <!-- ===== HERO ===== -->
