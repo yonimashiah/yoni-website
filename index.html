@@ -87,7 +87,7 @@ img{max-width:100%;height:auto;display:block}
   animation:revealSlide .8s cubic-bezier(.2,.8,.2,1);
 }
 /* רקע שקוף — הסליידשואו ממשיך אחיד מהקאבר עד הסקציה ללא הפרדה */
-.about,.portfolio,.process,.final-cta{
+.about,.portfolio,.process,.final-cta,.packages{
   background:transparent !important;
   color:#fff;
 }
@@ -1785,6 +1785,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <a href="#about" class="hero-nav-btn">קצת עלי</a>
     <a href="#portfolio" class="hero-nav-btn">הזוגות שלי :)</a>
     <a href="#reviews" class="hero-nav-btn">המלצות<span class="reviews-btn-stars">★ ★ ★ ★ ★</span></a>
+    <a href="#packages" class="hero-nav-btn">החבילות שלי</a>
     <a href="#process" class="hero-nav-btn">התהליך</a>
     <a href="#contact" class="hero-nav-btn">יצירת קשר</a>
   </nav>
@@ -2296,7 +2297,7 @@ setTimeout(startAuto,1500);
         </ul>
         <div class="pkg-price-area">
           <div class="pkg-price-label">טווח מחירים</div>
-          <div class="pkg-price">הצעה אישית</div>
+          <div class="pkg-price">החל מ-7,000<small> ₪</small></div>
         </div>
         <button class="pkg-cta" onclick="openPkgModal('photo')">פרטים נוספים</button>
       </div>
@@ -2637,7 +2638,7 @@ setTimeout(startAuto,1500);
 
 // Hidden Doors System — סקציה נפתחת מתחת לקאבר וגלילה אליה
 (function(){
-  const ids = ['about','portfolio','reviews','process','contact','leadForm'];
+  const ids = ['about','portfolio','reviews','packages','process','contact','leadForm'];
 
   // הוספת מחלקה .hideable לכל הסקציות
   ids.forEach(id => {
