@@ -342,12 +342,12 @@ body::before{
   .hero-nav-btn{padding:15px 22px;font-size:12px;letter-spacing:.15em}
   .slide-caption,.slide-dots{display:none}
   /* שורת בדיקת זמינות מצומצמת בטאבלט */
-  .av-bar{width:min(420px,92vw);padding:4px;border-radius:40px}
-  .av-bar-prompt{padding:8px 14px}
-  .av-bar-prompt small{font-size:8px;letter-spacing:.18em;margin-bottom:1px}
-  .av-bar input[type=date]{font-size:13px}
-  .av-bar-btn{padding:10px 16px;font-size:10px;letter-spacing:.12em;border-radius:40px}
-  .av-bar-btn::after{font-size:12px}
+  .av-bar{width:min(380px,90vw);padding:3px;border-radius:36px}
+  .av-bar-prompt{padding:6px 12px}
+  .av-bar-prompt small{font-size:7.5px;letter-spacing:.16em;margin-bottom:1px}
+  .av-bar input[type=date]{font-size:12px}
+  .av-bar-btn{padding:8px 14px;font-size:9px;letter-spacing:.08em;border-radius:36px;gap:5px}
+  .av-bar-btn::after{font-size:10px}
   /* תוצאת זמינות — שורה אחת קומפקטית, אחיד פנוי/תפוס */
   .av-result{margin-top:8px}
   .av-result-card{
@@ -360,23 +360,20 @@ body::before{
   .av-result-card > span{font-size:12px;font-weight:500}
   .av-result-cta{padding:6px 12px !important;font-size:10px !important;letter-spacing:.05em !important;flex-shrink:0}
   /* פחות ריווח כללי */
-  .live-indicator{margin-bottom:8px!important;font-size:6px!important;letter-spacing:.15em!important;gap:5px!important}
-  .live-indicator .live-dot{width:4px!important;height:4px!important}
+  .live-indicator{margin-bottom:10px}
   .hero p{margin-bottom:24px}
   .hero-nav{margin-top:24px}
 }
 @media(max-width:480px){
   .hero-nav{gap:8px;margin-top:30px}
   .hero-nav-btn{padding:14px 18px;font-size:11px;letter-spacing:.1em}
-  .live-indicator{font-size:5px!important;letter-spacing:.12em!important;gap:4px!important;margin-bottom:5px!important}
-  .live-indicator .live-dot{width:3px!important;height:3px!important}
-  /* בדיקת זמינות קומפקטית במובייל */
-  .av-bar{width:min(320px,90vw);padding:3px;border-radius:34px}
-  .av-bar-prompt{padding:5px 10px}
-  .av-bar-prompt small{font-size:7px;letter-spacing:.15em;margin-bottom:0}
-  .av-bar input[type=date]{font-size:11px}
-  .av-bar-btn{padding:7px 12px;font-size:8.5px;letter-spacing:.08em;border-radius:32px}
-  .av-bar-btn::after{font-size:10px}
+  /* בדיקת זמינות קומפקטית במובייל — כל השורה קטנה יחד */
+  .av-bar{width:min(280px,82vw);padding:2px;border-radius:26px}
+  .av-bar-prompt{padding:3px 8px}
+  .av-bar-prompt small{font-size:6px;letter-spacing:.12em;margin-bottom:0}
+  .av-bar input[type=date]{font-size:9px}
+  .av-bar-btn{padding:5px 9px;font-size:7px;letter-spacing:.05em;border-radius:24px;gap:3px}
+  .av-bar-btn::after{font-size:8px}
   .av-result-card{
     padding:8px 14px !important;font-size:12px !important;
     flex-wrap:nowrap !important;border-radius:30px !important;
