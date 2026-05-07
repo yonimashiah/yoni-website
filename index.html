@@ -348,8 +348,8 @@ body::before{
   .av-bar input[type=date]{font-size:12px}
   .av-bar-btn{padding:8px 14px;font-size:9px;letter-spacing:.08em;border-radius:36px;gap:5px}
   .av-bar-btn::after{font-size:10px}
-  /* תוצאת זמינות — שורה אחת קומפקטית, אחיד פנוי/תפוס */
-  .av-result{margin-top:22px}
+  /* תוצאת זמינות — קומפקטית במובייל */
+  .av-result.show{margin-top:6px}
   .av-result-card{
     padding:10px 16px !important;border-radius:30px !important;
     font-size:13px !important;gap:8px !important;
@@ -505,14 +505,24 @@ body::before{
 .av-stats span:first-child::before{display:none}
 
 /* === RESULT === */
+/* === תוצאת זמינות — חלונית נסתרת שמתפרסמת מהסרגל === */
 .av-result{
-  position:relative;z-index:3;margin-top:24px;
+  position:relative;z-index:1;
   display:flex;align-items:center;justify-content:center;
   font-size:15px;color:rgba(255,255,255,.95);
-  opacity:0;transform:translateY(-4px);transition:all .5s;
-  min-height:0;text-align:center;
+  text-align:center;
+  margin-top:0;max-height:0;overflow:hidden;
+  opacity:0;transform:translateY(-12px);
+  transition:max-height .5s cubic-bezier(.2,.8,.2,1),
+             margin-top .45s cubic-bezier(.2,.8,.2,1),
+             opacity .35s ease,
+             transform .5s cubic-bezier(.2,.8,.2,1);
 }
-.av-result.show{opacity:1;transform:translateY(0)}
+.av-result.show{
+  margin-top:8px;
+  max-height:140px;
+  opacity:1;transform:translateY(0);
+}
 .av-result-card{
   background:rgba(255,255,255,.95);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
