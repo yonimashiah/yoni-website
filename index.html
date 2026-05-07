@@ -234,6 +234,48 @@ body::before{
 .slide-dot{width:24px;height:2px;background:rgba(255,255,255,.3);cursor:pointer;transition:all .4s;border:none;padding:0}
 .slide-dot.active{background:#fff;width:36px}
 
+/* === Hero Stats Strip — 5.0 / 240+ / 8 שנות ניסיון === */
+.hero-stats-strip{
+  position:relative;z-index:2;
+  margin:24px auto 8px;
+  display:flex;align-items:center;justify-content:center;
+  gap:42px;flex-wrap:wrap;
+  padding:18px 28px;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(20px) saturate(1.3);-webkit-backdrop-filter:blur(20px) saturate(1.3);
+  border:1px solid rgba(212,184,122,.25);
+  border-radius:16px;
+  width:fit-content;max-width:calc(100% - 40px);
+  animation:fadeUp 1.4s ease .55s both;
+}
+.hero-stats-strip .hs-stat{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.hero-stats-strip .hs-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;font-weight:400;color:var(--gold);font-style:italic;line-height:1;
+}
+.hero-stats-strip .hs-label{
+  font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);font-family:'Heebo',sans-serif;font-weight:400;
+}
+.hero-stats-strip .hs-stars{
+  display:inline-flex;gap:2px;color:var(--gold);font-size:13px;letter-spacing:.05em;
+}
+.hero-stats-strip .hs-divider{width:1px;height:38px;background:rgba(255,255,255,.18)}
+@media(max-width:780px){
+  .hero-stats-strip{gap:18px;margin:18px auto 6px;padding:12px 18px}
+  .hero-stats-strip .hs-num{font-size:22px}
+  .hero-stats-strip .hs-label{font-size:8px;letter-spacing:.22em}
+  .hero-stats-strip .hs-stars{font-size:11px}
+  .hero-stats-strip .hs-divider{height:30px}
+}
+@media(max-width:480px){
+  .hero-stats-strip{gap:12px;margin:14px auto 4px;padding:10px 14px;border-radius:12px}
+  .hero-stats-strip .hs-num{font-size:19px}
+  .hero-stats-strip .hs-label{font-size:7px;letter-spacing:.16em}
+  .hero-stats-strip .hs-stars{font-size:10px}
+  .hero-stats-strip .hs-divider{height:26px}
+}
+
 /* Hero nav buttons */
 .hero-nav{
   position:relative;z-index:2;margin-top:36px;
@@ -1285,6 +1327,25 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   </div>
 
   <div id="acResult" class="av-result"></div>
+
+  <!-- Hero Stats Strip — social proof -->
+  <div class="hero-stats-strip">
+    <div class="hs-stat">
+      <span class="hs-stars">★★★★★</span>
+      <span class="hs-num">5.0</span>
+      <span class="hs-label">דירוג בגוגל</span>
+    </div>
+    <span class="hs-divider"></span>
+    <div class="hs-stat">
+      <span class="hs-num">240+</span>
+      <span class="hs-label">זוגות מאושרים</span>
+    </div>
+    <span class="hs-divider"></span>
+    <div class="hs-stat">
+      <span class="hs-num">8</span>
+      <span class="hs-label">שנות ניסיון</span>
+    </div>
+  </div>
 
   <nav class="hero-nav">
     <a href="#about" class="hero-nav-btn">קצת עלי</a>
