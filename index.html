@@ -1723,12 +1723,41 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 .pkg-modal-card .modal-detail li{padding:6px 0;color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;padding-right:18px;position:relative}
 .pkg-modal-card .modal-detail li::before{content:'';position:absolute;right:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
 @media(max-width:900px){
-  .pkg-grid{grid-template-columns:1fr;gap:20px}
+  .pkg-grid{grid-template-columns:1fr;gap:18px;margin-bottom:40px}
+  .pkg-card{padding:32px 26px}
   .pkg-card.featured{transform:none}
   .pkg-card.featured:hover{transform:translateY(-8px)}
   .packages{padding:80px 0}
-  .pkg-modal-card{padding:30px}
-  .pkg-modal-card h3{font-size:32px}
+  .pkg-name{font-size:30px}
+  .pkg-tagline{font-size:12.5px;margin-bottom:22px}
+  .pkg-list li{padding:10px 24px 10px 0;font-size:13.5px}
+  .pkg-price{font-size:26px}
+  .pkg-bottom{padding:30px 22px}
+  .pkg-bottom h3{font-size:24px}
+  .pkg-bottom p{font-size:13px}
+  .pkg-bottom .btn-primary{padding:15px 30px;font-size:12px;letter-spacing:.15em}
+  .pkg-modal-card{padding:30px 22px;max-height:88vh}
+  .pkg-modal-card h3{font-size:30px}
+  .pkg-modal-card .modal-detail h4{font-size:13px}
+  .pkg-modal-card .modal-detail p,.pkg-modal-card .modal-detail li{font-size:13px}
+}
+@media(max-width:480px){
+  .pkg-card{padding:28px 22px;border-radius:14px}
+  .pkg-name{font-size:26px}
+  .pkg-icon{font-size:12px;letter-spacing:.3em;margin-bottom:10px}
+  .pkg-tagline{font-size:12px;margin-bottom:18px}
+  .pkg-list li{padding:9px 22px 9px 0;font-size:13px}
+  .pkg-list li::before{width:13px;height:13px}
+  .pkg-price-area{padding-top:18px;margin-bottom:18px}
+  .pkg-price{font-size:24px}
+  .pkg-cta{padding:13px 20px;font-size:10.5px;letter-spacing:.2em}
+  .pkg-badge{font-size:9px;padding:4px 10px;top:14px;left:14px}
+  .pkg-bottom{padding:26px 18px}
+  .pkg-bottom h3{font-size:21px}
+  .pkg-modal{padding:14px}
+  .pkg-modal-card{padding:26px 18px;border-radius:14px}
+  .pkg-modal-card h3{font-size:26px}
+  .pkg-modal-card .modal-eyebrow{font-size:10px;letter-spacing:.3em}
 }
 </style>
 </head>
