@@ -717,6 +717,100 @@ body::before{
 .cs-cta::after{content:'←';font-size:14px;transition:transform .3s}
 .cs-card.is-active:hover .cs-cta::after{transform:translateX(-6px)}
 .cs-controls{display:flex;justify-content:center;gap:12px;margin-top:30px}
+/* === GALLERY MODAL — לייטבוקס שמטמיע את הגלריה בתוך האתר === */
+.cs-card{font-family:inherit}
+button.cs-card{border:none;padding:0;cursor:pointer;text-align:right}
+.gal-modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.94);
+  display:none;flex-direction:column;
+  animation:gmFade .35s ease;
+}
+.gal-modal.show{display:flex}
+@keyframes gmFade{from{opacity:0}to{opacity:1}}
+.gal-modal-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;
+  background:#0a0a0a;
+  border-bottom:1px solid rgba(212,184,122,.2);
+}
+.gal-modal-title{
+  font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:400;font-style:italic;
+  display:flex;align-items:center;gap:10px;
+}
+.gal-modal-title::before{
+  content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;
+  box-shadow:0 0 10px #22c55e;
+  animation:liveDotBeat 1.4s ease-in-out infinite;
+  flex-shrink:0;
+}
+.gal-modal-actions{display:flex;gap:8px;align-items:center}
+.gal-modal-btn{
+  background:rgba(212,184,122,.12);
+  border:1px solid rgba(212,184,122,.3);
+  color:#d4b87a;
+  padding:8px 16px;border-radius:24px;
+  font-size:11px;letter-spacing:.1em;cursor:pointer;
+  font-family:'Heebo',sans-serif;
+  display:inline-flex;align-items:center;gap:6px;
+  text-decoration:none;
+  transition:all .25s;
+  white-space:nowrap;
+}
+.gal-modal-btn:hover{background:rgba(212,184,122,.25);color:#fff;transform:translateY(-1px)}
+.gal-modal-close{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:22px;line-height:1;
+  transition:all .25s;font-family:inherit;
+  flex-shrink:0;
+}
+.gal-modal-close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
+.gal-modal-frame{flex:1;position:relative;background:#000}
+.gal-modal-frame iframe{width:100%;height:100%;border:none;display:block;background:#fff}
+.gal-modal-loading{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.7);font-size:13px;
+  gap:14px;background:#0a0a0a;z-index:1;
+  letter-spacing:.15em;
+}
+.gal-modal-loading.hide{display:none}
+.gal-spinner{
+  width:42px;height:42px;border:2px solid rgba(212,184,122,.2);
+  border-top-color:#d4b87a;border-radius:50%;
+  animation:gspin 1s linear infinite;
+}
+@keyframes gspin{to{transform:rotate(360deg)}}
+.gal-fallback{
+  position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;text-align:center;padding:40px;gap:18px;
+  background:linear-gradient(135deg,#1a1a1a,#2a2a2a);z-index:2;
+}
+.gal-fallback.show{display:flex}
+.gal-fallback h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;font-style:italic;color:#d4b87a}
+.gal-fallback p{color:rgba(255,255,255,.75);font-size:14px;line-height:1.7;max-width:440px}
+.gal-fallback a{
+  background:#fff;color:#1a1a1a;
+  padding:16px 32px;border-radius:30px;
+  text-decoration:none;font-weight:500;
+  font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
+.gal-fallback a:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.5)}
+@media(max-width:640px){
+  .gal-modal-bar{padding:10px 14px}
+  .gal-modal-title{font-size:14px}
+  .gal-modal-btn{padding:6px 12px;font-size:10px;letter-spacing:.05em}
+  .gal-modal-close{width:32px;height:32px;font-size:18px}
+  .gal-fallback h3{font-size:22px}
+  .gal-fallback p{font-size:12px}
+  .gal-fallback a{padding:13px 22px;font-size:11px}
+}
+
 .cs-btn{
   width:48px;height:48px;border-radius:50%;
   background:var(--ink);color:#fff;border:none;cursor:pointer;
@@ -1567,86 +1661,86 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   </div>
   <div class="cs-wrap">
     <div class="cs-track" id="csTrack">
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingday-/gallery?inviteptoken2=AAAAAHwAAACCmiRpM8PyF2UJEBvTypXj9w%2C%2C" target="_blank" rel="noopener">
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingday-/gallery?inviteptoken2=AAAAAHwAAACCmiRpM8PyF2UJEBvTypXj9w%2C%2C">
         <span class="cs-num">01</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/51/391/51391394/homepage/homepage.jpg" alt="Sivan & Aviad" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Sivan & Aviad</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-yardenroni/gallery?inviteptoken2=AAAAAP4AAABlz6bd5euNwFZP2jUmhQYNeg2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-yardenroni/gallery?inviteptoken2=AAAAAP4AAABlz6bd5euNwFZP2jUmhQYNeg2C%2C">
         <span class="cs-num">02</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/882/44882046/homepage/homepage.jpg" alt="Yarden & Roni" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Yarden & Roni</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaymorinasaf/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymorinasaf/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg2C%2C">
         <span class="cs-num">03</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/45/833/45833441/homepage/homepage.jpg" alt="Morin & Asaf" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Morin & Asaf</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaykirashir/gallery?inviteptoken2=AAAAAB4AAAAws-RsaV-QIvQ81OIngvZxyQ%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaykirashir/gallery?inviteptoken2=AAAAAB4AAAAws-RsaV-QIvQ81OIngvZxyQ%2C%2C">
         <span class="cs-num">04</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/955/44955459/homepage/homepage.jpg" alt="Kira & Shir" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Kira & Shir</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaymoriyaosher/gallery?inviteptoken2=AAAAANEAAAA2rMiNyCJd-8KiC1S3zVPYyA%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymoriyaosher/gallery?inviteptoken2=AAAAANEAAAA2rMiNyCJd-8KiC1S3zVPYyA%2C%2C">
         <span class="cs-num">05</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg" alt="Moriya & Osher" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Moriya & Osher</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingday/gallery?inviteptoken2=AAAAAH4AAAD0YEcnh4BRWXUGvA5Dgxbz5w%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingday/gallery?inviteptoken2=AAAAAH4AAAD0YEcnh4BRWXUGvA5Dgxbz5w%2C%2C">
         <span class="cs-num">06</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/38/640/38640626/homepage/homepage.jpg" alt="Shiri & Eli" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shiri & Eli</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddnigday/gallery?inviteptoken2=AAAAAHMAAABnSSTxpWqK-wf6ErxtKQvq6g%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddnigday/gallery?inviteptoken2=AAAAAHMAAABnSSTxpWqK-wf6ErxtKQvq6g%2C%2C">
         <span class="cs-num">07</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/941/43941141/homepage/homepage.jpg" alt="Aliya & Eitam" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Aliya & Eitam</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdayshirazyaniv/gallery?inviteptoken2=AAAAAO4AAABQObN88RXlP52KWjv0vPt2QQ%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayshirazyaniv/gallery?inviteptoken2=AAAAAO4AAABQObN88RXlP52KWjv0vPt2QQ%2C%2C">
         <span class="cs-num">08</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/41/151/41151812/homepage/homepage.jpg" alt="Shiraz & Yaniv" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shiraz & Yaniv</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaynaamaben/gallery?inviteptoken2=AAAAAIwAAAB2F8AeprNZpkj8WgjzdhLpwg%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaynaamaben/gallery?inviteptoken2=AAAAAIwAAAB2F8AeprNZpkj8WgjzdhLpwg%2C%2C">
         <span class="cs-num">09</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/37/965/37965706/homepage/homepage.jpg" alt="Naama & Ben" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Naama & Ben</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdayshahafohad/gallery?inviteptoken2=AAAAALwAAACWwZ49Jv3kHu42DRgF5aeOJQ%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayshahafohad/gallery?inviteptoken2=AAAAALwAAACWwZ49Jv3kHu42DRgF5aeOJQ%2C%2C">
         <span class="cs-num">10</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/42/678/42678094/homepage/homepage.jpg" alt="Shahaf & Ohad" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shahaf & Ohad</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaylenaran/gallery?inviteptoken2=AAAAAEgAAAA3yOjMdVACLj4V-s1wQQkFMw%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaylenaran/gallery?inviteptoken2=AAAAAEgAAAA3yOjMdVACLj4V-s1wQQkFMw%2C%2C">
         <span class="cs-num">11</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/148/43148217/homepage/homepage.jpg" alt="Lena & Ran" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Lena & Ran</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaysivanavihay/gallery?inviteptoken2=AAAAAGsAAABHKwO7_KJBvnXbUxQJTaGvEQ%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaysivanavihay/gallery?inviteptoken2=AAAAAGsAAABHKwO7_KJBvnXbUxQJTaGvEQ%2C%2C">
         <span class="cs-num">12</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/40/139/40139796/homepage/homepage.jpg" alt="Sivan & Avihay" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Sivan & Avihay</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-odayaitiya/gallery?inviteptoken2=AAAAAHsAAABENdgE76k2Fe_SItqgH92nUg%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-odayaitiya/gallery?inviteptoken2=AAAAAHsAAABENdgE76k2Fe_SItqgH92nUg%2C%2C">
         <span class="cs-num">13</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/50/439/50439929/homepage/homepage.jpg" alt="Odaya & Itiya" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Odaya & Itiya</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdayavivlior/gallery?inviteptoken2=AAAAAHQAAAB1dD73j2tgTd_QudmLOG8nHw%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayavivlior/gallery?inviteptoken2=AAAAAHQAAAB1dD73j2tgTd_QudmLOG8nHw%2C%2C">
         <span class="cs-num">14</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/528/44528248/homepage/homepage.jpg" alt="Aviv & Lior" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Aviv & Lior</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-michalbarak/gallery?inviteptoken2=AAAAAGoAAACk6bxa2Mmyusq5pO9EIujzbA%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-michalbarak/gallery?inviteptoken2=AAAAAGoAAACk6bxa2Mmyusq5pO9EIujzbA%2C%2C">
         <span class="cs-num">09</span>
         <img src="https://pictime1eus1public-pub-ese2a2hyhubtebgg.a02.azurefd.net/pictures/25/478/25478746/homepage/homepage.jpg" alt="Michal & Barak" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Michal & Barak</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
-      <a class="cs-card" href="https://yonimashiahphotographer.pic-time.com/-weddingdaymoron/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg%2C%2C" target="_blank" rel="noopener">
+      </button>
+      <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymoron/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg%2C%2C">
         <span class="cs-num">10</span>
         <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/31/10/31010085/homepage/homepage.jpg" alt="Mor & Ron" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Mor & Ron</div><div class="cs-cta">צפו בגלריה</div></div>
-      </a>
+      </button>
     </div>
   </div>
   <div class="cs-controls">
@@ -1656,6 +1750,108 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   <div class="cs-dots" id="csDots"></div>
   <div class="pf-cta" style="margin-top:30px"><a href="https://www.instagram.com/yoni_mashiah_photographer/" target="_blank" rel="noopener" class="btn-outline">לכל העבודות באינסטגרם</a></div>
 </section>
+<!-- Gallery iframe modal -->
+<div class="gal-modal" id="galModal" role="dialog" aria-modal="true">
+  <div class="gal-modal-bar">
+    <div class="gal-modal-title" id="galModalTitle">גלריה</div>
+    <div class="gal-modal-actions">
+      <a class="gal-modal-btn" id="galModalOpenNew" href="#" target="_blank" rel="noopener">↗ פתח בטאב חדש</a>
+      <button type="button" class="gal-modal-close" onclick="closeGalModal()" aria-label="סגור">×</button>
+    </div>
+  </div>
+  <div class="gal-modal-frame">
+    <div class="gal-modal-loading" id="galModalLoading">
+      <div class="gal-spinner"></div>
+      טוען גלריה...
+    </div>
+    <div class="gal-fallback" id="galFallback">
+      <h3>הגלריה זמינה בטאב חדש</h3>
+      <p>שירות הגלריה מציג את התוכן רק במסך מלא. לחץ למטה ונפתח אותה ישירות — האתר ישאר פתוח כאן.</p>
+      <a id="galFallbackLink" href="#" target="_blank" rel="noopener">פתח גלריה ←</a>
+    </div>
+    <iframe id="galModalIframe" src="about:blank" allow="fullscreen" loading="lazy"></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal = document.getElementById('galModal');
+  var iframe = document.getElementById('galModalIframe');
+  var loading = document.getElementById('galModalLoading');
+  var fallback = document.getElementById('galFallback');
+  var titleEl = document.getElementById('galModalTitle');
+  var openNew = document.getElementById('galModalOpenNew');
+  var fallbackLink = document.getElementById('galFallbackLink');
+  var loadTimer = null;
+  var loadFired = false;
+
+  window.openGalModal = function(url, name){
+    titleEl.textContent = name || 'גלריה';
+    openNew.href = url;
+    fallbackLink.href = url;
+    loading.classList.remove('hide');
+    fallback.classList.remove('show');
+    iframe.style.display = 'block';
+    iframe.src = 'about:blank';
+    loadFired = false;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ iframe.src = url; }, 50);
+    clearTimeout(loadTimer);
+    loadTimer = setTimeout(function(){
+      if(!loadFired){
+        loading.classList.add('hide');
+        fallback.classList.add('show');
+        iframe.style.display = 'none';
+      }
+    }, 6000);
+  };
+
+  iframe.addEventListener('load', function(){
+    if(iframe.src === 'about:blank' || iframe.src === '') return;
+    loadFired = true;
+    setTimeout(function(){
+      try {
+        var href = iframe.contentWindow.location.href;
+        if(href === 'about:blank' || href === ''){
+          loading.classList.add('hide');
+          fallback.classList.add('show');
+          iframe.style.display = 'none';
+          return;
+        }
+      } catch(e) {
+        // cross-origin = success
+      }
+      loading.classList.add('hide');
+      clearTimeout(loadTimer);
+    }, 600);
+  });
+
+  window.closeGalModal = function(){
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+    iframe.src = 'about:blank';
+    clearTimeout(loadTimer);
+  };
+
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeGalModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('show')) closeGalModal();
+  });
+
+  document.querySelectorAll('button.cs-card[data-gallery]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var url = card.dataset.gallery;
+      var name = card.querySelector('.cs-name');
+      openGalModal(url, name ? name.textContent : 'גלריה');
+    });
+  });
+})();
+</script>
+
 
 <script>
 (function(){
