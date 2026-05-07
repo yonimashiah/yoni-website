@@ -249,8 +249,30 @@ body::before{
 .hero-nav-btn:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
 @media(max-width:780px){
   .hero-nav{gap:8px}
-  .hero-nav-btn{padding:13px 18px;font-size:10px;letter-spacing:.15em}
+  .hero-nav-btn{padding:11px 16px;font-size:10px;letter-spacing:.1em}
   .slide-caption,.slide-dots{display:none}
+  /* שורת בדיקת זמינות מצומצמת במובייל */
+  .av-bar{padding:5px;border-radius:50px}
+  .av-bar-prompt{padding:10px 18px}
+  .av-bar-prompt small{font-size:9px;letter-spacing:.2em;margin-bottom:2px}
+  .av-bar input[type=date]{font-size:14px}
+  .av-bar-btn{padding:13px 22px;font-size:11px;letter-spacing:.15em}
+  .av-bar-btn::after{font-size:14px}
+  /* תוצאת זמינות קומפקטית */
+  .av-result{margin-top:18px}
+  .av-result-card{padding:12px 18px;border-radius:30px;font-size:13px;gap:8px}
+  .av-result-icon{font-size:18px}
+  .av-result-cta{padding:6px 14px;font-size:11px}
+  /* פחות ריווח כללי */
+  .live-indicator{margin-bottom:10px;font-size:10px;letter-spacing:.25em}
+  .hero p{margin-bottom:24px}
+  .hero-nav{margin-top:24px}
+}
+@media(max-width:480px){
+  .hero-nav-btn{padding:10px 12px;font-size:9px;letter-spacing:.05em}
+  .av-bar-prompt{padding:9px 16px}
+  .av-bar-btn{padding:12px 18px;font-size:10px}
+  .av-result-card{padding:10px 14px;font-size:12px;flex-wrap:wrap;justify-content:center}
 }
 .hero-inner{
   position:relative;z-index:2;text-align:center;
