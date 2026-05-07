@@ -1059,27 +1059,58 @@ footer{
 /* הסתרת ה-FAB הישן (כדור צף) */
 .wa-fab{display:none !important}
 
-/* === הטופס בתוך סקציית "יצירת קשר" — לא בועה צפה === */
-.final-cta .wa-card{
+/* === לשונית "השאירו פרטים" עם הטופס — משתלבת עם שפת האתר === */
+.lead-form{padding:140px 0;background:transparent;color:#fff}
+.lead-form .container{position:relative;z-index:2;max-width:900px}
+.lead-form .section-head{text-align:center;margin-bottom:48px}
+.lead-form .section-head .eyebrow{
+  font-size:11px;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--accent-soft) !important;margin-bottom:18px;opacity:1;
+}
+.lead-form .section-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,5vw,56px);font-weight:400;color:#fff !important;
+  line-height:1.15;margin-bottom:16px;
+}
+.lead-form .section-head h2 em{font-style:italic;color:var(--accent-soft) !important}
+.lead-form .section-head p{
+  font-size:16px;color:rgba(255,255,255,.78) !important;
+  max-width:560px;margin:0 auto;line-height:1.7;
+}
+.lead-form .lead-divider{
+  width:60px;height:1px;background:var(--accent-soft);
+  margin:24px auto 0;opacity:.6;
+}
+/* הטופס עצמו — רחב, נקי, אינטגרלי */
+.lead-form .wa-card{
   position:static !important;
   display:flex !important;
   width:100% !important;
-  max-width:560px !important;
+  max-width:680px !important;
   height:auto !important;
   max-height:none !important;
-  opacity:1 !important;
-  visibility:visible !important;
+  opacity:1 !important;visibility:visible !important;
   transform:none !important;
-  margin:36px auto 0 !important;
+  margin:0 auto !important;
   bottom:auto !important;left:auto !important;right:auto !important;
-  box-shadow:0 25px 60px rgba(0,0,0,.4) !important;
-  border-radius:16px !important;
+  border-radius:18px !important;
   z-index:auto !important;
+  background:rgba(255,255,255,.97) !important;
+  box-shadow:0 30px 80px rgba(0,0,0,.45) !important;
+  overflow:hidden;
 }
-.final-cta .wa-head .close-btn,
-.final-cta .wa-head .direct-btn{display:none !important}
-.final-cta .wa-body{padding:24px 22px;max-height:none;overflow:visible}
-.final-cta .wa-thanks{position:static}
+.lead-form .wa-head .close-btn,
+.lead-form .wa-head .direct-btn{display:none !important}
+.lead-form .wa-head{padding:24px 28px}
+.lead-form .wa-head h3{font-size:18px}
+.lead-form .wa-body{padding:28px 28px 32px;max-height:none;overflow:visible}
+.lead-form .wa-thanks{position:static}
+@media(max-width:780px){
+  .lead-form{padding:90px 0}
+  .lead-form .wa-card{max-width:100% !important;border-radius:14px !important}
+  .lead-form .wa-head{padding:18px 20px}
+  .lead-form .wa-body{padding:20px 18px 24px}
+}
 .wa-fab{position:fixed;bottom:24px;left:24px;z-index:9999;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);padding:14px 26px;border-radius:50px;font-size:13px;font-weight:500;letter-spacing:.05em;font-family:'Heebo',sans-serif;cursor:pointer;border:none;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s;animation:pillBounce 2.6s ease-in-out infinite;overflow:hidden;white-space:nowrap}
 .wa-fab::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(196,168,122,.45) 50%,transparent 100%);transform:translateX(-100%);animation:pillShine 3s ease-in-out infinite;pointer-events:none}
 @keyframes pillBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
@@ -1613,6 +1644,20 @@ setTimeout(startAuto,1500);
   </div>
 </section>
 
+<!-- ===== לשונית: השאירו פרטים — הטופס המלא ===== -->
+<section class="lead-form" id="leadForm">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Get a Quote</div>
+      <h2>השאירו פרטים<br><em>ונחזור אליכם תוך 24 שעות</em></h2>
+      <p>תמלאו את הפרטים בטופס וניצור איתכם קשר עם הצעת מחיר מותאמת אישית לאירוע שלכם.</p>
+      <div class="lead-divider"></div>
+    </div>
+    <!-- הטופס יוזרק לכאן ע״י JS (העברה מ-waCard) -->
+    <div class="lead-form-slot" id="leadFormSlot"></div>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
@@ -1658,7 +1703,7 @@ setTimeout(startAuto,1500);
 
 // Hidden Doors System — סקציה נפתחת מתחת לקאבר וגלילה אליה
 (function(){
-  const ids = ['about','portfolio','process','contact'];
+  const ids = ['about','portfolio','process','contact','leadForm'];
 
   // הוספת מחלקה .hideable לכל הסקציות
   ids.forEach(id => {
@@ -1713,33 +1758,29 @@ setTimeout(startAuto,1500);
 
   window.openSection = openSection;
 
-  // חיבור הפס התחתון "השאירו פרטים" → פותח את סקציית הקשר
+  // חיבור הפס התחתון "השאירו פרטים" → פותח את לשונית "השאירו פרטים" (לא יצירת קשר)
   // משתמש ב-event delegation כי הכפתור מופיע מאוחר יותר בקובץ
   document.addEventListener('click', (e) => {
     const strip = e.target.closest('#contactStrip');
     if(strip){
       e.preventDefault();
-      openSection('contact');
+      openSection('leadForm');
     }
   });
 
-  // העברת הטופס המלא (wa-card) לתוך סקציית "יצירת קשר" כך שיוצג inline
-  function moveFormIntoContact(){
+  // העברת הטופס המלא (wa-card) לתוך סקציית "השאירו פרטים" כך שיוצג inline
+  function moveFormIntoLeadSection(){
     const card = document.getElementById('waCard');
-    const contact = document.getElementById('contact');
-    if(card && contact && !contact.contains(card)){
-      // הוספת מחלקה show כדי שהטופס יציג גם בלי הקליק על ה-fab הישן
-      card.classList.add('show');
-      contact.querySelector('.container').appendChild(card);
-      // הסתרת הכפתורים הישנים (whatsapp + email) בקשר
-      const oldBtns = contact.querySelector('.hero-actions');
-      if(oldBtns) oldBtns.style.display = 'none';
+    const slot = document.getElementById('leadFormSlot');
+    if(card && slot && !slot.contains(card)){
+      card.classList.add('show'); // הצגה תמידית בלי אנימציית בועה
+      slot.appendChild(card);
     }
   }
   if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', moveFormIntoContact);
+    document.addEventListener('DOMContentLoaded', moveFormIntoLeadSection);
   } else {
-    moveFormIntoContact();
+    moveFormIntoLeadSection();
   }
 })();
 
