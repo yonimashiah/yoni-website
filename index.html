@@ -1030,8 +1030,34 @@ footer{
   .stats-num{font-size:32px}
 }
 
-/* ===== WhatsApp צף ===== */
+/* ===== פס תחתון: השאירו פרטים — מוביל לסקציית #contact ===== */
 :root{--wa:#7a6549;--wa-dark:#5a4a35;--ig-grad:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.contact-strip{
+  position:fixed;bottom:0;right:0;left:0;z-index:200;
+  background:#1a1a1a;border:none;border-top:2px solid #d4b87a;
+  padding:14px 24px;width:100%;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  color:#fff;font-family:'Heebo',sans-serif;font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+  cursor:pointer;text-decoration:none;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+}
+.contact-strip:hover{background:#2a2a2a;letter-spacing:.26em}
+.contact-strip .strip-dot{
+  width:6px;height:6px;border-radius:50%;background:#7eff8c;
+  box-shadow:0 0 8px #7eff8c;display:inline-block;
+  animation:stripPulse 2s ease-in-out infinite;
+}
+.contact-strip .strip-gold{color:#d4b87a}
+.contact-strip .strip-arr{font-size:14px;transition:transform .3s}
+.contact-strip:hover .strip-arr{transform:translateX(-4px)}
+@keyframes stripPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@media(max-width:480px){
+  .contact-strip{padding:12px 16px;font-size:10.5px;letter-spacing:.18em;gap:10px}
+  .contact-strip .strip-arr{font-size:12px}
+}
+/* הסתרת ה-FAB הישן (כדור צף) */
+.wa-fab{display:none !important}
 .wa-fab{position:fixed;bottom:24px;left:24px;z-index:9999;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);padding:14px 26px;border-radius:50px;font-size:13px;font-weight:500;letter-spacing:.05em;font-family:'Heebo',sans-serif;cursor:pointer;border:none;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s;animation:pillBounce 2.6s ease-in-out infinite;overflow:hidden;white-space:nowrap}
 .wa-fab::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(196,168,122,.45) 50%,transparent 100%);transform:translateX(-100%);animation:pillShine 3s ease-in-out infinite;pointer-events:none}
 @keyframes pillBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
@@ -1664,6 +1690,12 @@ setTimeout(startAuto,1500);
   });
 
   window.openSection = openSection;
+
+  // חיבור הפס התחתון "השאירו פרטים" → פותח את סקציית הקשר
+  const strip = document.getElementById('contactStrip');
+  if(strip){
+    strip.addEventListener('click', () => openSection('contact'));
+  }
 })();
 
 // Timeline Reveal — חשיפה הדרגתית כשנכנסים לתצוגה
@@ -1757,8 +1789,17 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
 });
 </script>
 
-<!-- ===== כפתור צף — השאירו פרטים ===== -->
-<button class="wa-fab" id="waFab" aria-label="השאירו פרטים">
+<!-- ===== פס תחתון — מוביל לסקציית "יצירת קשר" ===== -->
+<button class="contact-strip" id="contactStrip" aria-label="השאירו פרטים — מוביל ליצירת קשר">
+  <span class="strip-dot"></span>
+  <span>השאירו פרטים</span>
+  <span class="strip-gold">·</span>
+  <span>הצעת מחיר תוך 24 שעות</span>
+  <span class="strip-arr">←</span>
+</button>
+
+<!-- ===== כפתור צף הישן — מוסתר אבל הקוד נשאר לטופס שמתחת ===== -->
+<button class="wa-fab" id="waFab" aria-label="השאירו פרטים" style="display:none">
   <span class="wa-fab-text">השאירו פרטים</span>
 </button>
 
