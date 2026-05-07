@@ -360,16 +360,16 @@ body::before{
   .av-result-card > span{font-size:12px;font-weight:500}
   .av-result-cta{padding:6px 12px !important;font-size:10px !important;letter-spacing:.05em !important;flex-shrink:0}
   /* פחות ריווח כללי */
-  .live-indicator{margin-bottom:8px;font-size:7px;letter-spacing:.18em;gap:6px}
-  .live-indicator .live-dot{width:4px;height:4px}
+  .live-indicator{margin-bottom:8px!important;font-size:6px!important;letter-spacing:.15em!important;gap:5px!important}
+  .live-indicator .live-dot{width:4px!important;height:4px!important}
   .hero p{margin-bottom:24px}
   .hero-nav{margin-top:24px}
 }
 @media(max-width:480px){
   .hero-nav{gap:8px;margin-top:30px}
   .hero-nav-btn{padding:14px 18px;font-size:11px;letter-spacing:.1em}
-  .live-indicator{font-size:6px;letter-spacing:.15em;gap:5px;margin-bottom:6px}
-  .live-indicator .live-dot{width:3.5px;height:3.5px}
+  .live-indicator{font-size:5px!important;letter-spacing:.12em!important;gap:4px!important;margin-bottom:5px!important}
+  .live-indicator .live-dot{width:3px!important;height:3px!important}
   /* בדיקת זמינות קומפקטית במובייל */
   .av-bar{width:min(320px,90vw);padding:3px;border-radius:34px}
   .av-bar-prompt{padding:5px 10px}
@@ -422,12 +422,24 @@ body::before{
   margin-bottom:10px;animation:fadeUp 1.4s ease .2s both;
 }
 .live-dot{
-  width:7px;height:7px;border-radius:50%;background:#2a8e54;
-  box-shadow:0 0 12px #2a8e54;animation:livePulse 2.2s infinite;
+  position:relative;
+  width:8px;height:8px;border-radius:50%;background:#22c55e;
+  box-shadow:0 0 10px #22c55e,0 0 20px rgba(34,197,94,.5);
+  animation:liveDotBeat 1.4s ease-in-out infinite;
 }
-@keyframes livePulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.45;transform:scale(.85)}
+.live-dot::before,.live-dot::after{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:#22c55e;opacity:.6;
+  animation:liveHalo 1.8s ease-out infinite;
+}
+.live-dot::after{animation-delay:.9s}
+@keyframes liveDotBeat{
+  0%,100%{transform:scale(1);box-shadow:0 0 10px #22c55e,0 0 20px rgba(34,197,94,.5)}
+  50%{transform:scale(1.15);box-shadow:0 0 14px #22c55e,0 0 28px rgba(34,197,94,.7)}
+}
+@keyframes liveHalo{
+  0%{transform:scale(1);opacity:.6}
+  100%{transform:scale(3.2);opacity:0}
 }
 
 /* === AVAILABILITY BAR === */
