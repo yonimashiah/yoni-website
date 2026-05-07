@@ -2022,9 +2022,16 @@ fab.addEventListener('click',function(){
 
 // פתיחת הטופס מבחוץ עם prefill תאריך (משמש בבודק הזמינות)
 window.openLeadForm=function(prefillDate){
-  if(!card.classList.contains('show')){
-    fab.classList.add('open');card.classList.add('show');
-    var b=fab.querySelector('.wa-badge');if(b)b.style.display='none';
+  // פתיחת לשונית "השאירו פרטים" במקום בועה צפה
+  if(typeof window.openSection==='function'){
+    window.openSection('leadForm');
+  } else {
+    var ls=document.getElementById('leadForm');
+    if(ls){
+      document.querySelectorAll('.hideable.is-open').forEach(function(s){s.classList.remove('is-open');});
+      ls.classList.add('is-open');
+      setTimeout(function(){ls.scrollIntoView({behavior:'smooth',block:'start'});},100);
+    }
   }
   if(prefillDate){
     eventType.value='חתונה💍';
@@ -2033,8 +2040,8 @@ window.openLeadForm=function(prefillDate){
   }
   setTimeout(function(){
     var firstField=form.querySelector('input[name="fullName"]');
-    if(firstField)firstField.focus();
-  },500);
+    if(firstField)firstField.focus({preventScroll:true});
+  },800);
 };
 closeBtn.addEventListener('click',closeCard);
 document.getElementById('waDirectBtn').addEventListener('click',function(){
