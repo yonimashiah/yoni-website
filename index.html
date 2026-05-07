@@ -182,18 +182,21 @@ nav#nav{
 }
 nav#nav a{pointer-events:auto}
 .logo{
-  display:block;height:auto;
-  width:min(50vw,500px);
+  display:block;width:auto;height:80px;
   filter:drop-shadow(0 2px 12px rgba(0,0,0,.4));
 }
 .logo.dark{display:none}
+/* ריווח לקאבר כדי שהטקסט לא ידרוס את הלוגו */
+.hero .hero-inner{margin-top:80px}
 @media(max-width:780px){
-  nav#nav{padding:24px 20px}
-  .logo{width:min(75vw,400px)}
+  nav#nav{padding:18px 20px}
+  .logo{height:64px}
+  .hero .hero-inner{margin-top:60px}
 }
 @media(max-width:480px){
-  nav#nav{padding:20px 16px}
-  .logo{width:min(82vw,340px)}
+  nav#nav{padding:14px 16px}
+  .logo{height:54px}
+  .hero .hero-inner{margin-top:50px}
 }
 
 /* ===== HERO ===== */
