@@ -837,25 +837,64 @@ body::before{
   flex:0 0 300px;height:534px;
   border-radius:18px;overflow:hidden;position:relative;
   box-shadow:0 18px 50px rgba(0,0,0,.5),0 0 0 1px rgba(212,184,122,.18);
-  scroll-snap-align:start;cursor:pointer;
-  transition:transform .35s cubic-bezier(.2,.8,.2,1);
-  background:#000;text-decoration:none;
+  scroll-snap-align:start;cursor:zoom-in;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;
+  background:#000;border:none;padding:0;
 }
 .rv-card:hover{transform:translateY(-4px);box-shadow:0 25px 60px rgba(0,0,0,.6),0 0 0 1px rgba(212,184,122,.4)}
 .rv-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s ease}
 .rv-card:hover img{transform:scale(1.04)}
-.rv-tag{
-  position:absolute;top:14px;right:14px;z-index:3;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(212,184,122,.4);
-  padding:5px 12px;border-radius:20px;
-  font-size:9.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;font-weight:500;
+
+/* Lightbox — תצוגה מוגדלת של ביקורת */
+.rv-lbox{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.92);
+  display:none;align-items:center;justify-content:center;
+  padding:30px;
+  animation:rvLboxFade .3s ease;
 }
-.rv-stars{
-  position:absolute;top:14px;left:14px;z-index:3;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  padding:5px 10px;border-radius:20px;
-  font-size:11px;color:var(--gold);letter-spacing:.05em;
+.rv-lbox.show{display:flex}
+@keyframes rvLboxFade{from{opacity:0}to{opacity:1}}
+.rv-lbox img{
+  max-width:min(720px,90vw);max-height:90vh;
+  border-radius:14px;
+  box-shadow:0 30px 80px rgba(0,0,0,.5);
+  animation:rvLboxZoom .35s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes rvLboxZoom{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.rv-lbox-close{
+  position:absolute;top:24px;left:24px;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:24px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+}
+.rv-lbox-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.rv-lbox-prev,.rv-lbox-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:54px;height:54px;border-radius:50%;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:22px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+}
+.rv-lbox-prev:hover,.rv-lbox-next:hover{background:rgba(212,184,122,.3);border-color:var(--gold)}
+.rv-lbox-prev{right:24px}
+.rv-lbox-next{left:24px}
+.rv-lbox-counter{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.2em;
+}
+@media(max-width:480px){
+  .rv-lbox-prev,.rv-lbox-next{width:42px;height:42px;font-size:18px}
+  .rv-lbox-prev{right:12px}
+  .rv-lbox-next{left:12px}
+  .rv-lbox-close{top:14px;left:14px;width:42px;height:42px}
 }
 .rv-bottom{text-align:center;padding:30px 24px 0}
 .rv-ig-link{
@@ -1761,83 +1800,64 @@ setTimeout(startAuto,1500);
     <button class="rv-nav-btn prev" onclick="document.querySelector('.rv-track').scrollBy({left:320,behavior:'smooth'})" aria-label="הבא">→</button>
     <button class="rv-nav-btn next" onclick="document.querySelector('.rv-track').scrollBy({left:-320,behavior:'smooth'})" aria-label="קודם">←</button>
     <div class="rv-track">
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      <button class="rv-card" data-img="/reviews/review-1.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-1.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-2.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-2.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-3.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-3.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-4.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-4.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-5.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-5.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-6.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-6.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-7.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-7.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-8.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-8.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-9.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-9.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-10.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-10.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-11.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-11.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-12.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-12.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-13.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-13.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-14.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-14.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
-      <a class="rv-card" href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener">
-        <span class="rv-tag">★ Real Review</span>
-        <span class="rv-stars">★★★★★</span>
+      </button>
+      <button class="rv-card" data-img="/reviews/review-15.jpg" aria-label="הגדל המלצה">
         <img src="/reviews/review-15.jpg" alt="המלצה מזוג שצילם איתי">
-      </a>
+      </button>
     </div>
+
   </div>
+
+  <!-- Lightbox -->
+  <div class="rv-lbox" id="rvLbox" onclick="if(event.target===this)rvLboxClose()">
+    <button class="rv-lbox-close" onclick="rvLboxClose()" aria-label="סגור">×</button>
+    <button class="rv-lbox-prev" onclick="rvLboxNav(-1)" aria-label="הבא">→</button>
+    <button class="rv-lbox-next" onclick="rvLboxNav(1)" aria-label="קודם">←</button>
+    <img id="rvLboxImg" src="" alt="המלצה מוגדלת">
+    <div class="rv-lbox-counter" id="rvLboxCounter"></div>
+  </div>
+
   <div class="container rv-bottom">
     <a href="https://www.instagram.com/stories/highlights/17890590402230281/" target="_blank" rel="noopener" class="rv-ig-link">
       <svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
@@ -2445,5 +2465,41 @@ form.addEventListener('submit',async function(e){
 })();
 </script>
 
+<script>
+// Reviews lightbox
+(function(){
+  const cards = Array.from(document.querySelectorAll('.rv-card'));
+  const lbox = document.getElementById('rvLbox');
+  const lboxImg = document.getElementById('rvLboxImg');
+  const lboxCounter = document.getElementById('rvLboxCounter');
+  let currentIdx = 0;
+  if(!cards.length || !lbox) return;
+  cards.forEach((c, i) => {
+    c.addEventListener('click', () => openLbox(i));
+  });
+  function openLbox(idx){
+    currentIdx = idx;
+    lboxImg.src = cards[idx].dataset.img;
+    lboxCounter.textContent = (idx+1) + ' / ' + cards.length;
+    lbox.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  window.rvLboxClose = function(){
+    lbox.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+  window.rvLboxNav = function(dir){
+    currentIdx = (currentIdx + dir + cards.length) % cards.length;
+    lboxImg.src = cards[currentIdx].dataset.img;
+    lboxCounter.textContent = (currentIdx+1) + ' / ' + cards.length;
+  };
+  document.addEventListener('keydown', e => {
+    if(!lbox.classList.contains('show')) return;
+    if(e.key === 'Escape') rvLboxClose();
+    else if(e.key === 'ArrowLeft') rvLboxNav(1);
+    else if(e.key === 'ArrowRight') rvLboxNav(-1);
+  });
+})();
+</script>
 </body>
 </html>
