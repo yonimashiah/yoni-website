@@ -1552,6 +1552,184 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   .wa-thanks{padding:30px 20px}
   .wa-thanks h3{font-size:26px}
 }
+
+/* === PACKAGES — חבילות שירות === */
+.packages{padding:120px 0;background:#1a1a1a;position:relative;overflow:hidden}
+.packages::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center top,rgba(212,184,122,.08),transparent 70%);
+  pointer-events:none;
+}
+.packages > .container{position:relative;z-index:1}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px}
+.pkg-card{
+  position:relative;
+  background:linear-gradient(180deg,rgba(40,32,22,.4),rgba(20,20,20,.6));
+  border:1px solid rgba(212,184,122,.18);
+  border-radius:18px;
+  padding:40px 32px;
+  display:flex;flex-direction:column;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  overflow:hidden;
+}
+.pkg-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,184,122,.6),transparent);
+}
+.pkg-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(212,184,122,.45);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6),0 0 0 1px rgba(212,184,122,.15);
+}
+.pkg-icon{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+}
+.pkg-icon::before{content:'';width:24px;height:1px;background:var(--gold)}
+.pkg-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;font-weight:400;font-style:italic;
+  margin-bottom:8px;line-height:1.1;color:#fff;
+}
+.pkg-tagline{
+  color:rgba(255,255,255,.65);font-size:13px;
+  margin-bottom:28px;line-height:1.6;
+}
+.pkg-list{list-style:none;margin-bottom:32px;flex:1;padding:0}
+.pkg-list li{
+  position:relative;padding:11px 26px 11px 0;
+  font-size:14px;color:rgba(255,255,255,.88);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  line-height:1.5;
+}
+.pkg-list li::before{
+  content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;border-radius:50%;
+  background:rgba(212,184,122,.15);
+  border:1px solid var(--gold);
+}
+.pkg-list li::after{
+  content:'';position:absolute;right:4px;top:50%;
+  width:6px;height:3px;border:1.5px solid var(--gold);
+  border-top:0;border-right:0;
+  transform:translateY(-70%) rotate(-45deg);
+}
+.pkg-list li:last-child{border-bottom:none}
+.pkg-price-area{
+  border-top:1px solid rgba(212,184,122,.2);
+  padding-top:24px;margin-bottom:22px;
+  text-align:center;
+}
+.pkg-price-label{
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:6px;
+}
+.pkg-price{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;font-style:italic;color:var(--gold);
+  font-weight:500;line-height:1;
+}
+.pkg-price small{font-size:14px;color:rgba(255,255,255,.55);font-style:normal;font-family:'Heebo',sans-serif;font-weight:300}
+.pkg-cta{
+  display:block;text-align:center;
+  background:transparent;color:#fff;
+  border:1px solid rgba(255,255,255,.5);
+  padding:14px 24px;border-radius:4px;
+  font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+  cursor:pointer;font-family:'Heebo',sans-serif;font-weight:400;
+  transition:all .3s;text-decoration:none;
+}
+.pkg-cta:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+.pkg-card.featured{
+  background:linear-gradient(180deg,rgba(212,184,122,.12),rgba(40,32,22,.4));
+  border-color:rgba(212,184,122,.45);
+  transform:scale(1.03);
+  box-shadow:0 30px 80px -20px rgba(212,184,122,.2);
+}
+.pkg-card.featured:hover{transform:scale(1.04) translateY(-8px)}
+.pkg-card.featured .pkg-cta{
+  background:linear-gradient(135deg,#d4b87a,#c4a87a);
+  color:#1a1a1a;border-color:transparent;font-weight:500;
+}
+.pkg-card.featured .pkg-cta:hover{
+  background:linear-gradient(135deg,#e2c885,#d4b87a);
+  color:#1a1a1a;
+}
+.pkg-badge{
+  position:absolute;top:18px;left:18px;
+  background:linear-gradient(135deg,#d4b87a,#c4a87a);
+  color:#1a1a1a;
+  padding:5px 12px;border-radius:20px;
+  font-size:9.5px;letter-spacing:.15em;font-weight:600;text-transform:uppercase;
+}
+.pkg-bottom{
+  text-align:center;padding:40px;
+  border-top:1px solid rgba(212,184,122,.15);
+  border-bottom:1px solid rgba(212,184,122,.15);
+  background:rgba(212,184,122,.03);
+  border-radius:14px;
+}
+.pkg-bottom h3{
+  font-family:'Cormorant Garamond',serif;font-size:28px;
+  font-weight:400;font-style:italic;margin-bottom:10px;color:#fff;
+}
+.pkg-bottom p{color:rgba(255,255,255,.7);font-size:14px;margin-bottom:24px;line-height:1.7}
+.pkg-bottom .btn-primary{
+  display:inline-block;
+  background:#fff;color:var(--ink);
+  padding:18px 42px;border-radius:50px;
+  text-decoration:none;font-weight:500;
+  font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  transition:transform .3s,box-shadow .3s,background .3s;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  font-family:'Heebo',sans-serif;
+}
+.pkg-bottom .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(196,168,122,.4);background:var(--accent-soft);color:#fff}
+.pkg-modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.92);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.pkg-modal.show{display:flex;animation:pkgFade .35s}
+@keyframes pkgFade{from{opacity:0}to{opacity:1}}
+.pkg-modal-card{
+  max-width:680px;width:100%;max-height:90vh;overflow-y:auto;
+  background:#0f0f0f;
+  border:1px solid rgba(212,184,122,.3);
+  border-radius:18px;padding:50px;
+  position:relative;
+  animation:pkgZoom .4s cubic-bezier(.2,.8,.2,1);
+}
+@keyframes pkgZoom{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.pkg-modal-close{
+  position:absolute;top:18px;left:18px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:22px;line-height:1;
+  font-family:inherit;transition:all .25s;
+}
+.pkg-modal-close:hover{background:rgba(255,255,255,.18);transform:rotate(90deg)}
+.pkg-modal-card h3{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;font-style:italic;margin-bottom:8px;color:var(--gold)}
+.pkg-modal-card .modal-eyebrow{font-size:11px;letter-spacing:.4em;color:var(--accent-soft);text-transform:uppercase;margin-bottom:14px}
+.pkg-modal-card .modal-detail{margin-top:24px;padding-top:20px;border-top:1px solid rgba(212,184,122,.15)}
+.pkg-modal-card .modal-detail h4{color:var(--gold);font-size:14px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;font-weight:500}
+.pkg-modal-card .modal-detail p{color:rgba(255,255,255,.85);line-height:1.7;font-size:14px}
+.pkg-modal-card .modal-detail ul{list-style:none;margin-top:8px;padding:0}
+.pkg-modal-card .modal-detail li{padding:6px 0;color:rgba(255,255,255,.85);font-size:14px;line-height:1.6;padding-right:18px;position:relative}
+.pkg-modal-card .modal-detail li::before{content:'';position:absolute;right:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@media(max-width:900px){
+  .pkg-grid{grid-template-columns:1fr;gap:20px}
+  .pkg-card.featured{transform:none}
+  .pkg-card.featured:hover{transform:translateY(-8px)}
+  .packages{padding:80px 0}
+  .pkg-modal-card{padding:30px}
+  .pkg-modal-card h3{font-size:32px}
+}
 </style>
 </head>
 <body>
@@ -2076,6 +2254,201 @@ setTimeout(startAuto,1500);
     <small>★ ההמלצות מקוריות · ההייליט "חוות דעת"</small>
   </div>
 </section>
+
+<!-- ===== PACKAGES ===== -->
+<section class="packages" id="packages">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">What's Included</div>
+      <h2>3 חבילות. <em>סיפור אחד מלא.</em></h2>
+      <p>סטילס, וידאו ואלבומים — אפשר לבחור חבילה אחת או לשלב את כולן ליצירת התיעוד המושלם של היום שלכם.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-icon">Albums</div>
+        <h3 class="pkg-name">חבילת אלבומים</h3>
+        <p class="pkg-tagline">אלבום פיזי שיישאר אצלכם בבית — תוצרים מודפסים שאפשר להעביר לדורות הבאים.</p>
+        <ul class="pkg-list">
+          <li>אלבום ראשי לזוג בגודל 60×30 ס״מ</li>
+          <li>2 אלבומי הורים תואמים 40×20 ס״מ</li>
+          <li>עיצוב על ידי גרפיקאית מקצועית</li>
+          <li>180 תמונות נבחרות על 30 דפים</li>
+          <li>בחירה ממגוון כריכות פרימיום</li>
+          <li>משלוח עד הבית</li>
+        </ul>
+        <div class="pkg-price-area">
+          <div class="pkg-price-label">טווח מחירים</div>
+          <div class="pkg-price">החל מ-1,000<small> ₪</small></div>
+        </div>
+        <button class="pkg-cta" onclick="openPkgModal('albums')">פרטים נוספים</button>
+      </div>
+      <div class="pkg-card featured">
+        <span class="pkg-badge">★ הכי פופולרי</span>
+        <div class="pkg-icon">Photography</div>
+        <h3 class="pkg-name">חבילת צילום סטילס</h3>
+        <p class="pkg-tagline">החבילה המרכזית שלי. ליווי מלא של היום, צלם נוסף לכיסוי רחב, ותמונות מעובדות באפליקציה אישית.</p>
+        <ul class="pkg-list">
+          <li>צלם ראשי (יוני) מההכנות עד הסוף</li>
+          <li>צלם נוסף משלב קבלת הפנים</li>
+          <li>עריכת כל התמונות + סינון מקצועי</li>
+          <li>אפליקציה אישית להורדה ושיתוף</li>
+          <li>עד 12 שעות צילום (סיום 01:00)</li>
+        </ul>
+        <div class="pkg-price-area">
+          <div class="pkg-price-label">טווח מחירים</div>
+          <div class="pkg-price">הצעה אישית</div>
+        </div>
+        <button class="pkg-cta" onclick="openPkgModal('photo')">פרטים נוספים</button>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-icon">Videography</div>
+        <h3 class="pkg-name">חבילת צילום וידאו</h3>
+        <p class="pkg-tagline">צלמי וידאו שעובדים איתי באופן קבוע. תיאום מלא ביננו ביום החתונה לסיפור ויזואלי משולב.</p>
+        <ul class="pkg-list">
+          <li>צלם וידאו מקצועי מההכנות</li>
+          <li>סרטון Highlight + סרט החתונה</li>
+          <li>בחירה מתוך 13 צלמים מומלצים</li>
+          <li>עריכה מלאה ומקצועית</li>
+          <li>תיאום מלא עם צוות הסטילס</li>
+        </ul>
+        <div class="pkg-price-area">
+          <div class="pkg-price-label">טווח מחירים</div>
+          <div class="pkg-price">4,200–6,000<small> ₪</small></div>
+        </div>
+        <button class="pkg-cta" onclick="openPkgModal('video')">פרטים נוספים</button>
+      </div>
+    </div>
+    <div class="pkg-bottom">
+      <h3>לא בטוחים מה הכי מתאים לכם?</h3>
+      <p>השאירו פרטים ואחזור אליכם תוך 24 שעות עם הצעה אישית — מותאמת ליום שלכם בדיוק.</p>
+      <a href="#leadForm" class="btn-primary" onclick="event.preventDefault(); openSection('leadForm')">להצעת מחיר אישית →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Packages Modal -->
+<div class="pkg-modal" id="pkgModal" onclick="if(event.target===this)closePkgModal()">
+  <div class="pkg-modal-card">
+    <button class="pkg-modal-close" onclick="closePkgModal()" aria-label="סגור">×</button>
+    <div class="modal-eyebrow" id="pkgModalEyebrow">Photography</div>
+    <h3 id="pkgModalTitle">חבילה</h3>
+    <div id="pkgModalBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const data = {
+    photo: {
+      eyebrow: "Photography",
+      title: "חבילת צילום סטילס",
+      body: `
+        <div class="modal-detail">
+          <h4>ליווי אישי לאורך כל היום</h4>
+          <p>אני מלווה אתכם משלב ההכנות ועד סוף האירוע — מההתרגשות של ההכנות, דרך הרגעים המרגשים בחופה, ועד למסיבת הריקודים. עם גישה רגועה ומקצועית, אני דואג שכל שלב ייתועד באופן מחמיא ואותנטי.</p>
+        </div>
+        <div class="modal-detail">
+          <h4>צלם נוסף — מצטרף משלב קבלת הפנים</h4>
+          <ul>
+            <li>מספר את סיפור החתונה בצורה מקיפה ועשירה יותר</li>
+            <li>כיסוי מלא של קבלת הפנים, החופה והריקודים</li>
+            <li>תיעוד הרגעים הפרטיים שלכם והאינטראקציה עם האורחים</li>
+          </ul>
+        </div>
+        <div class="modal-detail">
+          <h4>עריכה ועיבוד צבע מקצועי</h4>
+          <p>כל התמונות עוברות סינון קפדני, התאמות תאורה, חידוד, איזון צבעים ושיפור קונטרסט. עיבוד עדין ומדויק שמעצים את האווירה הטבעית — בלי ריטוש מלאכותי או פוטושופ אגרסיבי.</p>
+        </div>
+        <div class="modal-detail">
+          <h4>אפליקציה אישית להורדה ושיתוף</h4>
+          <ul>
+            <li>גלריה דיגיטלית פרטית — גישה מכל מכשיר</li>
+            <li>הורדה באיכות גבוהה ושיתוף קל עם המשפחה</li>
+            <li>שמירה ארוכת טווח של הרגעים</li>
+          </ul>
+        </div>
+      `
+    },
+    video: {
+      eyebrow: "Videography",
+      title: "חבילת צילום וידאו",
+      body: `
+        <div class="modal-detail">
+          <h4>איך זה עובד</h4>
+          <p>אני עובד עם 13 צלמי וידאו מובילים בארץ באופן קבוע. תיאום מלא בין צוות הסטילס שלי לצוות הוידאו שתבחרו ביום החתונה.</p>
+        </div>
+        <div class="modal-detail">
+          <h4>מה כלול אצל הצלם</h4>
+          <ul>
+            <li>צלם וידאו מקצועי החל משלב ההכנות</li>
+            <li>סרטון Highlight (קליפ קצר ומרגש) + סרט החתונה המלא</li>
+            <li>עריכה מלאה</li>
+          </ul>
+        </div>
+        <div class="modal-detail">
+          <h4>הצלמים הזמינים</h4>
+          <p>חגי עטרי · ערן איבגי · אופיר שרון · אלכס מלינסקי · מתן אמשלום · דודו פרנקו · סרגי שניידר · יניב אסיס · חיים עשור · בני מנשרוב · דימה נזרוב · שי ונטלי · סהר Tailors</p>
+        </div>
+        <div class="modal-detail">
+          <h4>תהליך הזמנה</h4>
+          <p>הצעת מחיר וסגירה מתבצעות ישירות מול הצלם שתבחרו. אני אעזור לכם להתאים את הצלם הנכון לסגנון שלכם.</p>
+        </div>
+      `
+    },
+    albums: {
+      eyebrow: "Albums",
+      title: "חבילת אלבומים",
+      body: `
+        <div class="modal-detail">
+          <h4>מה כלול בחבילה הבסיסית — 1,000 ₪</h4>
+          <ul>
+            <li>אלבום ראשי לזוג 60×30 ס״מ</li>
+            <li>2 אלבומי הורים תואמים 40×20 ס״מ</li>
+            <li>עיצוב על ידי גרפיקאית מקצועית</li>
+            <li>בחירה ממגוון כריכות פרימיום</li>
+            <li>180 תמונות על 30 דפים</li>
+            <li>משלוח עד הבית</li>
+            <li>עד 10 שינויים בעיצוב</li>
+          </ul>
+        </div>
+        <div class="modal-detail">
+          <h4>תהליך בחירת התמונות</h4>
+          <p>אחרי שמקבלים את הגלריה, בוחרים עד 180 תמונות אהובות. תמונות שמספרות את הסיפור המלא — מההכנות, החופה, הריקודים והרגעים האינטימיים. הסימון נעשה בלחיצה על כפתור הלב באפליקציה.</p>
+        </div>
+        <div class="modal-detail">
+          <h4>תוספות אפשריות (כולל מע״מ)</h4>
+          <ul>
+            <li>אלבום הורים נוסף 40×20 — 400 ₪</li>
+            <li>אלבום כיס משוויצון — 120 ₪</li>
+            <li>הטבעת כיתוב על הכריכה — 200 ₪</li>
+            <li>דף נוסף לאלבום — 45 ₪ (עד 45 דפים / 240 תמונות)</li>
+          </ul>
+        </div>
+        <div class="modal-detail">
+          <h4>תמונות לתלייה (אופציונלי)</h4>
+          <p>הדפסה על קנבס מתוח על מסגרת עץ או על משטח זכוכית עם גימור יוקרתי. גדלים מ-20×30 ועד 60×90 ס״מ. החל מ-120 ₪.</p>
+        </div>
+      `
+    }
+  };
+  const modal = document.getElementById('pkgModal');
+  window.openPkgModal = function(key){
+    const d = data[key];
+    document.getElementById('pkgModalEyebrow').textContent = d.eyebrow;
+    document.getElementById('pkgModalTitle').textContent = d.title;
+    document.getElementById('pkgModalBody').innerHTML = d.body;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closePkgModal = function(){
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && modal.classList.contains('show')) closePkgModal();
+  });
+})();
+</script>
 
 <!-- ===== PROCESS ===== -->
 <section class="process" id="process">
