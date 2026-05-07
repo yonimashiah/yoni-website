@@ -316,16 +316,15 @@ body::before{
   50%{box-shadow:0 4px 24px rgba(212,184,122,.7),0 0 0 4px rgba(212,184,122,.15)}
 }
 
-/* === כפתור "המלצות" — מסגרת זהב נוצצת + תג ★ 5.0 === */
+/* === כפתור "המלצות" — מסגרת לבנה + נצנוץ זהב + 5 כוכבים מתחת === */
 .hero-nav-btn[href="#reviews"]{
   position:relative;overflow:hidden;
-  border:1px solid rgba(212,184,122,.6);
-  background:rgba(212,184,122,.05);
-  color:#fff;
+  display:inline-flex;flex-direction:column;align-items:center;gap:5px;
+  padding-top:11px;padding-bottom:11px;
 }
 .hero-nav-btn[href="#reviews"]::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(110deg,transparent 25%,rgba(212,184,122,.5) 50%,transparent 75%);
+  background:linear-gradient(110deg,transparent 25%,rgba(212,184,122,.35) 50%,transparent 75%);
   background-size:200% 100%;
   animation:reviewsShimmer 3s linear infinite;
   pointer-events:none;border-radius:inherit;
@@ -334,29 +333,10 @@ body::before{
   0%{background-position:200% 0}
   100%{background-position:-200% 0}
 }
-.hero-nav-btn[href="#reviews"]:hover{
-  background:rgba(212,184,122,.18);
-  border-color:#d4b87a;
-  color:#fff;transform:translateY(-2px);
+.reviews-btn-stars{
+  font-size:9px;letter-spacing:.2em;color:#d4b87a;line-height:1;
 }
-.reviews-btn-wrap{position:relative;display:inline-block}
-.reviews-btn-badge{
-  position:absolute;top:-10px;right:-6px;z-index:5;
-  background:linear-gradient(135deg,#d4b87a,#c4a87a);
-  color:#1a1a1a;
-  padding:3px 10px;border-radius:20px;
-  font-size:9.5px;font-weight:600;letter-spacing:.04em;
-  font-family:'Heebo',sans-serif;
-  box-shadow:0 4px 12px rgba(212,184,122,.5);
-  display:flex;align-items:center;gap:3px;
-  white-space:nowrap;
-  animation:badgeFloat 2.4s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes badgeFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-3px)}
-}
+.hero-nav-btn[href="#reviews"]:hover .reviews-btn-stars{color:#d4b87a}
 @media(max-width:780px){
   .hero-nav{gap:10px}
   .hero-nav-btn{padding:15px 22px;font-size:12px;letter-spacing:.15em}
@@ -1500,7 +1480,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   <nav class="hero-nav">
     <a href="#about" class="hero-nav-btn">קצת עלי</a>
     <a href="#portfolio" class="hero-nav-btn">הזוגות שלי</a>
-    <span class="reviews-btn-wrap"><a href="#reviews" class="hero-nav-btn">המלצות</a><span class="reviews-btn-badge">★ 5.0</span></span>
+    <a href="#reviews" class="hero-nav-btn">המלצות<span class="reviews-btn-stars">★ ★ ★ ★ ★</span></a>
     <a href="#process" class="hero-nav-btn">התהליך</a>
     <a href="#contact" class="hero-nav-btn">יצירת קשר</a>
   </nav>
