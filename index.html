@@ -175,28 +175,30 @@ section.stats,section.testimonials,section.pricing,section.ig-section,footer{dis
 nav#nav{
   position:absolute !important;
   top:0;right:0;left:0;z-index:50;
-  padding:30px 40px;
+  padding:40px 40px 20px;
   display:flex;align-items:center;justify-content:center;
   background:transparent;border:none;
   pointer-events:none;
 }
 nav#nav a{pointer-events:auto}
 .logo{
-  display:block;width:auto;height:220px;
+  display:block;width:auto;height:150px;
   filter:drop-shadow(0 2px 12px rgba(0,0,0,.4));
 }
 .logo.dark{display:none}
-/* ריווח קטן בלבד כדי שהטקסט קרוב ללוגו */
-.hero .hero-inner{margin-top:90px}
+/* ריווח כדי שהטקסט יישב יפה מתחת ללוגו ללא חפיפה */
+.hero .hero-inner{margin-top:60px}
 @media(max-width:780px){
-  nav#nav{padding:8px 20px}
-  .logo{height:160px}
-  .hero .hero-inner{margin-top:90px}
+  nav#nav{padding:32px 20px 14px}
+  .logo{height:108px}
+  .hero{justify-content:flex-start;padding-top:170px}
+  .hero .hero-inner{margin-top:0}
 }
 @media(max-width:480px){
-  nav#nav{padding:6px 16px}
-  .logo{height:130px}
-  .hero .hero-inner{margin-top:60px}
+  nav#nav{padding:26px 16px 12px}
+  .logo{height:92px}
+  .hero{justify-content:flex-start;padding-top:145px}
+  .hero .hero-inner{margin-top:0}
 }
 
 /* ===== HERO ===== */
@@ -245,11 +247,30 @@ body::before{
   font-size:12px;font-weight:400;letter-spacing:.25em;text-transform:uppercase;
   cursor:pointer;font-family:'Heebo',sans-serif;
   transition:all .35s cubic-bezier(.2,.8,.2,1);
+  border-radius:4px;
 }
 .hero-nav-btn:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-2px)}
+/* הבלטה של "הזוגות שלי" — מושך את הלקוחות ללחוץ */
+.hero-nav-btn[href="#portfolio"]{
+  background:linear-gradient(135deg,#d4b87a 0%,#c4a87a 100%);
+  color:#1a1a1a;border-color:transparent;
+  font-weight:500;
+  box-shadow:0 4px 16px rgba(212,184,122,.4);
+  animation:pulseGlow 2.6s ease-in-out infinite;
+}
+.hero-nav-btn[href="#portfolio"]:hover{
+  background:linear-gradient(135deg,#e2c885 0%,#d4b87a 100%);
+  color:#1a1a1a;border-color:transparent;
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 8px 24px rgba(212,184,122,.55);
+}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 4px 16px rgba(212,184,122,.4)}
+  50%{box-shadow:0 4px 24px rgba(212,184,122,.7),0 0 0 4px rgba(212,184,122,.15)}
+}
 @media(max-width:780px){
-  .hero-nav{gap:8px}
-  .hero-nav-btn{padding:11px 16px;font-size:10px;letter-spacing:.1em}
+  .hero-nav{gap:10px}
+  .hero-nav-btn{padding:15px 22px;font-size:12px;letter-spacing:.15em}
   .slide-caption,.slide-dots{display:none}
   /* שורת בדיקת זמינות מצומצמת במובייל */
   .av-bar{padding:5px;border-radius:50px}
@@ -275,7 +296,8 @@ body::before{
   .hero-nav{margin-top:24px}
 }
 @media(max-width:480px){
-  .hero-nav-btn{padding:10px 12px;font-size:9px;letter-spacing:.05em}
+  .hero-nav{gap:8px;margin-top:30px}
+  .hero-nav-btn{padding:14px 18px;font-size:11px;letter-spacing:.1em}
   .av-bar-prompt{padding:9px 16px}
   .av-bar-btn{padding:12px 18px;font-size:10px}
   .av-result-card{
