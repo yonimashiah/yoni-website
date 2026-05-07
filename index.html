@@ -1692,10 +1692,14 @@ setTimeout(startAuto,1500);
   window.openSection = openSection;
 
   // חיבור הפס התחתון "השאירו פרטים" → פותח את סקציית הקשר
-  const strip = document.getElementById('contactStrip');
-  if(strip){
-    strip.addEventListener('click', () => openSection('contact'));
-  }
+  // משתמש ב-event delegation כי הכפתור מופיע מאוחר יותר בקובץ
+  document.addEventListener('click', (e) => {
+    const strip = e.target.closest('#contactStrip');
+    if(strip){
+      e.preventDefault();
+      openSection('contact');
+    }
+  });
 })();
 
 // Timeline Reveal — חשיפה הדרגתית כשנכנסים לתצוגה
