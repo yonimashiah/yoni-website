@@ -2021,6 +2021,8 @@ fab.addEventListener('click',function(){
 });
 
 // פתיחת הטופס מבחוץ עם prefill תאריך (משמש בבודק הזמינות)
+// שמירת התאריך — יוטמע אוטומטית רק כשהמשתמש יבחר סוג אירוע עם שדה תאריך
+window._pendingDate=null;
 window.openLeadForm=function(prefillDate){
   // פתיחת לשונית "השאירו פרטים" במקום בועה צפה
   if(typeof window.openSection==='function'){
@@ -2033,10 +2035,9 @@ window.openLeadForm=function(prefillDate){
       setTimeout(function(){ls.scrollIntoView({behavior:'smooth',block:'start'});},100);
     }
   }
+  // לא מגדירים סוג אירוע — המשתמש בוחר. רק שומרים את התאריך
   if(prefillDate){
-    eventType.value='חתונה💍';
-    eventType.dispatchEvent(new Event('change'));
-    setTimeout(function(){dateInput.value=prefillDate;updateProgress();},100);
+    window._pendingDate=prefillDate;
   }
   setTimeout(function(){
     var firstField=form.querySelector('input[name="fullName"]');
@@ -2054,7 +2055,15 @@ eventType.addEventListener('change',function(){
   var hasDetails=EVENT_TYPES_WITH_DETAILS.indexOf(t)!==-1;
   if(isWedding){weddingFields.classList.add('show');groomInput.required=true;brideInput.required=true;}
   else{weddingFields.classList.remove('show');groomInput.required=false;brideInput.required=false;groomInput.value='';brideInput.value='';}
-  if(hasDetails){eventFields.classList.add('show');receptionInput.required=true;dateInput.required=true;guestsInput.required=true;locationInput.required=true;}
+  if(hasDetails){
+    eventFields.classList.add('show');
+    receptionInput.required=true;dateInput.required=true;guestsInput.required=true;locationInput.required=true;
+    // אם הגיע תאריך מבדיקת הזמינות וטרם הוזן ידנית — מטמיעים אותו עכשיו
+    if(window._pendingDate && !dateInput.value){
+      dateInput.value=window._pendingDate;
+      window._pendingDate=null;
+    }
+  }
   else{eventFields.classList.remove('show');receptionInput.required=false;dateInput.required=false;guestsInput.required=false;locationInput.required=false;dateInput.value='';guestsInput.value='';locationInput.value='';}
   updateProgress();
 });
