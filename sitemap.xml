@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.yonimashiah.com/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://www.yonimashiah.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.yonimashiah.com/"/>
+    <image:image>
+      <image:loc>https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/925b0097-11cc-4a66-b1f2-fe3ef925d4a0/Weddingday-407.jpg</image:loc>
+      <image:title>יוני משיח — צלם חתונות מקצועי בישראל</image:title>
+      <image:caption>צילום חתונה בסגנון אותנטי, רגוע ומדויק</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#about</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#portfolio</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#packages</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#process</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#reviews</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.yonimashiah.com/#contact</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>
