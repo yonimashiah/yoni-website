@@ -11,6 +11,18 @@
 <meta name="author" content="Yoni Mashiah">
 <link rel="canonical" href="https://www.yonimashiah.com/">
 
+<!-- Additional SEO -->
+<meta name="theme-color" content="#7a6549">
+<meta name="format-detection" content="telephone=yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="יוני משיח">
+<meta name="geo.region" content="IL">
+<meta name="geo.placename" content="Israel">
+<meta http-equiv="content-language" content="he">
+<link rel="alternate" hreflang="he" href="https://www.yonimashiah.com/">
+<link rel="alternate" hreflang="x-default" href="https://www.yonimashiah.com/">
+
 <!-- Open Graph (WhatsApp / Facebook) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.yonimashiah.com/">
@@ -41,12 +53,43 @@
   "url":"https://www.yonimashiah.com",
   "telephone":"+972503550455",
   "email":"mashiah90@gmail.com",
-  "address":{"@type":"PostalAddress","addressCountry":"IL"},
+  "address":{"@type":"PostalAddress","addressCountry":"IL","addressRegion":"Israel"},
+  "areaServed":[
+    {"@type":"Country","name":"Israel"},
+    {"@type":"AdministrativeArea","name":"מרכז"},
+    {"@type":"AdministrativeArea","name":"תל אביב"},
+    {"@type":"AdministrativeArea","name":"ירושלים"},
+    {"@type":"AdministrativeArea","name":"חיפה"},
+    {"@type":"AdministrativeArea","name":"צפון"}
+  ],
+  "geo":{"@type":"GeoCoordinates","latitude":"32.0853","longitude":"34.7818"},
   "image":"https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/925b0097-11cc-4a66-b1f2-fe3ef925d4a0/Weddingday-407.jpg",
   "priceRange":"₪₪₪",
+  "currenciesAccepted":"ILS",
+  "paymentAccepted":"מזומן, אשראי, העברה בנקאית",
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"09:00","closes":"19:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"14:00"}
+  ],
+  "knowsAbout":["צילום חתונות","צילום אירועים","צילום זוגיות","wedding photography"],
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"240"},
   "sameAs":["https://www.instagram.com/yoni_mashiah_photographer/"]
 }
+</script>
+
+<!-- Person schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"יוני משיח","alternateName":"Yoni Mashiah","jobTitle":"צלם חתונות","description":"צלם חתונות מקצועי בישראל עם 12 שנות ניסיון ו-240+ חתונות. סגנון אותנטי, רגוע ומדויק.","url":"https://www.yonimashiah.com","image":"https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/925b0097-11cc-4a66-b1f2-fe3ef925d4a0/Weddingday-407.jpg","telephone":"+972503550455","email":"mashiah90@gmail.com","knowsLanguage":["he","en"],"knowsAbout":["צילום חתונות","צילום זוגיות","צילום אירועים","Wedding Photography","צילום דוקומנטרי"],"worksFor":{"@type":"Organization","name":"Yoni Mashiah Photography"},"sameAs":["https://www.instagram.com/yoni_mashiah_photographer/","https://www.facebook.com/MashiahYoni"]}
+</script>
+
+<!-- Services schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"חבילת צילום סטילס לחתונה","description":"צילום סטילס מקצועי ליום החתונה - מקבלת פנים ועד סוף הריקודים. כולל עריכה ועיבוד צבע מקצועי.","provider":{"@type":"Person","name":"יוני משיח","url":"https://www.yonimashiah.com"},"areaServed":{"@type":"Country","name":"Israel"},"serviceType":"צילום חתונה","category":"Wedding Photography"},{"@type":"Service","name":"חבילת צילום וידאו לחתונה","description":"סרטון מסכם של יום החתונה - תיעוד מקצועי באיכות 4K עם עריכה אומנותית.","provider":{"@type":"Person","name":"יוני משיח","url":"https://www.yonimashiah.com"},"areaServed":{"@type":"Country","name":"Israel"},"serviceType":"צילום וידאו לחתונה","category":"Wedding Videography"},{"@type":"Service","name":"חבילת אלבומים לחתונה","description":"אלבום דיגיטלי וגלריה מקוונת לשיתוף עם משפחה וחברים.","provider":{"@type":"Person","name":"יוני משיח","url":"https://www.yonimashiah.com"},"areaServed":{"@type":"Country","name":"Israel"},"serviceType":"אלבום חתונה","category":"Wedding Album"}]}
+</script>
+
+<!-- Reviews schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"Review","itemReviewed":{"@type":"LocalBusiness","name":"Yoni Mashiah Photography"},"author":{"@type":"Person","name":"לקוחה מאושרת"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"תודה על הרגשות, האנרגיות והאהבה שהרגשנו שאתה חלק מהיום הזה. עשית לנו סדר וניהלת הכל בצורה מטורפת. הצלם המקסים אהרון שהצטרף הוא הכי טוב!","datePublished":"2026-04-15"},{"@type":"Review","itemReviewed":{"@type":"LocalBusiness","name":"Yoni Mashiah Photography"},"author":{"@type":"Person","name":"כלה ממליצה"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"וואו אחד גדול! הבחירה הכי טובה!! היית עם אנרגיות, סבלני ונעים. אתה מודע לזה שאתה היחיד?","datePublished":"2026-03-22"},{"@type":"Review","itemReviewed":{"@type":"LocalBusiness","name":"Yoni Mashiah Photography"},"author":{"@type":"Person","name":"זוג מאושר"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"אנחנו לא יודעים איך להגיד לך תודה. תודה על היום המאושר בחיינו, על הצילומים ועל האנרגיות שהיו.","datePublished":"2026-02-10"},{"@type":"Review","itemReviewed":{"@type":"LocalBusiness","name":"Yoni Mashiah Photography"},"author":{"@type":"Person","name":"לקוחה ממליצה"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"איך שהגעת ביום החתונה כנסת עם האנרגיות הכי טובות, לא הפסקת להצחיק והיית מקצועי ויסודי. הקשבת לרצונות שלנו!","datePublished":"2026-01-18"},{"@type":"Review","itemReviewed":{"@type":"LocalBusiness","name":"Yoni Mashiah Photography"},"author":{"@type":"Person","name":"חתן מאושר"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"הצלם המקסים שעשה לנו את היום הכי מאושר. תודה על המקצועיות, האנרגיה והרגעים שתפסת לנצח.","datePublished":"2025-12-05"}]}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +119,7 @@ body{
   overflow-x:hidden;
 }
 img{max-width:100%;height:auto;display:block}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .serif{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.01em}
 .italic{font-style:italic}
 .container{max-width:1400px;margin:0 auto;padding:0 40px}
@@ -1838,13 +1882,13 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 
   <!-- ===== הלוגו עכשיו חלק מתוכן ה-hero, מחובר ישירות לטקסט ===== -->
   <a href="#top" class="hero-logo-wrap">
-    <img src="/logo-white.png" class="logo white" alt="Yoni Mashiah Photographer">
-    <img src="/logo-dark.png" class="logo dark" alt="Yoni Mashiah Photographer">
+    <img src="/logo-white.png" class="logo white" alt="לוגו יוני משיח — צלם חתונות מקצועי">
+    <img src="/logo-dark.png" class="logo dark" alt="לוגו יוני משיח — צלם חתונות מקצועי">
   </a>
 
   <div class="hero-inner">
     <div class="eyebrow">Wedding Photography · Israel</div>
-    <h1>סיפור האהבה שלכם<br><em>בתמונות שיישארו לנצח</em></h1>
+    <h1><span class="sr-only">צלם חתונות מקצועי בישראל — יוני משיח. </span>סיפור האהבה שלכם<br><em>בתמונות שיישארו לנצח</em></h1>
     <p>המטרה שלי כצלם היא לגרום לכם להרגיש בנוח. כל רגע הוא ייחודי, מה שיאפשר לנו להיות יצירתיים ורגועים, כדי שתוכלו פשוט ליהנות מהחוויה וליצור זכרונות מתועדים שיישארו איתכם לנצח.</p>
   </div>
 
@@ -1914,11 +1958,11 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   <div class="container">
     <div class="about-grid">
       <div class="about-img">
-        <img src="https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/b2bde4e8-433d-4e8d-ba16-36771776595e/%D7%99%D7%95%D7%A0%D7%99.jpg" alt="Yoni Mashiah">
+        <img src="https://images.squarespace-cdn.com/content/v1/670a65a5e4edaf0d577f6ecf/b2bde4e8-433d-4e8d-ba16-36771776595e/%D7%99%D7%95%D7%A0%D7%99.jpg" alt="יוני משיח — צלם חתונות, סטודיו ותיק לצילום אירועים">
       </div>
       <div class="about-content">
         <div class="eyebrow">Your Story My Lens</div>
-        <h2>קצת <em>עליי</em></h2>
+        <h2><span class="sr-only">יוני משיח — צלם חתונות מקצועי. </span>קצת <em>עליי</em></h2>
         <p>צילום חתונות, בעיניי, הוא הרבה יותר מצילום פשוט – זהו שילוב מופלא של אומנות, אהבה, מקצועיות, וחיבור עמוק לאנשים. כשאני ניגש לצלם את היום המיוחד שלכם, אני מתמקד באיזון המושלם שבין הרגעים הטבעיים והאותנטיים שמאפיינים את הצילום הדוקומנטרי לבין תפיסה אומנותית ייחודית ומדויקת, מה שיוצר עבורכם סגנון אישי ובלתי נשכח.</p>
         <p>הרגעים הקטנים הם אלה שבסופו של דבר בונים את הזכרונות הגדולים, ואני מקפיד לשים לב לכל פרט — בין אם זה מבט חולף של רגש או חיוך קטן בין השניים מכם. באמצעות התמקדות בפרטים העדינים, אני יכול להעביר את הסיפור המלא שלכם — מההכנות המוקדמות ועד לשמחה על רחבת הריקודים.</p>
         <p>המטרה העיקרית שלי כצלם היא לא רק לצלם אתכם — אלא לגרום לכם להרגיש בנוח לאורך כל היום וליצור אווירה נעימה, קלילה ושמחה. כשאתם מרגישים בנוח ונהנים, זה מה שמוביל לרגעים קסומים באמת.</p>
@@ -1937,7 +1981,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Selected Work</div>
-      <h2>הזוגות <em>שלי</em></h2>
+      <h2><span class="sr-only">תיק עבודות צלם חתונות יוני משיח. </span>הזוגות <em>שלי</em></h2>
       <p>אלה כמה מהזוגות האהובים עליי. כל אחד עם הסיפור שלו, הרגעים שלו, האהבה שלו.</p>
     </div>
   </div>
@@ -1945,82 +1989,82 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <div class="cs-track" id="csTrack">
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingday-/gallery?inviteptoken2=AAAAAHwAAACCmiRpM8PyF2UJEBvTypXj9w%2C%2C">
         <span class="cs-num">01</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/51/391/51391394/homepage/homepage.jpg" alt="Sivan & Aviad" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/51/391/51391394/homepage/homepage.jpg" alt="חתונת סיון ואביעד — צילום אותנטי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Sivan & Aviad</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-yardenroni/gallery?inviteptoken2=AAAAAP4AAABlz6bd5euNwFZP2jUmhQYNeg2C%2C">
         <span class="cs-num">02</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/882/44882046/homepage/homepage.jpg" alt="Yarden & Roni" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/882/44882046/homepage/homepage.jpg" alt="חתונת ירדן ורוני — צילום זוגיות וחתונה | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Yarden & Roni</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymorinasaf/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg2C%2C">
         <span class="cs-num">03</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/45/833/45833441/homepage/homepage.jpg" alt="Morin & Asaf" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/45/833/45833441/homepage/homepage.jpg" alt="חתונת מורין ואסף — צילום חתונה אותנטי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Morin & Asaf</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaykirashir/gallery?inviteptoken2=AAAAAB4AAAAws-RsaV-QIvQ81OIngvZxyQ%2C%2C">
         <span class="cs-num">04</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/955/44955459/homepage/homepage.jpg" alt="Kira & Shir" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/955/44955459/homepage/homepage.jpg" alt="חתונת קירה ושיר — סיפור אהבה בתמונות | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Kira & Shir</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymoriyaosher/gallery?inviteptoken2=AAAAANEAAAA2rMiNyCJd-8KiC1S3zVPYyA%2C%2C">
         <span class="cs-num">05</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg" alt="Moriya & Osher" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg" alt="חתונת מוריה ואושר — צילום חתונה רגוע | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Moriya & Osher</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingday/gallery?inviteptoken2=AAAAAH4AAAD0YEcnh4BRWXUGvA5Dgxbz5w%2C%2C">
         <span class="cs-num">06</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/38/640/38640626/homepage/homepage.jpg" alt="Shiri & Eli" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/38/640/38640626/homepage/homepage.jpg" alt="חתונת שירי ואלי — תיעוד אירוע מלא | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shiri & Eli</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddnigday/gallery?inviteptoken2=AAAAAHMAAABnSSTxpWqK-wf6ErxtKQvq6g%2C%2C">
         <span class="cs-num">07</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/941/43941141/homepage/homepage.jpg" alt="Aliya & Eitam" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/941/43941141/homepage/homepage.jpg" alt="חתונת עליה ואיתם — צילום חתונה דתי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Aliya & Eitam</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayshirazyaniv/gallery?inviteptoken2=AAAAAO4AAABQObN88RXlP52KWjv0vPt2QQ%2C%2C">
         <span class="cs-num">08</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/41/151/41151812/homepage/homepage.jpg" alt="Shiraz & Yaniv" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/41/151/41151812/homepage/homepage.jpg" alt="חתונת שיראז ויניב — צילום חתונה מקצועי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shiraz & Yaniv</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaynaamaben/gallery?inviteptoken2=AAAAAIwAAAB2F8AeprNZpkj8WgjzdhLpwg%2C%2C">
         <span class="cs-num">09</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/37/965/37965706/homepage/homepage.jpg" alt="Naama & Ben" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/37/965/37965706/homepage/homepage.jpg" alt="חתונת נעמה ובן — צילומי זוגיות וחופה | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Naama & Ben</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayshahafohad/gallery?inviteptoken2=AAAAALwAAACWwZ49Jv3kHu42DRgF5aeOJQ%2C%2C">
         <span class="cs-num">10</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/42/678/42678094/homepage/homepage.jpg" alt="Shahaf & Ohad" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/42/678/42678094/homepage/homepage.jpg" alt="חתונת שחף ואוהד — תיעוד יום החתונה | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Shahaf & Ohad</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaylenaran/gallery?inviteptoken2=AAAAAEgAAAA3yOjMdVACLj4V-s1wQQkFMw%2C%2C">
         <span class="cs-num">11</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/148/43148217/homepage/homepage.jpg" alt="Lena & Ran" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/43/148/43148217/homepage/homepage.jpg" alt="חתונת לנה ורן — צילום חתונה אלגנטי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Lena & Ran</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaysivanavihay/gallery?inviteptoken2=AAAAAGsAAABHKwO7_KJBvnXbUxQJTaGvEQ%2C%2C">
         <span class="cs-num">12</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/40/139/40139796/homepage/homepage.jpg" alt="Sivan & Avihay" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/40/139/40139796/homepage/homepage.jpg" alt="חתונת סיון ואביחי — צילום חתונה רגיש | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Sivan & Avihay</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-odayaitiya/gallery?inviteptoken2=AAAAAHsAAABENdgE76k2Fe_SItqgH92nUg%2C%2C">
         <span class="cs-num">13</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/50/439/50439929/homepage/homepage.jpg" alt="Odaya & Itiya" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/50/439/50439929/homepage/homepage.jpg" alt="חתונת אודיה ואיתיה — צילום זוגיות אותנטי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Odaya & Itiya</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdayavivlior/gallery?inviteptoken2=AAAAAHQAAAB1dD73j2tgTd_QudmLOG8nHw%2C%2C">
         <span class="cs-num">14</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/528/44528248/homepage/homepage.jpg" alt="Aviv & Lior" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/528/44528248/homepage/homepage.jpg" alt="חתונת אביב וליאור — תיעוד מלא של האירוע | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Aviv & Lior</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-michalbarak/gallery?inviteptoken2=AAAAAGoAAACk6bxa2Mmyusq5pO9EIujzbA%2C%2C">
         <span class="cs-num">09</span>
-        <img src="https://pictime1eus1public-pub-ese2a2hyhubtebgg.a02.azurefd.net/pictures/25/478/25478746/homepage/homepage.jpg" alt="Michal & Barak" loading="lazy">
+        <img src="https://pictime1eus1public-pub-ese2a2hyhubtebgg.a02.azurefd.net/pictures/25/478/25478746/homepage/homepage.jpg" alt="חתונת מיכל וברק — סיפור אהבה ייחודי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Michal & Barak</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
       <button type="button" class="cs-card" data-gallery="https://yonimashiahphotographer.pic-time.com/-weddingdaymoron/gallery?inviteptoken2=AAAAANsAAABhAzgHl5dlgT2ukGdujRLShg%2C%2C">
         <span class="cs-num">10</span>
-        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/31/10/31010085/homepage/homepage.jpg" alt="Mor & Ron" loading="lazy">
+        <img src="https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/31/10/31010085/homepage/homepage.jpg" alt="חתונת מור ורון — צילום חתונה מקצועי | יוני משיח, צלם חתונות" loading="lazy">
         <div class="cs-overlay"><div class="cs-name">Mor & Ron</div><div class="cs-cta">צפו בגלריה</div></div>
       </button>
     </div>
@@ -2154,7 +2198,7 @@ setTimeout(startAuto,1500);
     <div class="ig-head">
       <div class="section-head" style="margin:0;text-align:right">
         <div class="eyebrow">Live from Instagram</div>
-        <h2>הפיד שלי<br><em>בזמן אמת.</em></h2>
+        <h2><span class="sr-only">אינסטגרם של יוני משיח צלם חתונות. </span>הפיד שלי<br><em>בזמן אמת.</em></h2>
       </div>
       <a href="https://www.instagram.com/yoni_mashiah_photographer/" target="_blank" rel="noopener" class="ig-handle">
         <svg viewBox="0 0 24 24"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
@@ -2212,7 +2256,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Real Words · Real Couples</div>
-      <h2>הזוגות <em>מספרים בעצמם</em></h2>
+      <h2><span class="sr-only">המלצות לקוחות על צלם החתונות יוני משיח. </span>הזוגות <em>מספרים בעצמם</em></h2>
       <p>הודעות אמיתיות שזוגות שלחו לי אחרי החתונה — ישר מההייליט "חוות דעת" באינסטגרם.</p>
       <div class="stat-pill">★★★★★ <strong>5.0</strong> · <strong>240+</strong> זוגות מאושרים</div>
     </div>
@@ -2222,100 +2266,100 @@ setTimeout(startAuto,1500);
     <button class="rv-nav-btn next" onclick="document.querySelector('.rv-track').scrollBy({left:-320,behavior:'smooth'})" aria-label="קודם">←</button>
     <div class="rv-track">
       <button class="rv-card" data-img="/reviews/review-1.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-1.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-1.jpg" alt="המלצה אישית — צילום זוגיות בשקיעה זהובה בטבע | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-2.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-2.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-2.jpg" alt="תודה מלקוחה — חתונה במלון בוטיק יוקרתי על ספה | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-3.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-3.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-3.jpg" alt="סיפור אהבה בתמונות — חיבוק תחת הינומה באור שקיעה | יוני משיח צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-4.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-4.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-4.jpg" alt="המלצה ב-5 כוכבים — חתונה באולם גן עם שובל ארוך | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-5.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-5.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-5.jpg" alt="תודה מלקוחה — צילום זוגיות עם זר כלה ואוטובוס וינטג' | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-6.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-6.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-6.jpg" alt="סיפור אהבה — נשיקה רכה בחצר ירוקה תחת הינומה | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-7.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-7.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-7.jpg" alt="המלצה אישית — צילום זוגיות בפרדס פריחה לבן ושחור | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-8.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-8.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-8.jpg" alt="המלצה ב-5 כוכבים — קלוז אפ נשיקה אינטימית עם הינומה | יוני משיח צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-9.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-9.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-9.jpg" alt="תודה מלקוחה — חיבוק חם של חתן וכלה בשקיעה ביער | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-10.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-10.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-10.jpg" alt="סיפור אהבה — חתונה דתית עם זר פרחים צבעוני בגן | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-11.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-11.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-11.jpg" alt="המלצה אישית — צילום זוגיות על גשר עץ מול נוף נהר | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-12.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-12.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-12.jpg" alt="המלצה ב-5 כוכבים — צילומי חתן וחבר באור טבעי בחלון | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-13.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-13.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-13.jpg" alt="תודה מלקוחה — צעדה של זוג טרי בדשא עם זר ורדים | יוני משיח, צילומי חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-14.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-14.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-14.jpg" alt="סיפור אהבה — סיבוב ריקוד של זוג בסלון מואר | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-15.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-15.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-15.jpg" alt="המלצה אישית — חתן וכלה בשמלת בת ים אלגנטית | יוני משיח, צילום חתונה אותנטי" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-16.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-16.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-16.jpg" alt="המלצה ב-5 כוכבים — צחוק זוגי מתוק בצמרות עצים | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-17.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-17.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-17.jpg" alt="תודה מלקוחה — סלפי משולש שמח של הצלם עם בני הזוג | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-18.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-18.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-18.jpg" alt="סיפור אהבה — כניסה מרהיבה של זוג במלון יוקרה | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-19.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-19.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-19.jpg" alt="המלצה אישית — נשיקה דרמטית בכניסה למלון בוטיק | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-20.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-20.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-20.jpg" alt="המלצה ב-5 כוכבים — צילום זוגיות בשדרת דקלים בשקיעה | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-21.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-21.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-21.jpg" alt="תודה מלקוחה — סילואטות זוג עם אופנוע בשקיעה | יוני משיח, צילום זוגיות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-22.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-22.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-22.jpg" alt="סיפור אהבה — ריקוד תחת קשתות אבן עתיקות | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-23.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-23.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-23.jpg" alt="המלצה אישית — חתן וכלה צמודים מול חומת אבן בגן | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-24.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-24.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-24.jpg" alt="המלצה ב-5 כוכבים — נשיקה רומנטית בגן הדר תחת הינומה | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-25.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-25.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-25.jpg" alt="תודה מלקוחה — צחוק חופשי של זוג טרי בתאורת בוקר | יוני משיח צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-26.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-26.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-26.jpg" alt="סיפור אהבה — מבט אינטימי באולם אירועים מואר | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-27.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-27.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-27.jpg" alt="המלצה אישית — כלה רוקדת ברחוב סמטה צבעונית | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-28.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-28.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-28.jpg" alt="המלצה ב-5 כוכבים — נשיקה ביער עם נצנוצי זהב | יוני משיח, צילומי חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-30.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-30.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-30.jpg" alt="סיפור אהבה — הליכה בגן תחת שרשרת אורות | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-31.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-31.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-31.jpg" alt="המלצה אישית — זוג צועד מול קיר גרפיטי אורבני | יוני משיח, צלם חתונות" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-32.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-32.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-32.jpg" alt="המלצה ב-5 כוכבים — סיבוב שמלה עם זר קלות תחת אורות | יוני משיח, צילום חתונה" loading="lazy" decoding="async">
       </button>
       <button class="rv-card" data-img="/reviews/review-33.jpg" aria-label="הגדל המלצה">
-        <img src="/reviews/review-33.jpg" alt="המלצה מזוג שצילם איתי">
+        <img src="/reviews/review-33.jpg" alt="תודה מלקוחה — נשיקה בשדה פרחי בר צהובים | יוני משיח, צלם אירועים" loading="lazy" decoding="async">
       </button>
     </div>
 
@@ -2344,7 +2388,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">What's Included</div>
-      <h2>שלוש חבילות. <em>סיפור אחד מלא.</em></h2>
+      <h2><span class="sr-only">חבילות צילום חתונה — סטילס, וידאו ואלבום דיגיטלי. </span>שלוש חבילות. <em>סיפור אחד מלא.</em></h2>
       <p>סטילס, וידאו ואלבומים — אפשר לבחור חבילה אחת או לשלב את כולן ליצירת התיעוד המושלם של היום שלכם.</p>
     </div>
     <div class="pkg-grid">
@@ -2563,7 +2607,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">How It Works</div>
-      <h2>התהליך <em>שלנו יחד</em></h2>
+      <h2><span class="sr-only">תהליך הזמנת צלם חתונות אצל יוני משיח. </span>התהליך <em>שלנו יחד</em></h2>
       <p>מהשיחה הראשונה ועד שאתם מחזיקים את האלבום ביד. הנה איך זה עובד אצלי, צעד אחר צעד.</p>
     </div>
     <div class="timeline">
@@ -2632,7 +2676,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Real Words · Real Couples</div>
-      <h2>מה אומרים<br><em>הזוגות שלי.</em></h2>
+      <h2><span class="sr-only">ביקורות לקוחות על יוני משיח, צלם חתונות מומלץ. </span>מה אומרים<br><em>הזוגות שלי.</em></h2>
       <p>אין שיווק טוב יותר מהמלצה אמיתית של זוג מאושר.</p>
     </div>
     <div class="tm-grid">
@@ -2677,7 +2721,7 @@ setTimeout(startAuto,1500);
 <section class="final-cta" id="contact">
   <div class="container">
     <div class="eyebrow" style="color:var(--accent-soft);opacity:1">Let's Talk</div>
-    <h2 style="margin-top:16px">בואו <em>ניצור קשר</em></h2>
+    <h2 style="margin-top:16px"><span class="sr-only">יצירת קשר עם יוני משיח, צלם חתונות. </span>בואו <em>ניצור קשר</em></h2>
     <p>שיחה אחת זה כל מה שצריך. תספרו לי קצת על היום שלכם — נדבר, נכיר, ונראה אם אנחנו מתחברים.</p>
     <div class="hero-actions">
       <a href="https://wa.me/972503550455" class="btn-primary">שיחת WhatsApp</a>
@@ -2691,7 +2735,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Get a Quote</div>
-      <h2>השאירו פרטים<br><em>ונחזור אליכם תוך 24 שעות</em></h2>
+      <h2><span class="sr-only">הזמנת צלם חתונות מיוני משיח. </span>השאירו פרטים<br><em>ונחזור אליכם תוך 24 שעות</em></h2>
       <p>תמלאו את הפרטים בטופס וניצור איתכם קשר עם הצעת מחיר מותאמת אישית לאירוע שלכם.</p>
       <div class="lead-divider"></div>
     </div>
@@ -2705,7 +2749,7 @@ setTimeout(startAuto,1500);
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/logo-white.png" alt="Yoni Mashiah Photographer" style="height:64px;display:block;margin-bottom:16px">
+        <img src="/logo-white.png" alt="לוגו יוני משיח — צלם חתונות מקצועי" style="height:64px;display:block;margin-bottom:16px">
         <p>צלם חתונות בכל הארץ. סיפורי אהבה אותנטיים, רגעים אמיתיים, זיכרונות שיישארו לנצח.</p>
       </div>
       <div class="footer-col">
