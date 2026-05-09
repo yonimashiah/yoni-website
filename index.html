@@ -1990,55 +1990,70 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 </style>
 
 <!-- v6 Upgrades: Lighter FAQ + Premium Glass Form -->
-<style id="v6-upgrade">
+
+
+<!-- v7: Premium glass form + lighter FAQ -->
+<style id="v7-upgrade">
 /* === FAQ: reduce darkness === */
 .faq-item{background:rgba(255,255,255,.015) !important;backdrop-filter:blur(8px) !important;-webkit-backdrop-filter:blur(8px) !important}
 .faq-item:hover{background:rgba(255,255,255,.035) !important}
 .faq-item.is-open{background:linear-gradient(180deg,rgba(196,164,120,.04) 0%,rgba(255,255,255,.02) 100%) !important}
-/* Reduce hideable dark gradient on FAQ specifically */
 .faq-section.hideable.is-open{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.35) 30%,rgba(0,0,0,.4) 100%) !important}
+.lead-form.hideable.is-open{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.35) 30%,rgba(0,0,0,.4) 100%) !important}
 
-/* === Lead Form: Premium Glass Card === */
-.lead-form-slot{
-  position:relative;
-  max-width:680px;
-  margin:0 auto;
-  background:rgba(255,255,255,.025);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:24px;
-  padding:50px 44px;
-  isolation:isolate;
-  box-shadow:0 30px 80px -20px rgba(0,0,0,.55);
+/* === Lead Form: Premium Glass — overrides existing wa-card === */
+.lead-form-slot{padding:0 !important;background:transparent !important;max-width:680px;margin:0 auto;border:none !important;box-shadow:none !important}
+.lead-form-slot::before, .lead-form-slot::after{display:none !important}
+
+.wa-card{
+  background:rgba(255,255,255,.025) !important;
+  backdrop-filter:blur(15px) !important;
+  -webkit-backdrop-filter:blur(15px) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-radius:24px !important;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.55) !important;
+  overflow:hidden !important;
+  position:relative !important;
 }
-.lead-form-slot::after{
+.wa-card::after{
   content:'';position:absolute;pointer-events:none;inset:0;border-radius:24px;
   background:linear-gradient(135deg,#c4a478 0%,transparent 1.5%),linear-gradient(-135deg,#c4a478 0%,transparent 1.5%),linear-gradient(45deg,#c4a478 0%,transparent 1.5%),linear-gradient(-45deg,#c4a478 0%,transparent 1.5%);
-  background-position:top right,top left,bottom right,bottom left;background-size:22px 22px;background-repeat:no-repeat;opacity:.7;
+  background-position:top right,top left,bottom right,bottom left;background-size:22px 22px;background-repeat:no-repeat;opacity:.7;z-index:1;
 }
 
-/* Host header before form */
-.lead-form-slot::before{
-  content:'יוני משיח · זמין כעת';
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:14px;
-  letter-spacing:.15em;
-  color:#c4a478;
-  text-align:center;
-  padding-bottom:18px;
-  margin-bottom:26px;
-  border-bottom:1px solid rgba(255,255,255,.10);
-  text-transform:uppercase;
+/* Header (brown bar with photo) */
+.wa-head{
+  background:linear-gradient(135deg,rgba(196,164,120,.25) 0%,rgba(184,150,104,.18) 100%) !important;
+  border-bottom:1px solid rgba(196,164,120,.3) !important;
+  padding:22px 28px !important;
+}
+.wa-head .wa-info, .wa-head .wa-info *{color:#fff !important}
+.wa-head .wa-info{font-family:'Cormorant Garamond',serif !important;font-weight:500 !important}
+
+/* Progress bar */
+.wa-progress{background:rgba(255,255,255,.04) !important;height:3px !important}
+.wa-progress-bar{background:linear-gradient(90deg,#c4a478,#dcc298) !important}
+
+/* Body (was cream — now transparent dark) */
+.wa-body{background:transparent !important;color:#fff !important;padding:36px 32px !important}
+
+/* Greeting bubble */
+.wa-bubble{
+  background:rgba(255,255,255,.04) !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-radius:14px !important;
+  padding:18px 22px !important;
+  color:rgba(255,255,255,.88) !important;
+  font-size:15px !important;
+  line-height:1.7 !important;
+  margin-bottom:30px !important;
 }
 
-/* Make wa-form transparent */
-#waForm{background:transparent !important;border:none !important;box-shadow:none !important;padding:0 !important;margin:0 !important}
+/* Form transparent */
+.wa-form{background:transparent !important;border:none !important;box-shadow:none !important;padding:0 !important;margin:0 !important}
 
-/* Section labels (פרטים אישיים, האירוע, קצת יותר) */
-#waForm .wa-label{
+/* Section labels */
+.wa-form .wa-label, .wa-card .wa-label{
   font-family:'Cormorant Garamond',serif !important;
   font-style:italic !important;
   font-size:18px !important;
@@ -2050,19 +2065,18 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   align-items:center !important;
   gap:10px !important;
   text-transform:none !important;
+  background:transparent !important;
 }
-#waForm .wa-label::after{
-  content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(196,164,120,.4),transparent);
-}
-#waForm .wa-section:first-child .wa-label{margin-top:0 !important}
+.wa-form .wa-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(196,164,120,.4),transparent)}
+.wa-form .wa-section:first-child .wa-label{margin-top:0 !important}
 
 /* Inputs */
-#waForm .wa-input{
+.wa-form .wa-input, .wa-card .wa-input{
   width:100% !important;
-  background:rgba(255,255,255,.04) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
   border-radius:12px !important;
-  padding:15px 18px !important;
+  padding:14px 18px !important;
   color:#fff !important;
   font-family:'Heebo',sans-serif !important;
   font-size:15px !important;
@@ -2070,56 +2084,44 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   transition:all .35s ease !important;
   margin-bottom:12px !important;
 }
-#waForm .wa-input::placeholder{color:rgba(255,255,255,.55) !important}
-#waForm .wa-input:focus{
+.wa-form .wa-input::placeholder, .wa-card .wa-input::placeholder{color:rgba(255,255,255,.6) !important}
+.wa-form .wa-input:focus, .wa-card .wa-input:focus{
   outline:none !important;
   border-color:#c4a478 !important;
   background:rgba(196,164,120,.08) !important;
   box-shadow:0 0 0 3px rgba(196,164,120,.15) !important;
 }
-#waForm select.wa-input{
+.wa-form select.wa-input, .wa-card select.wa-input{
   appearance:none !important;
+  -webkit-appearance:none !important;
   background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="%23c4a478"><path d="M2 4 L6 8 L10 4Z"/></svg>') !important;
   background-repeat:no-repeat !important;
   background-position:left 18px center !important;
   background-size:12px !important;
   padding-left:46px !important;
 }
-#waForm textarea.wa-input{min-height:90px !important;resize:vertical !important;line-height:1.6 !important}
+.wa-form select.wa-input option, .wa-card select.wa-input option{background:#1a1a1a !important;color:#fff !important}
+.wa-form textarea.wa-input, .wa-card textarea.wa-input{min-height:90px !important;resize:vertical !important;line-height:1.6 !important}
 
-/* Time input label */
-#waForm .wa-time-label{
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
-  background:rgba(255,255,255,.04) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
+/* Time input wrapper */
+.wa-form .wa-time-label, .wa-card .wa-time-label{
+  display:flex !important;align-items:center !important;gap:12px !important;
+  background:rgba(255,255,255,.05) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
   border-radius:12px !important;
   padding:13px 18px !important;
   margin-bottom:12px !important;
   transition:all .35s ease !important;
 }
-#waForm .wa-time-label:focus-within{border-color:#c4a478 !important;background:rgba(196,164,120,.08) !important}
-#waForm .wa-time-prefix{
-  color:rgba(255,255,255,.6) !important;
-  font-size:13px !important;
-  font-weight:400 !important;
-  white-space:nowrap !important;
-}
-#waForm .wa-time-input{
-  background:transparent !important;
-  border:0 !important;
-  padding:0 !important;
-  margin:0 !important;
-  width:auto !important;
-  color:#fff !important;
-}
+.wa-form .wa-time-label:focus-within, .wa-card .wa-time-label:focus-within{border-color:#c4a478 !important;background:rgba(196,164,120,.08) !important}
+.wa-form .wa-time-prefix, .wa-card .wa-time-prefix{color:rgba(255,255,255,.65) !important;font-size:13px !important;font-weight:400 !important;white-space:nowrap !important}
+.wa-form .wa-time-input, .wa-card .wa-time-input{background:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;width:auto !important;color:#fff !important;color-scheme:dark !important}
 
 /* Conditional rows */
-#waForm .wa-conditional-row{display:grid !important;grid-template-columns:1fr 1fr !important;gap:12px !important}
+.wa-form .wa-conditional-row, .wa-card .wa-conditional-row{display:grid !important;grid-template-columns:1fr 1fr !important;gap:12px !important}
 
-/* Submit button */
-#waForm .wa-submit{
+/* Submit */
+.wa-form .wa-submit, .wa-card .wa-submit{
   width:100% !important;
   margin-top:24px !important;
   padding:18px !important;
@@ -2138,26 +2140,27 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   align-items:center !important;
   justify-content:center !important;
   gap:14px !important;
-  position:relative !important;
-  overflow:hidden !important;
 }
-#waForm .wa-submit:hover{
+.wa-form .wa-submit:hover, .wa-card .wa-submit:hover{
   transform:translateY(-2px) !important;
   box-shadow:0 18px 50px -12px rgba(196,164,120,.55) !important;
 }
-#waForm .wa-submit svg{width:18px !important;height:18px !important;fill:#0a0a0a !important;transition:transform .3s ease !important}
-#waForm .wa-submit:hover svg{transform:translateX(-4px) !important}
+.wa-form .wa-submit svg, .wa-card .wa-submit svg{width:18px !important;height:18px !important;fill:#0a0a0a !important;transition:transform .3s ease !important}
+.wa-form .wa-submit:hover svg, .wa-card .wa-submit:hover svg{transform:translateX(-4px) !important}
 
-/* Reduce dark on lead-form section */
-.lead-form.hideable.is-open{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.35) 30%,rgba(0,0,0,.4) 100%) !important}
+/* Thanks state */
+.wa-thanks{background:transparent !important;color:#fff !important;padding:36px 32px !important}
+.wa-thanks *{color:#fff !important}
 
 @media(max-width:760px){
-  .lead-form-slot{padding:36px 22px;border-radius:18px}
-  .lead-form-slot::before{font-size:12px;padding-bottom:14px;margin-bottom:20px}
-  #waForm .wa-label{font-size:16px !important;margin:18px 0 10px !important}
-  #waForm .wa-input{padding:13px 15px !important;font-size:14px !important}
-  #waForm .wa-conditional-row{grid-template-columns:1fr !important;gap:0 !important}
-  #waForm .wa-submit{padding:16px !important;font-size:13px !important}
+  .wa-card{border-radius:18px !important}
+  .wa-head{padding:18px 20px !important}
+  .wa-body{padding:26px 20px !important}
+  .wa-bubble{padding:14px 16px !important;font-size:14px !important;margin-bottom:22px !important}
+  .wa-form .wa-label{font-size:16px !important;margin:18px 0 10px !important}
+  .wa-form .wa-input, .wa-card .wa-input{padding:13px 15px !important;font-size:14px !important}
+  .wa-form .wa-conditional-row, .wa-card .wa-conditional-row{grid-template-columns:1fr !important;gap:0 !important}
+  .wa-form .wa-submit, .wa-card .wa-submit{padding:16px !important;font-size:13px !important}
 }
 </style>
 </head>
