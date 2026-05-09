@@ -2005,7 +2005,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 .lead-form-slot{padding:0 !important;background:transparent !important;max-width:680px;margin:0 auto;border:none !important;box-shadow:none !important}
 .lead-form-slot::before, .lead-form-slot::after{display:none !important}
 
-.wa-card{
+.lead-form-slot .wa-card, .lead-form-slot .wa-card.show, body .wa-card.show{
   background:rgba(255,255,255,.025) !important;
   backdrop-filter:blur(15px) !important;
   -webkit-backdrop-filter:blur(15px) !important;
@@ -2022,7 +2022,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 }
 
 /* Header (brown bar with photo) */
-.wa-head{
+.lead-form-slot .wa-card .wa-head, body .wa-card .wa-head{
   background:linear-gradient(135deg,rgba(196,164,120,.25) 0%,rgba(184,150,104,.18) 100%) !important;
   border-bottom:1px solid rgba(196,164,120,.3) !important;
   padding:22px 28px !important;
@@ -2035,7 +2035,7 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 .wa-progress-bar{background:linear-gradient(90deg,#c4a478,#dcc298) !important}
 
 /* Body (was cream — now transparent dark) */
-.wa-body{background:transparent !important;color:#fff !important;padding:36px 32px !important}
+.lead-form-slot .wa-card .wa-body, body .wa-card .wa-body{background:transparent !important;color:#fff !important;padding:36px 32px !important}
 
 /* Greeting bubble */
 .wa-bubble{
