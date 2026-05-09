@@ -9,6 +9,12 @@
 <meta name="description" content="יוני משיח — צלם חתונות מקצועי. צילום אותנטי, רגוע ומדויק שמתעד את היום הכי חשוב בחייכם. 240+ חתונות, 12 שנות ניסיון, דירוג 5.0 בגוגל.">
 <meta name="keywords" content="צלם חתונות, יוני משיח, צילום חתונות, צלם חתונות בישראל, wedding photographer israel">
 <meta name="author" content="Yoni Mashiah">
+<meta name="copyright" content="© 2026 Yoni Mashiah Photography. All Rights Reserved.">
+<meta name="rights" content="© 2026 Yoni Mashiah · כל הזכויות שמורות. אסור להעתיק, לשכפל או להפיץ תוכן זה ללא אישור בכתב.">
+<meta name="dcterms.rightsHolder" content="Yoni Mashiah Photography">
+<meta name="dcterms.dateCopyrighted" content="2026">
+<meta name="dcterms.rights" content="Copyright © 2026 Yoni Mashiah. All photographs, text, design, and code are protected by Israeli and international copyright law.">
+<meta name="robots" content="index,follow,noarchive">
 <link rel="canonical" href="https://www.yonimashiah.com/">
 
 <!-- Additional SEO -->
@@ -2179,6 +2185,31 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
   .wa-form .wa-conditional-row, .wa-card .wa-conditional-row{grid-template-columns:1fr !important;gap:0 !important}
   .wa-form .wa-submit, .wa-card .wa-submit{padding:16px !important;font-size:13px !important}
 }
+
+/* ===== הגנה על תמונות ועל תוכן (זכויות יוצרים) ===== */
+img{
+  -webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;
+  -o-user-drag:none;user-drag:none;
+  -webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+  -webkit-touch-callout:none;
+  pointer-events:auto;
+}
+.cs-card,.hero-slide,.bts-card{-webkit-user-select:none;user-select:none}
+
+/* התראה צצה כשמנסים לעשות קליק-ימני */
+.copyright-warning{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);
+  background:rgba(26,26,26,.96);color:#fff;padding:24px 32px;border-radius:14px;
+  font-family:'Heebo',sans-serif;font-size:14px;font-weight:500;text-align:center;
+  z-index:10000;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);max-width:340px;
+  border:1px solid rgba(196,164,120,.4);
+}
+.copyright-warning.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.copyright-warning .cw-icon{font-size:32px;margin-bottom:10px;color:#c4a478}
+.copyright-warning .cw-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;margin-bottom:8px;color:#c4a478}
+.copyright-warning .cw-text{line-height:1.6;font-size:13px;opacity:.9}
+.copyright-warning .cw-text strong{color:#c4a478}
 </style>
 
 <!-- ===== Preload סרטון מובייל בעדיפות גבוהה (רק כשהדפדפן מובייל) ===== -->
@@ -3357,7 +3388,7 @@ setTimeout(startAuto,1500);
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 Yoni Mashiah Photography · כל הזכויות שמורות</div>
+      <div>© <span id="copyrightYear">2026</span> Yoni Mashiah Photography · כל הזכויות שמורות · אסור להעתיק, לשכפל או להפיץ ללא אישור בכתב</div>
       <div class="social">
         <a href="#" title="Instagram">IG</a>
         <a href="#" title="Facebook">FB</a>
@@ -3366,6 +3397,80 @@ setTimeout(startAuto,1500);
     </div>
   </div>
 </footer>
+
+<!-- ===== התראת זכויות יוצרים ===== -->
+<div class="copyright-warning" id="copyrightWarning">
+  <div class="cw-icon">©</div>
+  <div class="cw-title">תמונה מוגנת</div>
+  <div class="cw-text">כל התמונות באתר הן <strong>רכוש בלעדי של יוני משיח</strong>. אסור להעתיק, להוריד או להשתמש ללא אישור בכתב.</div>
+</div>
+
+<!-- ===== הגנת תוכן וזכויות יוצרים ===== -->
+<script>
+(function(){
+  // עדכון אוטומטי של שנה
+  var yEl=document.getElementById('copyrightYear');
+  if(yEl) yEl.textContent=new Date().getFullYear();
+
+  var warning=document.getElementById('copyrightWarning');
+  var warnTimer=null;
+  function showWarning(){
+    if(!warning)return;
+    warning.classList.add('show');
+    clearTimeout(warnTimer);
+    warnTimer=setTimeout(function(){warning.classList.remove('show')},3000);
+  }
+
+  // חסימת קליק-ימני על תמונות + סרטונים + כל אזור גלריה
+  document.addEventListener('contextmenu',function(e){
+    var t=e.target;
+    if(t.tagName==='IMG'||t.tagName==='VIDEO'||
+       t.closest('.cs-card')||t.closest('.hero-slide')||
+       t.closest('.hero-slides')||t.closest('.bts-card')||
+       t.closest('.gal-modal')||t.closest('.ig-item')||
+       t.closest('[class*="gallery"]')||t.closest('.hero')){
+      e.preventDefault();
+      showWarning();
+      return false;
+    }
+  });
+
+  // חסימת גרירה של תמונות
+  document.addEventListener('dragstart',function(e){
+    if(e.target.tagName==='IMG'||e.target.tagName==='VIDEO'){
+      e.preventDefault();
+      showWarning();
+      return false;
+    }
+  });
+
+  // חסימת קיצורי דרך לשמירה (Ctrl+S, Ctrl+P)
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&(e.key==='s'||e.key==='S')){
+      e.preventDefault();
+      showWarning();
+      return false;
+    }
+  });
+
+  // הוספת alt עם פרטי זכויות לכל התמונות
+  setTimeout(function(){
+    document.querySelectorAll('img').forEach(function(img){
+      img.setAttribute('draggable','false');
+      img.setAttribute('oncontextmenu','return false');
+      var copyrightAttr='© Yoni Mashiah Photography. All rights reserved.';
+      if(!img.getAttribute('data-copyright')){
+        img.setAttribute('data-copyright',copyrightAttr);
+      }
+    });
+  },1000);
+
+  // הודעה לקונסול לאלה שיודעים לפתוח DevTools
+  console.log('%c© Yoni Mashiah Photography','color:#c4a478;font-family:Cormorant Garamond,serif;font-style:italic;font-size:24px');
+  console.log('%cכל התוכן באתר זה — תמונות, טקסט, עיצוב וקוד — מוגן בזכויות יוצרים. כל שימוש ללא אישור בכתב אסור על פי חוק.','color:#7a6549;font-size:13px;line-height:1.6');
+  console.log('%cFor licensing inquiries: mashiah90@gmail.com','color:#888;font-size:11px');
+})();
+</script>
 
 <script>
 // Sticky nav
