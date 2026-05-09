@@ -2195,21 +2195,40 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/528/44528248/homepage/homepage.jpg')" data-couple="Aviv & Lior"></div>
   </div>
 
-  <!-- ===== סרטון רקע למובייל בלבד (מחליף את התמונות במכשירים קטנים) ===== -->
-  <video class="hero-video-mobile" id="heroVideoMobile"
-         poster="/hero-mobile-poster.jpg"
-         muted autoplay loop playsinline
-         preload="none"
-         aria-hidden="true">
-    <source src="/hero-mobile.mp4" type="video/mp4">
-  </video>
+  <!-- ===== סרטון רקע למובייל בלבד (מוזרק רק במובייל; דסקטופ לא מוריד) ===== -->
+  <div id="heroVideoMobileMount"></div>
   <script>
-  // טען ונגן את הסרטון רק במובייל - דסקטופ לא יוריד את הקובץ
   (function(){
-    if(window.matchMedia('(max-width:768px)').matches){
-      var v=document.getElementById('heroVideoMobile');
-      if(v){v.preload='auto';v.load();v.play().catch(function(){});}
-    }
+    if(!window.matchMedia('(max-width:768px)').matches) return;
+    var mount=document.getElementById('heroVideoMobileMount');
+    if(!mount) return;
+    var v=document.createElement('video');
+    v.id='heroVideoMobile';
+    v.className='hero-video-mobile';
+    v.muted=true; v.defaultMuted=true;
+    v.autoplay=true;
+    v.loop=true;
+    v.playsInline=true;
+    v.setAttribute('muted','');
+    v.setAttribute('autoplay','');
+    v.setAttribute('loop','');
+    v.setAttribute('playsinline','');
+    v.setAttribute('webkit-playsinline','');
+    v.setAttribute('disablepictureinpicture','');
+    v.setAttribute('aria-hidden','true');
+    v.poster='/hero-mobile-poster.jpg';
+    v.preload='auto';
+    var s=document.createElement('source');
+    s.src='/hero-mobile.mp4'; s.type='video/mp4';
+    v.appendChild(s);
+    mount.appendChild(v);
+    // נסיון פעיל לנגן (חלק מהדפדפנים דורשים קריאה מפורשת)
+    var tryPlay=function(){var p=v.play();if(p&&p.catch)p.catch(function(){});};
+    v.addEventListener('loadedmetadata',tryPlay);
+    v.addEventListener('canplay',tryPlay);
+    document.addEventListener('touchstart',tryPlay,{once:true,passive:true});
+    document.addEventListener('click',tryPlay,{once:true});
+    setTimeout(tryPlay,500);
   })();
   </script>
 
