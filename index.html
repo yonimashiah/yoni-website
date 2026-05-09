@@ -1442,21 +1442,21 @@ footer{
   transition:background .3s,letter-spacing .3s;
 }
 .contact-strip:hover{background:#2a2a2a;letter-spacing:.26em}
-/* פיצוץ הילה זהב על הקו העליון */
+/* הילה עדינה זהב על הקו העליון */
 .contact-strip::before{
-  content:'';position:absolute;top:-3px;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,#8a6f3d,#b89668,#d4b87a,#ffd966,#fff5d6,#ffd966,#d4b87a,#b89668,#8a6f3d);
+  content:'';position:absolute;top:-2px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#a88a5a,#c4a478,#d4b87a,#e0c785,#d4b87a,#c4a478,#a88a5a);
   background-size:200% 100%;
   pointer-events:none;
-  animation:goldGlowBurst 2.4s ease-in-out infinite;
+  animation:goldGlowSoft 4s ease-in-out infinite;
 }
-@keyframes goldGlowBurst{
+@keyframes goldGlowSoft{
   0%,100%{
-    box-shadow:0 -2px 8px rgba(212,184,122,.5),0 -1px 3px rgba(212,184,122,.7);
+    box-shadow:0 -1px 4px rgba(212,184,122,.25);
     background-position:0% 50%;
   }
   50%{
-    box-shadow:0 -8px 35px #ffd966,0 -16px 50px rgba(212,184,122,.6),0 -3px 15px #fff,0 -1px 4px #fff;
+    box-shadow:0 -3px 12px rgba(212,184,122,.5),0 -1px 6px rgba(212,184,122,.4);
     background-position:100% 50%;
   }
 }
