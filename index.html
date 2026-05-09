@@ -3403,15 +3403,18 @@ setTimeout(startAuto,1500);
 :root{--a11y-base:16px}
 html{font-size:var(--a11y-base)}
 
-/* Tab button on left edge */
-.a11y-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);background:#7a6549;color:#fff;padding:18px 8px;border:0;border-radius:0 12px 12px 0;cursor:pointer;writing-mode:vertical-rl;font-family:'Heebo',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;box-shadow:2px 4px 14px rgba(0,0,0,.25);z-index:9990;display:flex;flex-direction:column;align-items:center;gap:8px;transition:.3s}
-.a11y-tab:hover{padding-left:14px;background:#1a1a1a}
+/* Tab button — bottom-left, premium design matching site */
+.a11y-tab{position:fixed;left:0;bottom:90px;background:linear-gradient(135deg,#7a6549,#5a4a35);color:#fff;padding:14px 12px 14px 16px;border:0;border-radius:0 14px 14px 0;cursor:pointer;font-family:'Heebo',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;box-shadow:3px 6px 20px rgba(60,40,20,.35);z-index:9990;display:flex;align-items:center;gap:10px;max-width:50px;overflow:hidden;transition:max-width .35s cubic-bezier(.4,.2,.2,1),padding .35s,background .25s;border-right:2px solid #c4a478}
+.a11y-tab:hover,.a11y-tab.expanded{max-width:200px;padding-right:18px;background:linear-gradient(135deg,#5a4a35,#1a1a1a)}
 .a11y-tab:focus-visible{outline:3px solid #c4a478;outline-offset:3px}
-.a11y-tab svg{width:18px;height:18px;fill:#fff;writing-mode:horizontal-tb}
-.a11y-tab .a11y-tab-label{display:inline-block}
+.a11y-tab svg{width:24px;height:24px;fill:#fff;flex-shrink:0;transition:transform .25s}
+.a11y-tab:hover svg{transform:rotate(-8deg)}
+.a11y-tab .a11y-tab-label{white-space:nowrap;display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;letter-spacing:.5px;text-transform:none;font-weight:500;color:#c4a478}
 
-/* Panel — slides from left */
-.a11y-panel{position:fixed;left:-380px;top:50%;transform:translateY(-50%);width:340px;max-width:calc(100vw - 24px);max-height:90vh;background:#fff;border:1px solid #e8e2d8;border-radius:0 18px 18px 0;box-shadow:0 25px 60px rgba(0,0,0,.2);z-index:9989;overflow:hidden;display:flex;flex-direction:column;transition:left .3s ease;font-family:'Heebo',sans-serif;direction:rtl}
+/* Panel — slides from left, becomes bottom sheet on mobile */
+.a11y-overlay{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:9988;pointer-events:none;transition:background .3s}
+.a11y-overlay.open{background:rgba(0,0,0,.45);pointer-events:auto}
+.a11y-panel{position:fixed;left:-400px;bottom:30px;width:360px;max-width:calc(100vw - 24px);max-height:80vh;background:#fff;border:1px solid #e8e2d8;border-radius:0 20px 20px 0;box-shadow:0 30px 70px rgba(60,40,20,.35);z-index:9989;overflow:hidden;display:flex;flex-direction:column;transition:left .35s cubic-bezier(.4,.2,.2,1);font-family:'Heebo',sans-serif;direction:rtl;border-right:3px solid #c4a478}
 .a11y-panel.open{left:0}
 .a11y-head{padding:20px 22px 14px;border-bottom:1px solid #e8e2d8;background:linear-gradient(180deg,#fff,#fbf8f3);display:flex;justify-content:space-between;align-items:flex-start}
 .a11y-head h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:#7a6549;font-style:italic;margin:0}
@@ -3454,9 +3457,31 @@ html.a11y-text-spacing *{letter-spacing:.12em !important;word-spacing:.16em !imp
 html.a11y-cursor-large *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%23000' stroke='%23fff' stroke-width='1.5'%3E%3Cpath d='M3 3l7.07 17 2.51-7.39L20 10.07z'/%3E%3C/svg%3E"),auto !important}
 
 @media (max-width:768px){
-  .a11y-tab{font-size:10px;padding:14px 6px;letter-spacing:2px}
-  .a11y-tab svg{width:14px;height:14px}
-  .a11y-panel{width:300px}
+  /* On mobile: tab stays bottom-left, smaller */
+  .a11y-tab{bottom:100px;padding:11px 10px 11px 13px;max-width:44px;border-radius:0 12px 12px 0}
+  .a11y-tab:hover,.a11y-tab.expanded{max-width:170px;padding-right:16px}
+  .a11y-tab svg{width:20px;height:20px}
+  .a11y-tab .a11y-tab-label{font-size:16px}
+
+  /* Panel: bottom sheet on mobile (slides from bottom) */
+  .a11y-panel{
+    left:0 !important;right:0;bottom:-100vh;top:auto;
+    width:100%;max-width:100%;max-height:85vh;
+    border-radius:24px 24px 0 0;border-right:0;border-top:3px solid #c4a478;
+    transition:bottom .35s cubic-bezier(.4,.2,.2,1);
+  }
+  .a11y-panel.open{bottom:0;left:0 !important}
+  .a11y-panel::before{content:'';display:block;width:48px;height:4px;background:#e8e2d8;border-radius:2px;margin:10px auto 0}
+  .a11y-row{grid-template-columns:repeat(3,1fr);gap:8px}
+  .a11y-btn{padding:14px 8px;font-size:13px}
+  .a11y-toggle{padding:14px 16px}
+  .a11y-toggle-label{font-size:14px}
+}
+
+/* Make sure footer accessibility link is tappable on mobile */
+@media (max-width:768px){
+  .footer-bottom{padding-bottom:160px}
+  .footer-bottom a{display:inline-block;padding:6px 0;font-size:13px}
 }
 </style>
 
@@ -3464,6 +3489,8 @@ html.a11y-cursor-large *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
   <svg viewBox="0 0 24 24"><circle cx="12" cy="3.5" r="2"/><path d="M19 8h-5l1.5 7.5L19 22h-2l-1-5-2-7H10l-2 7-1 5H5l3.5-6.5L10 8H5V6h14z"/></svg>
   <span class="a11y-tab-label">נגישות</span>
 </button>
+
+<div class="a11y-overlay" id="a11yOverlay"></div>
 
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="תפריט נגישות">
   <div class="a11y-head">
@@ -3502,9 +3529,12 @@ html.a11y-cursor-large *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
 (function(){
   var tab=document.getElementById('a11yTab');
   var panel=document.getElementById('a11yPanel');
+  var overlay=document.getElementById('a11yOverlay');
   var closeBtn=document.getElementById('a11yClose');
   var resetBtn=document.getElementById('a11yReset');
   var html=document.documentElement;
+  function openPanel(){panel.classList.add('open');overlay.classList.add('open')}
+  function closePanel(){panel.classList.remove('open');overlay.classList.remove('open')}
   var STORAGE='a11y_settings_v1';
   var saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE))||{}}catch(e){}
   function applyClass(c){if(c)html.classList.add(c)}
@@ -3513,12 +3543,13 @@ html.a11y-cursor-large *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www
   if(saved.text){applyClass(saved.text);document.querySelectorAll('.a11y-btn[data-group="text"]').forEach(function(b){b.classList.toggle('active',b.dataset.class===saved.text)})}
   if(saved.contrast){applyClass(saved.contrast);document.querySelectorAll('.a11y-btn[data-group="contrast"]').forEach(function(b){b.classList.toggle('active',b.dataset.class===saved.contrast)})}
   if(saved.toggles){saved.toggles.forEach(function(t){applyClass(t);var el=document.querySelector('.a11y-toggle[data-toggle="'+t+'"]');if(el)el.classList.add('active')})}
-  tab.addEventListener('click',function(){panel.classList.toggle('open')});
-  closeBtn.addEventListener('click',function(){panel.classList.remove('open')});
+  tab.addEventListener('click',function(){panel.classList.contains('open')?closePanel():openPanel()});
+  closeBtn.addEventListener('click',closePanel);
+  overlay.addEventListener('click',closePanel);
   document.querySelectorAll('.a11y-btn').forEach(function(btn){btn.addEventListener('click',function(){var g=btn.dataset.group;removeGroup(g);document.querySelectorAll('.a11y-btn[data-group="'+g+'"]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');if(btn.dataset.class)applyClass(btn.dataset.class);save()})});
   document.querySelectorAll('.a11y-toggle').forEach(function(t){t.addEventListener('click',function(){var c=t.dataset.toggle;t.classList.toggle('active');html.classList.toggle(c);save()})});
   resetBtn.addEventListener('click',function(){['a11y-text-large','a11y-text-xlarge','a11y-contrast-high','a11y-contrast-inverted','a11y-readable-font','a11y-highlight-links','a11y-text-spacing','a11y-no-animation','a11y-cursor-large','a11y-keyboard-nav'].forEach(function(c){html.classList.remove(c)});document.querySelectorAll('.a11y-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.a11y-btn[data-class=""]').forEach(function(b){b.classList.add('active')});document.querySelectorAll('.a11y-toggle').forEach(function(t){t.classList.remove('active')});try{localStorage.removeItem(STORAGE)}catch(e){}});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')panel.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closePanel()});
 })();
 </script>
 
