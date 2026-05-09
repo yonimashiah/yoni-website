@@ -49,16 +49,20 @@ a:hover{color:var(--accent-soft)}
 
 /* === HERO with brand styling === */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 6%;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:1;background:url('https://www.yonimashiah.com/og-image.jpg') center/cover}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.55))}
+.hero-bg{position:absolute;inset:0;z-index:1;background:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/40/139/40139796/homepage/homepage.jpg') center/cover;animation:slowZoom 14s ease-in-out infinite alternate}
+@keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.65) 100%)}
 .hero-content{position:relative;z-index:3;max-width:780px}
 
 /* Top gold animated line */
 .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;z-index:5;background:linear-gradient(90deg,#a88a5a,#c4a478,#e0c785,#e8c890,#e0c785,#c4a478,#a88a5a);background-size:200% 100%;animation:goldFlow 3.5s ease-in-out infinite}
 @keyframes goldFlow{0%,100%{box-shadow:0 1px 4px rgba(212,184,122,.45);background-position:0% 50%}50%{box-shadow:0 3px 13px rgba(228,198,140,.6),0 1px 6px rgba(228,198,140,.4);background-position:100% 50%}}
 
-.brand{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:32px;color:#fff;letter-spacing:1px;text-shadow:0 2px 14px rgba(0,0,0,.5);margin-bottom:8px;display:block}
-.brand-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:50px;font-weight:500}
+/* Logo */
+.logo-wrap{display:inline-block;margin-bottom:14px;transition:transform .3s}
+.logo-wrap:hover{transform:scale(1.03)}
+.logo-img{height:78px;width:auto;filter:drop-shadow(0 4px 18px rgba(0,0,0,.5))}
+.brand-tag{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:50px;font-weight:500}
 
 .eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--accent-soft);margin-bottom:18px;font-weight:500}
 h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,68px);font-weight:400;line-height:1.1;margin-bottom:14px;text-shadow:0 4px 24px rgba(0,0,0,.5);color:#fff}
@@ -89,7 +93,7 @@ h1 em{font-style:italic;color:var(--accent-soft);display:block;margin-top:6px}
 
 @media (max-width:768px){
   .hero{padding:60px 5%}
-  .brand{font-size:26px}
+  .logo-img{height:60px}
   .brand-tag{margin-bottom:35px}
   .btn-primary{padding:15px 30px;font-size:12px}
 }
@@ -100,7 +104,9 @@ h1 em{font-style:italic;color:var(--accent-soft);display:block;margin-top:6px}
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <a href="https://www.yonimashiah.com/" class="brand">Yoni Mashiah</a>
+    <a href="https://www.yonimashiah.com/" class="logo-wrap" aria-label="יוני משיח — לאתר הראשי">
+      <img src="https://www.yonimashiah.com/logo-white.png" class="logo-img" alt="לוגו יוני משיח — צלם חתונות">
+    </a>
     <div class="brand-tag">Wedding Photographer · Israel</div>
 
     <div class="eyebrow">Rishon LeZion Wedding</div>
