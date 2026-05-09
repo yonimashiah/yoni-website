@@ -1442,21 +1442,21 @@ footer{
   transition:background .3s,letter-spacing .3s;
 }
 .contact-strip:hover{background:#2a2a2a;letter-spacing:.26em}
-/* הילה עדינה זהב על הקו העליון */
+/* הילה זהב על הקו העליון — עדין-בינוני */
 .contact-strip::before{
-  content:'';position:absolute;top:-2px;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,#a88a5a,#c4a478,#d4b87a,#e0c785,#d4b87a,#c4a478,#a88a5a);
+  content:'';position:absolute;top:-2px;left:0;right:0;height:2.5px;
+  background:linear-gradient(90deg,#a88a5a,#c4a478,#e0c785,#f0d090,#fff0c4,#f0d090,#e0c785,#c4a478,#a88a5a);
   background-size:200% 100%;
   pointer-events:none;
-  animation:goldGlowSoft 4s ease-in-out infinite;
+  animation:goldGlowSoft 3s ease-in-out infinite;
 }
 @keyframes goldGlowSoft{
   0%,100%{
-    box-shadow:0 -1px 4px rgba(212,184,122,.25);
+    box-shadow:0 -1px 5px rgba(212,184,122,.45),0 0 2px rgba(212,184,122,.5);
     background-position:0% 50%;
   }
   50%{
-    box-shadow:0 -3px 12px rgba(212,184,122,.5),0 -1px 6px rgba(212,184,122,.4);
+    box-shadow:0 -5px 20px rgba(240,208,144,.7),0 -2px 10px rgba(255,240,196,.6),0 -1px 4px rgba(255,255,255,.4);
     background-position:100% 50%;
   }
 }
