@@ -259,6 +259,16 @@ nav#nav{display:none !important} /* מסתיר את ה-nav הישן אם נשא�
 }
 .hero-slide.active{opacity:1}
 @keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
+/* ===== Mobile-only hero video (replaces slideshow on mobile) ===== */
+.hero-video-mobile{display:none}
+@media (max-width:768px){
+  .hero-slides{display:none}
+  .hero-video-mobile{
+    display:block;position:fixed;inset:0;
+    width:100%;height:100%;object-fit:cover;
+    z-index:-2;pointer-events:none;
+  }
+}
 body::before{
   content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.65) 100%);
@@ -2184,6 +2194,24 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
     <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/50/439/50439929/homepage/homepage.jpg')" data-couple="Odaya & Itiya"></div>
     <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/528/44528248/homepage/homepage.jpg')" data-couple="Aviv & Lior"></div>
   </div>
+
+  <!-- ===== סרטון רקע למובייל בלבד (מחליף את התמונות במכשירים קטנים) ===== -->
+  <video class="hero-video-mobile" id="heroVideoMobile"
+         poster="/hero-mobile-poster.jpg"
+         muted autoplay loop playsinline
+         preload="none"
+         aria-hidden="true">
+    <source src="/hero-mobile.mp4" type="video/mp4">
+  </video>
+  <script>
+  // טען ונגן את הסרטון רק במובייל - דסקטופ לא יוריד את הקובץ
+  (function(){
+    if(window.matchMedia('(max-width:768px)').matches){
+      var v=document.getElementById('heroVideoMobile');
+      if(v){v.preload='auto';v.load();v.play().catch(function(){});}
+    }
+  })();
+  </script>
 
   <!-- ===== הלוגו עכשיו חלק מתוכן ה-hero, מחובר ישירות לטקסט ===== -->
   <a href="#top" class="hero-logo-wrap">
