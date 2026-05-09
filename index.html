@@ -1433,15 +1433,33 @@ footer{
 :root{--wa:#7a6549;--wa-dark:#5a4a35;--ig-grad:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
 .contact-strip{
   position:fixed;bottom:0;right:0;left:0;z-index:200;
-  background:#1a1a1a;border:none;border-top:2px solid #d4b87a;
+  background:#1a1a1a;border:none;
   padding:14px 24px;width:100%;
   display:flex;align-items:center;justify-content:center;gap:14px;
   color:#fff;font-family:'Heebo',sans-serif;font-size:12px;
   letter-spacing:.22em;text-transform:uppercase;font-weight:400;
   cursor:pointer;text-decoration:none;
-  transition:all .3s cubic-bezier(.2,.8,.2,1);
+  transition:background .3s,letter-spacing .3s;
 }
 .contact-strip:hover{background:#2a2a2a;letter-spacing:.26em}
+/* פיצוץ הילה זהב על הקו העליון */
+.contact-strip::before{
+  content:'';position:absolute;top:-3px;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#8a6f3d,#b89668,#d4b87a,#ffd966,#fff5d6,#ffd966,#d4b87a,#b89668,#8a6f3d);
+  background-size:200% 100%;
+  pointer-events:none;
+  animation:goldGlowBurst 2.4s ease-in-out infinite;
+}
+@keyframes goldGlowBurst{
+  0%,100%{
+    box-shadow:0 -2px 8px rgba(212,184,122,.5),0 -1px 3px rgba(212,184,122,.7);
+    background-position:0% 50%;
+  }
+  50%{
+    box-shadow:0 -8px 35px #ffd966,0 -16px 50px rgba(212,184,122,.6),0 -3px 15px #fff,0 -1px 4px #fff;
+    background-position:100% 50%;
+  }
+}
 .contact-strip .strip-dot{
   width:6px;height:6px;border-radius:50%;background:#7eff8c;
   box-shadow:0 0 8px #7eff8c;display:inline-block;
