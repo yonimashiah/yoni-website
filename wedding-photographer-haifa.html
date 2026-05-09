@@ -47,11 +47,15 @@ body{font-family:'Heebo',-apple-system,sans-serif;background:var(--bg);color:var
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent-soft)}
 
-/* === HERO with brand styling === */
+/* === HERO === */
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 6%;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:1;background:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg') center/cover;animation:slowZoom 14s ease-in-out infinite alternate}
-@keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.65) 100%)}
+
+/* Slideshow */
+.hero-slides{position:absolute;inset:0;z-index:1}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease-in-out;animation:kenburns 12s ease-in-out infinite alternate;transform-origin:center}
+.hero-slide.active{opacity:1}
+@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.12)}}
+.hero-slides::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,.65) 100%);z-index:2}
 .hero-content{position:relative;z-index:3;max-width:780px}
 
 /* Top gold animated line */
@@ -102,7 +106,13 @@ h1 em{font-style:italic;color:var(--accent-soft);display:block;margin-top:6px}
 <body>
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/51/391/51391394/homepage/homepage.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/44/882/44882046/homepage/homepage.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/47/651/47651690/homepage/homepage.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/40/139/40139796/homepage/homepage.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://pictime2neu1public-pub-cacrh6buazapb4dg.a02.azurefd.net/pictures/45/833/45833441/homepage/homepage.jpg')"></div>
+  </div>
   <div class="hero-content">
     <a href="https://www.yonimashiah.com/" class="logo-wrap" aria-label="יוני משיח — לאתר הראשי">
       <img src="https://www.yonimashiah.com/logo-white.png" class="logo-img" alt="לוגו יוני משיח — צלם חתונות">
@@ -132,6 +142,20 @@ h1 em{font-style:italic;color:var(--accent-soft);display:block;margin-top:6px}
   <div class="related"><a href="/wedding-photographer-tel-aviv">תל אביב</a> · <a href="/wedding-photographer-jerusalem">ירושלים</a> · <a href="/wedding-photographer-rishon-lezion">ראשון לציון</a> · <a href="/wedding-photographer-netanya">נתניה</a> · <a href="/wedding-photographer-petah-tikva">פתח תקווה</a></div>
   © 2026 Yoni Mashiah Photography · <a href="/" style="color:var(--accent)">חזרה לאתר הראשי</a>
 </footer>
+
+<script>
+// Slideshow rotation — every 4.5 seconds
+(function(){
+  var slides = document.querySelectorAll('.hero-slide');
+  if (slides.length < 2) return;
+  var idx = 0;
+  setInterval(function(){
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
+  }, 4500);
+})();
+</script>
 
 </body>
 </html>
