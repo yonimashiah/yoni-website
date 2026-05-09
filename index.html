@@ -3388,7 +3388,7 @@ setTimeout(startAuto,1500);
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© <span id="copyrightYear">2026</span> Yoni Mashiah Photography · כל הזכויות שמורות · אסור להעתיק, לשכפל או להפיץ ללא אישור בכתב</div>
+      <div>© <span id="copyrightYear">2026</span> Yoni Mashiah Photography · כל הזכויות שמורות · אסור להעתיק, לשכפל או להפיץ ללא אישור בכתב · <a href="/accessibility.html" style="color:inherit;text-decoration:underline">הצהרת נגישות</a></div>
       <div class="social">
         <a href="#" title="Instagram">IG</a>
         <a href="#" title="Facebook">FB</a>
@@ -3397,6 +3397,130 @@ setTimeout(startAuto,1500);
     </div>
   </div>
 </footer>
+
+<!-- ========== Accessibility Widget (Tab Edge Style) ========== -->
+<style>
+:root{--a11y-base:16px}
+html{font-size:var(--a11y-base)}
+
+/* Tab button on left edge */
+.a11y-tab{position:fixed;left:0;top:50%;transform:translateY(-50%);background:#7a6549;color:#fff;padding:18px 8px;border:0;border-radius:0 12px 12px 0;cursor:pointer;writing-mode:vertical-rl;font-family:'Heebo',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;box-shadow:2px 4px 14px rgba(0,0,0,.25);z-index:9990;display:flex;flex-direction:column;align-items:center;gap:8px;transition:.3s}
+.a11y-tab:hover{padding-left:14px;background:#1a1a1a}
+.a11y-tab:focus-visible{outline:3px solid #c4a478;outline-offset:3px}
+.a11y-tab svg{width:18px;height:18px;fill:#fff;writing-mode:horizontal-tb}
+.a11y-tab .a11y-tab-label{display:inline-block}
+
+/* Panel — slides from left */
+.a11y-panel{position:fixed;left:-380px;top:50%;transform:translateY(-50%);width:340px;max-width:calc(100vw - 24px);max-height:90vh;background:#fff;border:1px solid #e8e2d8;border-radius:0 18px 18px 0;box-shadow:0 25px 60px rgba(0,0,0,.2);z-index:9989;overflow:hidden;display:flex;flex-direction:column;transition:left .3s ease;font-family:'Heebo',sans-serif;direction:rtl}
+.a11y-panel.open{left:0}
+.a11y-head{padding:20px 22px 14px;border-bottom:1px solid #e8e2d8;background:linear-gradient(180deg,#fff,#fbf8f3);display:flex;justify-content:space-between;align-items:flex-start}
+.a11y-head h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:#7a6549;font-style:italic;margin:0}
+.a11y-head h3 small{display:block;font-family:'Heebo',sans-serif;font-style:normal;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8378;margin-top:4px;font-weight:500}
+.a11y-close{background:transparent;border:0;color:#8a8378;font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;border-radius:8px;transition:.2s}
+.a11y-close:hover{background:#fbf8f3;color:#1a1a1a}
+.a11y-body{padding:14px;overflow-y:auto;flex:1}
+.a11y-group-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8a8378;font-weight:600;margin:8px 4px 8px;padding-top:10px}
+.a11y-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.a11y-btn{padding:10px 8px;background:#fbf8f3;border:1px solid #e8e2d8;border-radius:10px;color:#3d3d3d;cursor:pointer;font-family:inherit;font-size:12px;font-weight:500;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;line-height:1.2}
+.a11y-btn:hover{border-color:#c4a478;background:#fff}
+.a11y-btn.active{background:#7a6549;color:#fff;border-color:#7a6549}
+.a11y-btn .icon{font-size:18px}
+.a11y-toggle{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:#fbf8f3;border:1px solid #e8e2d8;border-radius:10px;margin-bottom:6px;cursor:pointer;transition:.2s}
+.a11y-toggle:hover{border-color:#c4a478;background:#fff}
+.a11y-toggle.active{background:rgba(196,164,120,.12);border-color:#c4a478}
+.a11y-toggle-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;color:#1a1a1a}
+.a11y-toggle-icon{font-size:18px}
+.a11y-switch{width:36px;height:20px;background:#e8e2d8;border-radius:10px;position:relative;transition:.2s;flex-shrink:0}
+.a11y-switch::after{content:'';position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:3px;right:3px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.a11y-toggle.active .a11y-switch{background:#7a6549}
+.a11y-toggle.active .a11y-switch::after{right:19px}
+.a11y-foot{padding:14px 22px;border-top:1px solid #e8e2d8;background:#fbf8f3;display:flex;flex-direction:column;gap:8px}
+.a11y-reset{background:transparent;border:1px solid #e8e2d8;color:#3d3d3d;padding:8px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12px;transition:.2s}
+.a11y-reset:hover{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.a11y-statement-link{font-size:11px;color:#7a6549;text-decoration:underline;text-align:center;cursor:pointer;display:block}
+
+/* Applied accessibility classes */
+html.a11y-text-large{--a11y-base:18px}
+html.a11y-text-xlarge{--a11y-base:21px}
+html.a11y-contrast-high body,html.a11y-contrast-high *{background-color:#000 !important;color:#fff !important;border-color:#fff !important}
+html.a11y-contrast-high a,html.a11y-contrast-high h1,html.a11y-contrast-high h2,html.a11y-contrast-high em{color:#ffeb3b !important}
+html.a11y-contrast-inverted{filter:invert(1) hue-rotate(180deg)}
+html.a11y-contrast-inverted img,html.a11y-contrast-inverted video{filter:invert(1) hue-rotate(180deg)}
+html.a11y-readable-font *{font-family:'Open Sans',Arial,sans-serif !important;font-style:normal !important;letter-spacing:.5px !important;line-height:1.85 !important}
+html.a11y-highlight-links a{background:#ffeb3b !important;color:#000 !important;padding:2px 6px;border-radius:4px;text-decoration:underline !important;font-weight:600 !important}
+html.a11y-no-animation *,html.a11y-no-animation *::before,html.a11y-no-animation *::after{animation-duration:0.001s !important;animation-iteration-count:1 !important;transition-duration:0.001s !important;scroll-behavior:auto !important}
+html.a11y-keyboard-nav *:focus,html.a11y-keyboard-nav *:focus-visible{outline:4px solid #ffeb3b !important;outline-offset:3px !important;box-shadow:0 0 0 6px rgba(255,235,59,.4) !important}
+html.a11y-text-spacing *{letter-spacing:.12em !important;word-spacing:.16em !important;line-height:2 !important}
+html.a11y-cursor-large *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='%23000' stroke='%23fff' stroke-width='1.5'%3E%3Cpath d='M3 3l7.07 17 2.51-7.39L20 10.07z'/%3E%3C/svg%3E"),auto !important}
+
+@media (max-width:768px){
+  .a11y-tab{font-size:10px;padding:14px 6px;letter-spacing:2px}
+  .a11y-tab svg{width:14px;height:14px}
+  .a11y-panel{width:300px}
+}
+</style>
+
+<button class="a11y-tab" id="a11yTab" aria-label="פתח תפריט נגישות">
+  <svg viewBox="0 0 24 24"><circle cx="12" cy="3.5" r="2"/><path d="M19 8h-5l1.5 7.5L19 22h-2l-1-5-2-7H10l-2 7-1 5H5l3.5-6.5L10 8H5V6h14z"/></svg>
+  <span class="a11y-tab-label">נגישות</span>
+</button>
+
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="תפריט נגישות">
+  <div class="a11y-head">
+    <h3>נגישות<small>התאמת חוויית הקריאה</small></h3>
+    <button class="a11y-close" id="a11yClose" aria-label="סגור">×</button>
+  </div>
+  <div class="a11y-body">
+    <div class="a11y-group-title">גודל טקסט</div>
+    <div class="a11y-row">
+      <button class="a11y-btn active" data-class="" data-group="text"><span class="icon">A</span><span>רגיל</span></button>
+      <button class="a11y-btn" data-class="a11y-text-large" data-group="text"><span class="icon">A+</span><span>גדול</span></button>
+      <button class="a11y-btn" data-class="a11y-text-xlarge" data-group="text"><span class="icon" style="font-size:22px">A+</span><span>גדול מאוד</span></button>
+    </div>
+    <div class="a11y-group-title">ניגודיות</div>
+    <div class="a11y-row">
+      <button class="a11y-btn active" data-class="" data-group="contrast"><span class="icon">🎨</span><span>רגיל</span></button>
+      <button class="a11y-btn" data-class="a11y-contrast-high" data-group="contrast"><span class="icon">⚫⚪</span><span>גבוהה</span></button>
+      <button class="a11y-btn" data-class="a11y-contrast-inverted" data-group="contrast"><span class="icon">🌗</span><span>הפוכה</span></button>
+    </div>
+    <div class="a11y-group-title">התאמות נוספות</div>
+    <div class="a11y-toggle" data-toggle="a11y-readable-font"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">📖</span><span>פונט קריא (לדיסלקטים)</span></div><div class="a11y-switch"></div></div>
+    <div class="a11y-toggle" data-toggle="a11y-highlight-links"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">🔗</span><span>הדגשת קישורים</span></div><div class="a11y-switch"></div></div>
+    <div class="a11y-toggle" data-toggle="a11y-text-spacing"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">↔️</span><span>ריווח אותיות מוגבר</span></div><div class="a11y-switch"></div></div>
+    <div class="a11y-toggle" data-toggle="a11y-no-animation"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">⏸️</span><span>עצירת אנימציות</span></div><div class="a11y-switch"></div></div>
+    <div class="a11y-toggle" data-toggle="a11y-cursor-large"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">👆</span><span>סמן עכבר גדול</span></div><div class="a11y-switch"></div></div>
+    <div class="a11y-toggle" data-toggle="a11y-keyboard-nav"><div class="a11y-toggle-label"><span class="a11y-toggle-icon">⌨️</span><span>הדגשת ניווט מקלדת</span></div><div class="a11y-switch"></div></div>
+  </div>
+  <div class="a11y-foot">
+    <button class="a11y-reset" id="a11yReset">↺ איפוס לברירת מחדל</button>
+    <a class="a11y-statement-link" href="/accessibility.html">הצהרת נגישות מלאה ←</a>
+  </div>
+</div>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var tab=document.getElementById('a11yTab');
+  var panel=document.getElementById('a11yPanel');
+  var closeBtn=document.getElementById('a11yClose');
+  var resetBtn=document.getElementById('a11yReset');
+  var html=document.documentElement;
+  var STORAGE='a11y_settings_v1';
+  var saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE))||{}}catch(e){}
+  function applyClass(c){if(c)html.classList.add(c)}
+  function removeGroup(g){var m={text:['a11y-text-large','a11y-text-xlarge'],contrast:['a11y-contrast-high','a11y-contrast-inverted']};(m[g]||[]).forEach(function(c){html.classList.remove(c)})}
+  function save(){var s={text:'',contrast:'',toggles:[]};document.querySelectorAll('.a11y-btn.active').forEach(function(b){if(b.dataset.group==='text')s.text=b.dataset.class;if(b.dataset.group==='contrast')s.contrast=b.dataset.class});document.querySelectorAll('.a11y-toggle.active').forEach(function(t){s.toggles.push(t.dataset.toggle)});try{localStorage.setItem(STORAGE,JSON.stringify(s))}catch(e){}}
+  if(saved.text){applyClass(saved.text);document.querySelectorAll('.a11y-btn[data-group="text"]').forEach(function(b){b.classList.toggle('active',b.dataset.class===saved.text)})}
+  if(saved.contrast){applyClass(saved.contrast);document.querySelectorAll('.a11y-btn[data-group="contrast"]').forEach(function(b){b.classList.toggle('active',b.dataset.class===saved.contrast)})}
+  if(saved.toggles){saved.toggles.forEach(function(t){applyClass(t);var el=document.querySelector('.a11y-toggle[data-toggle="'+t+'"]');if(el)el.classList.add('active')})}
+  tab.addEventListener('click',function(){panel.classList.toggle('open')});
+  closeBtn.addEventListener('click',function(){panel.classList.remove('open')});
+  document.querySelectorAll('.a11y-btn').forEach(function(btn){btn.addEventListener('click',function(){var g=btn.dataset.group;removeGroup(g);document.querySelectorAll('.a11y-btn[data-group="'+g+'"]').forEach(function(b){b.classList.remove('active')});btn.classList.add('active');if(btn.dataset.class)applyClass(btn.dataset.class);save()})});
+  document.querySelectorAll('.a11y-toggle').forEach(function(t){t.addEventListener('click',function(){var c=t.dataset.toggle;t.classList.toggle('active');html.classList.toggle(c);save()})});
+  resetBtn.addEventListener('click',function(){['a11y-text-large','a11y-text-xlarge','a11y-contrast-high','a11y-contrast-inverted','a11y-readable-font','a11y-highlight-links','a11y-text-spacing','a11y-no-animation','a11y-cursor-large','a11y-keyboard-nav'].forEach(function(c){html.classList.remove(c)});document.querySelectorAll('.a11y-btn').forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.a11y-btn[data-class=""]').forEach(function(b){b.classList.add('active')});document.querySelectorAll('.a11y-toggle').forEach(function(t){t.classList.remove('active')});try{localStorage.removeItem(STORAGE)}catch(e){}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')panel.classList.remove('open')});
+})();
+</script>
 
 <!-- ===== התראת זכויות יוצרים ===== -->
 <div class="copyright-warning" id="copyrightWarning">
