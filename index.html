@@ -2439,6 +2439,19 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 (function(){
 var car=document.getElementById('csTrack');
 if(!car)return;
+// ערבוב אקראי של הזוגות בכל טעינה + מספור מחדש לפי סדר התצוגה
+(function shuffleCouples(){
+  var allCards=Array.from(car.querySelectorAll(".cs-card"));
+  for(var i=allCards.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=allCards[i];allCards[i]=allCards[j];allCards[j]=tmp;
+  }
+  allCards.forEach(function(c,idx){
+    car.appendChild(c);
+    var num=c.querySelector(".cs-num");
+    if(num)num.textContent=String(idx+1).padStart(2,"0");
+  });
+})();
 var cards=Array.from(car.querySelectorAll('.cs-card'));
 var dots=document.getElementById('csDots');
 cards.forEach(function(c,i){
