@@ -2439,18 +2439,31 @@ textarea.wa-input{resize:none;min-height:70px;font-family:inherit}
 (function(){
 var car=document.getElementById('csTrack');
 if(!car)return;
-// ערבוב אקראי של הזוגות בכל טעינה + מספור מחדש לפי סדר התצוגה
-(function shuffleCouples(){
-  var allCards=Array.from(car.querySelectorAll(".cs-card"));
-  for(var i=allCards.length-1;i>0;i--){
+// ערבוב אקראי משולב: הזוגות בקרוסלה + תמונות הקאבר באותו סדר
+(function unifiedShuffle(){
+  var heroParent=document.querySelector(".hero-slides");
+  var heroSlides=heroParent?Array.from(heroParent.querySelectorAll(".hero-slide")):[];
+  var couples=Array.from(car.querySelectorAll(".cs-card"));
+  var n=Math.max(heroSlides.length,couples.length);
+  var order=[];for(var i=0;i<n;i++)order.push(i);
+  for(var i=order.length-1;i>0;i--){
     var j=Math.floor(Math.random()*(i+1));
-    var tmp=allCards[i];allCards[i]=allCards[j];allCards[j]=tmp;
+    var tmp=order[i];order[i]=order[j];order[j]=tmp;
   }
-  allCards.forEach(function(c,idx){
-    car.appendChild(c);
-    var num=c.querySelector(".cs-num");
-    if(num)num.textContent=String(idx+1).padStart(2,"0");
-  });
+  if(heroParent&&heroSlides.length){
+    order.forEach(function(orig){if(heroSlides[orig])heroParent.appendChild(heroSlides[orig]);});
+    var first=heroParent.querySelector(".hero-slide");
+    heroParent.querySelectorAll(".hero-slide").forEach(function(s){s.classList.remove("active");});
+    if(first)first.classList.add("active");
+  }
+  if(couples.length){
+    order.forEach(function(orig,newIdx){
+      var c=couples[orig];if(!c)return;
+      car.appendChild(c);
+      var num=c.querySelector(".cs-num");
+      if(num)num.textContent=String(newIdx+1).padStart(2,"0");
+    });
+  }
 })();
 var cards=Array.from(car.querySelectorAll('.cs-card'));
 var dots=document.getElementById('csDots');
