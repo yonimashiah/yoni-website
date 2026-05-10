@@ -3831,11 +3831,19 @@ async function loadEvents(){
 }
 
 // אוטומטית: ברגע שהמשתמש בוחר תאריך, הבדיקה רצה (חיוני למובייל)
-if(dateInput) dateInput.addEventListener('change',()=>{
-  if(dateInput.value && checkBtn && !checkBtn.disabled){
+// משתמשים ב-3 events כי במובייל לא תמיד יורה change
+let _avLastVal = '';
+function _avAutoCheck(){
+  if(dateInput.value && dateInput.value !== _avLastVal && checkBtn && !checkBtn.disabled){
+    _avLastVal = dateInput.value;
     checkBtn.click();
   }
-});
+}
+if(dateInput){
+  dateInput.addEventListener('change', _avAutoCheck);
+  dateInput.addEventListener('input', _avAutoCheck);
+  dateInput.addEventListener('blur', _avAutoCheck);
+}
 
 if(checkBtn) checkBtn.addEventListener('click',async()=>{
   const date=dateInput.value;
@@ -3846,6 +3854,8 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
   }
   acResult.className='av-result show loading';
   acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">⋯</span><span>בודק את היומן בזמן אמת...</span></div>';
+  // גלילה אוטומטית לתוצאה (חיוני במובייל אחרי שסוגרים את בורר התאריכים)
+  setTimeout(function(){acResult.scrollIntoView({behavior:'smooth',block:'center'})},120);
   checkBtn.disabled=true;
   try{
     const events=await loadEvents();
