@@ -3845,6 +3845,19 @@ if(dateInput){
   dateInput.addEventListener('blur', _avAutoCheck);
 }
 
+// נשמור את הטקסט המקורי כדי להחזיר אותו אחר כך
+const _checkBtnOriginalText = checkBtn ? checkBtn.textContent : 'בדוק זמינות';
+const _checkBtnOriginalBg = checkBtn ? checkBtn.style.background : '';
+
+function _setBtnState(state, text){
+  if(!checkBtn) return;
+  checkBtn.textContent = text;
+  if(state==='loading'){checkBtn.style.background='rgba(255,255,255,.25)';checkBtn.style.color='#fff'}
+  else if(state==='available'){checkBtn.style.background='#2a8e54';checkBtn.style.color='#fff'}
+  else if(state==='taken'){checkBtn.style.background='#7a6549';checkBtn.style.color='#fff'}
+  else {checkBtn.style.background=_checkBtnOriginalBg;checkBtn.style.color=''}
+}
+
 if(checkBtn) checkBtn.addEventListener('click',async()=>{
   const date=dateInput.value;
   if(!date){
@@ -3854,7 +3867,7 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
   }
   acResult.className='av-result show loading';
   acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">⋯</span><span>בודק את היומן בזמן אמת...</span></div>';
-  // גלילה אוטומטית לתוצאה (חיוני במובייל אחרי שסוגרים את בורר התאריכים)
+  _setBtnState('loading', 'בודק...');
   setTimeout(function(){acResult.scrollIntoView({behavior:'smooth',block:'center'})},120);
   checkBtn.disabled=true;
   try{
@@ -3868,13 +3881,16 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
     if(conflicts.length>0){
       acResult.className='av-result show taken';
       acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">●</span><span>'+formatted+' כבר תפוס</span><a class="av-result-cta" href="https://wa.me/972503550455?text=היי%20יוני,%20בדקתי%20את%20'+encodeURIComponent(formatted)+'%20באתר%20-%20תפוס.%20מה%20הכי%20קרוב%20פנוי?">בוא נדבר ←</a></div>';
+      _setBtnState('taken', '● תפוס — בוא נדבר');
     }else{
       acResult.className='av-result show available';
       acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">✓</span><span>אני פנוי ב־'+formatted+'</span><button class="av-result-cta" onclick="window.openLeadForm(\''+date+'\')">השאירו פרטים ←</button></div>';
+      _setBtnState('available', '✓ פנוי — השאירו פרטים');
     }
   }catch(err){
     acResult.className='av-result show taken';
     acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">!</span><span>שגיאה זמנית</span><a class="av-result-cta" href="https://wa.me/972503550455">שיחת WhatsApp ←</a></div>';
+    _setBtnState('taken', '! שגיאה — WhatsApp');
   }
   checkBtn.disabled=false;
 });
