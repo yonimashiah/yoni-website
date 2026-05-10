@@ -3830,6 +3830,13 @@ async function loadEvents(){
   return cachedEvents;
 }
 
+// אוטומטית: ברגע שהמשתמש בוחר תאריך, הבדיקה רצה (חיוני למובייל)
+if(dateInput) dateInput.addEventListener('change',()=>{
+  if(dateInput.value && checkBtn && !checkBtn.disabled){
+    checkBtn.click();
+  }
+});
+
 if(checkBtn) checkBtn.addEventListener('click',async()=>{
   const date=dateInput.value;
   if(!date){
