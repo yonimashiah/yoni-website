@@ -3845,6 +3845,37 @@ if(dateInput){
   dateInput.addEventListener('blur', _avAutoCheck);
 }
 
+// 📱 טוסט מובייל בלבד — הודעה צפה למעלה במסך (פתרון יצירתי לבעיית התצוגה במובייל)
+function showAvToast(state, msg, ctaText, ctaHref, ctaOnClick){
+  if(!window.matchMedia('(max-width:768px)').matches) return;
+  var existing = document.getElementById('avMobileToast');
+  if(existing) existing.remove();
+  var bg = state==='available' ? '#2a8e54' : state==='taken' ? '#7a6549' : '#1a1a1a';
+  var icon = state==='available' ? '✓' : state==='taken' ? '●' : '⋯';
+  var toast = document.createElement('div');
+  toast.id = 'avMobileToast';
+  toast.style.cssText = 'position:fixed;top:14px;left:10px;right:10px;z-index:99999;background:'+bg+';color:#fff;padding:14px 18px;border-radius:14px;box-shadow:0 12px 35px rgba(0,0,0,.45);font-family:Heebo,sans-serif;display:flex;align-items:center;gap:12px;transform:translateY(-150px);opacity:0;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s';
+  var ctaHtml = '';
+  if(ctaText){
+    if(ctaOnClick){
+      ctaHtml = '<button onclick="'+ctaOnClick+';document.getElementById(\'avMobileToast\').remove()" style="background:rgba(255,255,255,.25);color:#fff;border:0;padding:8px 16px;border-radius:30px;font-size:12px;font-weight:600;font-family:inherit;white-space:nowrap;cursor:pointer">'+ctaText+'</button>';
+    } else {
+      ctaHtml = '<a href="'+ctaHref+'" target="_blank" rel="noopener" style="background:rgba(255,255,255,.25);color:#fff;padding:8px 16px;border-radius:30px;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap">'+ctaText+'</a>';
+    }
+  }
+  toast.innerHTML = '<span style="font-size:18px;flex-shrink:0">'+icon+'</span><div style="flex:1;font-weight:500;font-size:14px;line-height:1.4">'+msg+'</div>'+ctaHtml+'<button onclick="document.getElementById(\'avMobileToast\').remove()" style="background:transparent;border:0;color:rgba(255,255,255,.7);font-size:20px;cursor:pointer;padding:0 4px;line-height:1;flex-shrink:0">×</button>';
+  document.body.appendChild(toast);
+  setTimeout(function(){toast.style.transform='translateY(0)';toast.style.opacity='1'},50);
+  if(state==='loading') return;
+  setTimeout(function(){
+    if(document.getElementById('avMobileToast')){
+      toast.style.transform='translateY(-150px)';
+      toast.style.opacity='0';
+      setTimeout(function(){if(toast.parentNode)toast.remove()},400);
+    }
+  }, 15000);
+}
+
 if(checkBtn) checkBtn.addEventListener('click',async()=>{
   const date=dateInput.value;
   if(!date){
@@ -3854,6 +3885,7 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
   }
   acResult.className='av-result show loading';
   acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">⋯</span><span>בודק את היומן בזמן אמת...</span></div>';
+  showAvToast('loading', 'בודק את היומן...', '', '', '');
   setTimeout(function(){acResult.scrollIntoView({behavior:'smooth',block:'center'})},120);
   checkBtn.disabled=true;
   try{
@@ -3866,14 +3898,18 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
     const formatted=dt.toLocaleDateString('he-IL',{day:'numeric',month:'long',year:'numeric'});
     if(conflicts.length>0){
       acResult.className='av-result show taken';
-      acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">●</span><span>'+formatted+' כבר תפוס</span><a class="av-result-cta" href="https://wa.me/972503550455?text=היי%20יוני,%20בדקתי%20את%20'+encodeURIComponent(formatted)+'%20באתר%20-%20תפוס.%20מה%20הכי%20קרוב%20פנוי?" target="_blank" rel="noopener">בוא נדבר ←</a></div>';
+      var waUrl = 'https://wa.me/972503550455?text=היי%20יוני,%20בדקתי%20את%20'+encodeURIComponent(formatted)+'%20באתר%20-%20תפוס.%20מה%20הכי%20קרוב%20פנוי?';
+      acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">●</span><span>'+formatted+' כבר תפוס</span><a class="av-result-cta" href="'+waUrl+'" target="_blank" rel="noopener">בוא נדבר ←</a></div>';
+      showAvToast('taken', formatted+' כבר תפוס', 'בוא נדבר ←', waUrl, '');
     }else{
       acResult.className='av-result show available';
       acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">✓</span><span>אני פנוי ב־'+formatted+'</span><a class="av-result-cta" href="#leadForm" onclick="if(window.openLeadForm){event.preventDefault();window.openLeadForm(\''+date+'\')}">השאירו פרטים ←</a></div>';
+      showAvToast('available', 'אני פנוי ב־'+formatted, 'השאירו פרטים ←', '', "if(window.openLeadForm)window.openLeadForm('"+date+"');else location.href='#leadForm'");
     }
   }catch(err){
     acResult.className='av-result show taken';
     acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">!</span><span>שגיאה זמנית</span><a class="av-result-cta" href="https://wa.me/972503550455" target="_blank" rel="noopener">שיחת WhatsApp ←</a></div>';
+    showAvToast('taken', 'שגיאה זמנית', 'WhatsApp ←', 'https://wa.me/972503550455', '');
   }
   checkBtn.disabled=false;
 });
