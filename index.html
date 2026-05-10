@@ -428,25 +428,8 @@ body::before{
   .av-bar input[type=date]{font-size:12px}
   .av-bar-btn{padding:8px 14px;font-size:9px;letter-spacing:.08em;border-radius:36px;gap:5px}
   .av-bar-btn::after{font-size:10px}
-  /* תוצאת זמינות — במובייל מציגים כתפריט צף עליון כדי שלא ייחתך ע"י .hero overflow:hidden */
-  .av-result{
-    position:fixed !important;
-    top:auto !important;
-    bottom:80px !important;
-    left:8px !important;
-    right:8px !important;
-    z-index:9999 !important;
-    margin:0 !important;
-    max-height:none !important;
-    overflow:visible !important;
-    pointer-events:none;
-  }
-  .av-result.show{
-    margin:0 !important;
-    max-height:none !important;
-    pointer-events:auto;
-  }
-  .av-result-card{pointer-events:auto !important}
+  /* תוצאת זמינות — פיל אופקי קומפקטי במובייל */
+  .av-result.show{margin-top:10px;max-height:160px}
   .av-result-card{
     padding:12px 18px !important;border-radius:50px !important;
     gap:10px !important;
