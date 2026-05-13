@@ -117,11 +117,49 @@ a:hover{color:var(--accent-soft)}
 .gold-line{position:fixed;top:0;left:0;right:0;height:2.5px;z-index:1000;background:linear-gradient(90deg,#a88a5a,#c4a478,#e0c785,#e8c890,#e0c785,#c4a478,#a88a5a);background-size:200% 100%;animation:goldFlow 3.5s ease-in-out infinite}
 @keyframes goldFlow{0%,100%{box-shadow:0 1px 4px rgba(212,184,122,.45);background-position:0% 50%}50%{box-shadow:0 3px 13px rgba(228,198,140,.6);background-position:100% 50%}}
 
-/* Top navigation */
-.topnav{padding:18px 6%;background:#fff;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
-.topnav .brand{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;color:var(--accent);text-decoration:none;font-weight:500}
-.topnav .back{color:var(--ink-soft);font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.topnav .back:hover{color:var(--accent)}
+/* Top navigation — enhanced with site nav */
+.topnav{padding:14px 6%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;gap:20px}
+.topnav .brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--accent);text-decoration:none;font-weight:500;white-space:nowrap}
+.topnav .nav-links{display:flex;gap:24px;align-items:center;font-size:13px;flex-wrap:wrap}
+.topnav .nav-links a{color:var(--ink-soft);text-decoration:none;font-weight:400;letter-spacing:.3px;transition:.2s}
+.topnav .nav-links a:hover{color:var(--accent)}
+.topnav .nav-cta{background:var(--accent);color:#fff;padding:9px 22px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;transition:.25s;white-space:nowrap;box-shadow:0 4px 14px rgba(122,101,73,.25)}
+.topnav .nav-cta:hover{background:var(--accent-soft);color:#fff;transform:translateY(-1px);box-shadow:0 6px 18px rgba(196,164,120,.35)}
+@media(max-width:768px){
+  .topnav{padding:12px 5%;gap:10px;flex-wrap:wrap}
+  .topnav .brand{font-size:19px}
+  .topnav .nav-links{display:none}
+  .topnav .nav-cta{padding:8px 16px;font-size:11px;letter-spacing:.8px}
+}
+
+/* Floating "back to main" button */
+.float-home{position:fixed;bottom:30px;left:30px;z-index:200;background:#fff;color:var(--accent);padding:13px 22px 13px 18px;border-radius:50px;font-size:13px;font-weight:600;letter-spacing:.5px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 28px rgba(60,40,20,.18),0 2px 8px rgba(60,40,20,.08);border:1px solid var(--line);transition:.25s;animation:floatIn .6s ease-out .8s both}
+.float-home:hover{background:var(--accent);color:#fff;transform:translateY(-2px);box-shadow:0 12px 36px rgba(60,40,20,.25)}
+.float-home::before{content:'';width:10px;height:10px;border-radius:50%;background:#5cb572;box-shadow:0 0 0 0 rgba(92,181,114,.6);animation:pulseDot 2s infinite}
+@keyframes floatIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(92,181,114,.6)}70%{box-shadow:0 0 0 10px rgba(92,181,114,0)}100%{box-shadow:0 0 0 0 rgba(92,181,114,0)}}
+@media(max-width:768px){
+  .float-home{bottom:20px;left:20px;padding:11px 18px 11px 14px;font-size:12px}
+}
+
+/* Mid-article promotional CTA card */
+.mid-cta{background:linear-gradient(135deg,#fdfbf6 0%,#f7f1e4 100%);border:1px solid var(--accent-soft);border-radius:14px;padding:38px 34px;margin:50px 0;text-align:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.mid-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-soft),var(--gold),var(--accent-soft),var(--accent));background-size:200% 100%;animation:goldFlow 4s ease-in-out infinite}
+.mid-cta .eyebrow-sm{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
+.mid-cta h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.25;font-style:normal}
+.mid-cta h3 em{color:var(--accent-soft);font-style:italic;display:block;margin-top:2px}
+.mid-cta p{font-size:16px;color:var(--ink-soft);margin:14px auto 22px;max-width:480px;line-height:1.7}
+.mid-cta .cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.mid-cta .btn-mid-primary{background:var(--accent);color:#fff;padding:13px 30px;border-radius:50px;font-weight:600;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:.25s;box-shadow:0 6px 18px rgba(122,101,73,.28)}
+.mid-cta .btn-mid-primary:hover{background:var(--accent-soft);color:#fff;transform:translateY(-1px)}
+.mid-cta .btn-mid-secondary{background:transparent;color:var(--accent);padding:12px 24px;border:1.5px solid var(--accent);border-radius:50px;font-weight:500;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:.25s}
+.mid-cta .btn-mid-secondary:hover{background:var(--accent);color:#fff}
+@media(max-width:768px){
+  .mid-cta{padding:30px 22px;margin:40px 0}
+  .mid-cta h3{font-size:24px}
+  .mid-cta p{font-size:15px}
+  .mid-cta .btn-mid-primary,.mid-cta .btn-mid-secondary{width:100%;text-align:center}
+}
 
 /* Breadcrumb */
 .breadcrumb{padding:14px 6%;font-size:13px;color:var(--muted);max-width:920px;margin:0 auto}
@@ -215,7 +253,13 @@ a:hover{color:var(--accent-soft)}
 
 <nav class="topnav">
   <a href="/" class="brand">Yoni Mashiah</a>
-  <a href="/" class="back">חזרה לאתר הראשי ←</a>
+  <div class="nav-links">
+    <a href="/#portfolio">תיק עבודות</a>
+    <a href="/#packages">חבילות</a>
+    <a href="/#reviews">המלצות</a>
+    <a href="/#availability">בדיקת זמינות</a>
+  </div>
+  <a href="/" class="nav-cta">לאתר הראשי →</a>
 </nav>
 
 <div class="breadcrumb">
@@ -327,6 +371,16 @@ a:hover{color:var(--accent-soft)}
     <div class="callout-title">איך זה אצלי</div>
     <p>חבילת הסטילס שלי כוללת <strong>צוות של 2 צלמי סטילס</strong> (אני + צלם שני), 12 שעות עבודה באירוע, צילומי בוקר אם תרצו, 1,000-2,500 תמונות ערוכות, וגלריה דיגיטלית. צילומי זוגיות אפשר להוסיף כשירות נפרד, או כחלק מחבילה משולבת.</p>
   </div>
+
+  <aside class="mid-cta">
+    <div class="eyebrow-sm">תיק העבודות שלי</div>
+    <h3>עכשיו שאתם יודעים מה לחפש<em>בואו תראו איך זה נראה בפועל</em></h3>
+    <p>10 חתונות אחרונות עם גלריות מלאות — תוכלו לראות איך הסגנון שלי מתבטא באירועים אמיתיים, באולמות שונים, באווירות שונות. בלי פילטרים שיווקיים.</p>
+    <div class="cta-buttons">
+      <a href="/#portfolio" class="btn-mid-primary">לתיק העבודות →</a>
+      <a href="/#availability" class="btn-mid-secondary">בדיקת זמינות</a>
+    </div>
+  </aside>
 
   <h2 id="second">צלם שני — <em>חיוני או מותרות</em></h2>
   <p>השאלה הזו עולה אצל כל זוג. התשובה האמיתית: <strong>תלוי באירוע</strong>.</p>
@@ -457,6 +511,11 @@ a:hover{color:var(--accent-soft)}
   © 2026 Yoni Mashiah Photography · <a href="/" style="color:var(--accent)">חזרה לאתר הראשי</a>
   <div class="sig">המאמר נכתב על ידי יוני משיח, מאי 2026</div>
 </footer>
+
+<!-- Floating "back to main site" button -->
+<a href="/" class="float-home" aria-label="חזרה לאתר הראשי של יוני משיח">
+  לאתר הראשי
+</a>
 
 </body>
 </html>
