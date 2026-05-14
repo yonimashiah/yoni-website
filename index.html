@@ -3090,14 +3090,14 @@ setTimeout(startAuto,1500);
 
 <!-- Blog Section (Tab Panel) -->
 <style>
-#blog{background-color:#1a1410!important;background-image:linear-gradient(rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.45) 30%,rgba(0,0,0,0.5) 100%),radial-gradient(at 50% 0%,rgba(212,184,122,0.08),rgba(0,0,0,0) 70%)!important;padding:120px 0;position:relative}
+#blog{background:transparent linear-gradient(rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.7) 30%,rgba(0,0,0,0.78) 100%) repeat scroll 0% 0%!important;padding:120px 0;position:relative;overflow:hidden}#blog::before{content:"";position:absolute;inset:0;background-image:radial-gradient(at 50% 0%,rgba(212,184,122,0.08),rgba(0,0,0,0) 70%);pointer-events:none;z-index:0}#blog .blog-wrap{position:relative;z-index:1}
 #blog .blog-wrap{max-width:1180px;margin:0 auto;padding:0 6%;text-align:center}
 #blog .blog-eyebrow{color:#c4a478;font-size:11px;letter-spacing:5px;text-transform:uppercase;margin-bottom:22px;font-weight:500}
 #blog h2.blog-title{color:#fff!important;font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,58px);font-weight:400;line-height:1.15;margin-bottom:24px;letter-spacing:-.5px}
 #blog h2.blog-title em{color:#c4a478!important;font-style:italic}
 #blog .blog-lead{color:rgba(255,255,255,0.78);font-size:16px;line-height:1.7;max-width:540px;margin:0 auto 70px;font-weight:300}
 #blog .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:36px;max-width:880px;margin:0 auto}
-#blog .blog-card{background:rgba(15,12,9,0.4);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);border:1px solid rgba(212,184,122,0.3);border-radius:14px;padding:48px 38px 42px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.4s ease;text-align:center;position:relative}
+#blog .blog-card{background:transparent;border:1px solid rgba(212,184,122,0.25);border-radius:14px;padding:48px 38px 42px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.4s ease;text-align:center;position:relative}
 #blog .blog-card::before,#blog .blog-card::after{content:'';position:absolute;width:22px;height:22px;border-color:#c4a478;border-style:solid;border-width:0;pointer-events:none}
 #blog .blog-card::before{top:-1px;right:-1px;border-top-width:2px;border-right-width:2px;border-top-right-radius:14px}
 #blog .blog-card::after{bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px;border-bottom-left-radius:14px}
