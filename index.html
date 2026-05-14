@@ -3089,39 +3089,50 @@ setTimeout(startAuto,1500);
 <!-- ===== PROCESS ===== -->
 
 <!-- Blog Section (Tab Panel) -->
-<style>#blog h3{color:#1a1a1a!important;text-align:right!important}#blog .blog-card-title{color:#1a1a1a!important}#blog p{color:#3d3d3d!important}#blog h2{color:#1a1a1a!important}#blog h2 em{color:#c4a478!important}</style>
+<style>
+#blog{background:linear-gradient(rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.7) 30%,rgba(0,0,0,0.85) 100%);padding:120px 0;position:relative}
+#blog .blog-wrap{max-width:1100px;margin:0 auto;padding:0 6%;text-align:center}
+#blog .blog-eyebrow{color:#c4a478;font-size:11px;letter-spacing:5px;text-transform:uppercase;margin-bottom:18px;font-weight:500}
+#blog h2.blog-title{color:#fff!important;font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,58px);font-weight:400;line-height:1.15;margin-bottom:22px;letter-spacing:-.5px}
+#blog h2.blog-title em{color:#c4a478!important;font-style:italic}
+#blog .blog-lead{color:rgba(255,255,255,0.82);font-size:17px;line-height:1.7;max-width:580px;margin:0 auto 60px;font-weight:300}
+#blog .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;max-width:880px;margin:0 auto}
+#blog .blog-card{background:transparent;border:1px solid rgba(212,184,122,0.18);border-radius:18px;padding:40px 32px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.3s ease;text-align:right}
+#blog .blog-card:hover{border-color:rgba(212,184,122,0.45);transform:translateY(-3px)}
+#blog .blog-card-eyebrow{color:rgba(255,255,255,0.65);font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;font-weight:500;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#blog .blog-card-eyebrow::after{content:'';flex:0 0 32px;height:1px;background:rgba(212,184,122,0.4)}
+#blog .blog-card h3{color:#fff!important;font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:400;line-height:1.2;margin-bottom:18px;font-style:normal;text-align:right!important}
+#blog .blog-card-desc{color:rgba(255,255,255,0.65)!important;font-size:15px;line-height:1.75;margin-bottom:28px;flex:1;font-weight:300}
+#blog .blog-card-meta{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(212,184,122,0.18);font-size:13px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase}
+#blog .blog-card-meta .read{color:#c4a478;font-weight:500;letter-spacing:1.5px}
+@media(max-width:768px){
+#blog{padding:80px 0}
+#blog .blog-card{padding:32px 26px}
+#blog .blog-card h3{font-size:28px}
+#blog h2.blog-title{font-size:38px}
+}
+</style>
 <section id="blog" class="blog hideable">
-<div class="container" style="max-width:1100px;margin:0 auto;padding:80px 6%;text-align:center">
-<div style="max-width:680px;margin:0 auto 50px">
-<div style="font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#7a6549;margin-bottom:18px;font-weight:500">From The Blog</div>
-<h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,52px);font-weight:400;color:#1a1a1a;margin-bottom:18px;line-height:1.2;letter-spacing:-.5px">המדריכים <em style="color:#c4a478;font-style:italic">שלי</em></h2>
-<p style="font-size:17px;color:#3d3d3d;line-height:1.7;font-weight:300">תוכן מקצועי מ-12 שנות ניסיון בענף, מבוסס על 240+ אירועים מצולמים. נכתב בשבילכם.</p>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;max-width:880px;margin:0 auto">
-<a href="/how-to-choose-wedding-photographer" style="background:#fff;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.3s;box-shadow:0 10px 40px -12px rgba(60,40,20,.12)" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='#c4a478'" onmouseout="this.style.transform='';this.style.borderColor='#e8e2d8'">
-<div style="height:160px;background:linear-gradient(135deg,#fdfbf6 0%,#f7f1e4 100%);display:flex;align-items:center;justify-content:center;border-bottom:1px solid #e8e2d8;position:relative">
-<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7a6549,#c4a478,#b89668,#c4a478,#7a6549)"></div>
-<div style="width:60px;height:60px;border-radius:50%;background:rgba(196,164,120,.18);display:flex;align-items:center;justify-content:center;color:#7a6549;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;font-weight:500">01</div>
-</div>
-<div style="padding:28px 26px;text-align:right;flex:1;display:flex;flex-direction:column">
-<div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#7a6549;margin-bottom:12px;font-weight:600">Planning Guide</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#1a1a1a;line-height:1.25;margin:0 0 12px;font-style:italic">איך לבחור צלם חתונות</h3>
-<p style="font-size:14.5px;color:#3d3d3d;line-height:1.7;margin:0 0 18px;flex:1;font-weight:300">המדריך המלא לזוגות 2026 — סגנונות, ניסיון, חבילות, מחירים, ושאלות שאסור לדלג עליהן.</p>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px dashed #e8e2d8;font-size:12.5px;color:#8a8378"><span>8 דקות קריאה</span><span style="color:#7a6549;font-weight:600">לקריאה ←</span></div>
-</div>
+<div class="blog-wrap">
+<div class="blog-eyebrow">From The Blog</div>
+<h2 class="blog-title">המדריכים <em>שלי</em></h2>
+<p class="blog-lead">תוכן מקצועי מ-12 שנות ניסיון בענף, מבוסס על 240+ אירועים מצולמים. נכתב בשבילכם.</p>
+<div class="blog-grid">
+
+<a href="/how-to-choose-wedding-photographer" class="blog-card">
+<div class="blog-card-eyebrow">Planning Guide</div>
+<h3>איך לבחור צלם חתונות</h3>
+<p class="blog-card-desc">המדריך המלא לזוגות 2026 — סגנונות, ניסיון, חבילות, מחירים, ושאלות שאסור לדלג עליהן לפני שחותמים על חוזה.</p>
+<div class="blog-card-meta"><span>8 דקות קריאה</span><span class="read">לקריאה ←</span></div>
 </a>
-<a href="/wedding-photographer-pricing" style="background:#fff;border:1px solid #e8e2d8;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.3s;box-shadow:0 10px 40px -12px rgba(60,40,20,.12)" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='#c4a478'" onmouseout="this.style.transform='';this.style.borderColor='#e8e2d8'">
-<div style="height:160px;background:linear-gradient(135deg,#fdfbf6 0%,#f7f1e4 100%);display:flex;align-items:center;justify-content:center;border-bottom:1px solid #e8e2d8;position:relative">
-<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#7a6549,#c4a478,#b89668,#c4a478,#7a6549)"></div>
-<div style="width:60px;height:60px;border-radius:50%;background:rgba(196,164,120,.18);display:flex;align-items:center;justify-content:center;color:#7a6549;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;font-weight:500">02</div>
-</div>
-<div style="padding:28px 26px;text-align:right;flex:1;display:flex;flex-direction:column">
-<div style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#7a6549;margin-bottom:12px;font-weight:600">Pricing Guide</div>
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:#1a1a1a;line-height:1.25;margin:0 0 12px;font-style:italic">כמה עולה צלם חתונות</h3>
-<p style="font-size:14.5px;color:#3d3d3d;line-height:1.7;margin:0 0 18px;flex:1;font-weight:300">המדריך השקוף למחירים 2026 — 3 רמות מחיר בשוק, מה כלול בכל אחת, ו-5 דגלים אדומים.</p>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px dashed #e8e2d8;font-size:12.5px;color:#8a8378"><span>7 דקות קריאה</span><span style="color:#7a6549;font-weight:600">לקריאה ←</span></div>
-</div>
+
+<a href="/wedding-photographer-pricing" class="blog-card">
+<div class="blog-card-eyebrow">Pricing Guide</div>
+<h3>כמה עולה צלם חתונות</h3>
+<p class="blog-card-desc">המדריך השקוף למחירים 2026 — 3 רמות מחיר בשוק, מה כלול בכל אחת, ו-5 דגלים אדומים שמראים שמחיר נמוך מדי הוא בעיה.</p>
+<div class="blog-card-meta"><span>7 דקות קריאה</span><span class="read">לקריאה ←</span></div>
 </a>
+
 </div>
 </div>
 </section>
