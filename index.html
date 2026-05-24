@@ -4017,7 +4017,7 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
     const events=await loadEvents();
     // תפוס רק אם יש אירוע חתונה רשמי — חוזה עבודה / הזמנת עבודה / תאריך סגור
     // צלם שני, אישי, פגישות = פנוי (אפשר לבטל / להזיז)
-    const busyPatterns = ['חוזה עבודה','הזמנת עבודה','סגור בתאריך'];
+    const busyPatterns = ['חוזה עבודה','הזמנת עבודה','סגור בתאריך','פגישת היכרות'];
     const conflicts=events.filter(e=>e.d===date && busyPatterns.some(p=>e.t.includes(p)));
     const dt=new Date(date);
     const formatted=dt.toLocaleDateString('he-IL',{day:'numeric',month:'long',year:'numeric'});
