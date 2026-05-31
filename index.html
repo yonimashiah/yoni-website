@@ -2778,21 +2778,13 @@ setTimeout(startAuto,1500);
   setInterval(()=>goTo((current+1)%slides.length),3000);
 })();
 
-// Date Availability Checker - מחובר ליומן Google דרך Make webhook
+// Date Availability Checker - מחובר ל-Google Calendar דרך admin worker (החליף את Make 31/05/26)
 const dateInput=document.getElementById('weddingDate');
 const checkBtn=document.getElementById('checkBtn');
 const acResult=document.getElementById('acResult');
 if(dateInput){
 const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
 dateInput.min=tomorrow.toISOString().split('T')[0];}
-
-let cachedEvents=null;
-async function loadEvents(){
-  if(cachedEvents)return cachedEvents;
-  const r=await fetch('https://hook.eu2.make.com/xqnmhyk58uy966qf8463h242uui9se7p');
-  cachedEvents=await r.json();
-  return cachedEvents;
-}
 
 if(checkBtn) checkBtn.addEventListener('click',async()=>{
   const date=dateInput.value;
@@ -2805,14 +2797,14 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
   acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">⋯</span><span>בודק את היומן בזמן אמת...</span></div>';
   checkBtn.disabled=true;
   try{
-    const events=await loadEvents();
-    // תפוס רק אם יש אירוע חתונה רשמי — חוזה עבודה / הזמנת עבודה / תאריך סגור
+    const r = await fetch('https://admin.yonimashiah.com/auth/check-availability?date=' + encodeURIComponent(date));
+    const data = await r.json();
+    if (!r.ok || !data.ok) throw new Error(data.error || 'server_error');
+    const available = data.available !== false;
     // צלם שני, אישי, פגישות = פנוי (אפשר לבטל / להזיז)
-    const busyPatterns = ['חוזה עבודה','הזמנת עבודה','סגור בתאריך'];
-    const conflicts=events.filter(e=>e.d===date && busyPatterns.some(p=>e.t.includes(p)));
     const dt=new Date(date);
     const formatted=dt.toLocaleDateString('he-IL',{day:'numeric',month:'long',year:'numeric'});
-    if(conflicts.length>0){
+    if(!available){
       acResult.className='av-result show taken';
       acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">●</span><span>'+formatted+' כבר תפוס</span><a class="av-result-cta" href="https://wa.me/972503550455?text=היי%20יוני,%20בדקתי%20את%20'+encodeURIComponent(formatted)+'%20באתר%20-%20תפוס.%20מה%20הכי%20קרוב%20פנוי?">בוא נדבר ←</a></div>';
     }else{
