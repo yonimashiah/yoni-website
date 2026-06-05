@@ -2872,6 +2872,7 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
         <div class="wa-fields">
           <input type="text" class="wa-input" name="fullName" placeholder="שם מלא של בעל האירוע" required>
           <input type="tel" class="wa-input" name="phone" placeholder="מספר טלפון" required pattern="[0-9\-\+\s]{9,}">
+          <input type="email" class="wa-input" name="email" placeholder="כתובת מייל" required>
         </div>
       </div>
       <div class="wa-section">
@@ -3056,6 +3057,7 @@ form.addEventListener('submit',async function(e){
   var data={
     fullName:form.fullName.value.trim(),
     phone:form.phone.value.trim(),
+    email:form.email?form.email.value.trim():'',
     eventType:form.eventType.value,
     groomName:form.groomName?form.groomName.value.trim():'',
     brideName:form.brideName?form.brideName.value.trim():'',
