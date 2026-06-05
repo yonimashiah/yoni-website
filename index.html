@@ -2782,6 +2782,23 @@ setTimeout(startAuto,1500);
 const dateInput=document.getElementById('weddingDate');
 const checkBtn=document.getElementById('checkBtn');
 const acResult=document.getElementById('acResult');
+// קונפטי כשהתאריך פנוי — עצמאי לחלוטין (canvas, בלי ספרייה חיצונית)
+function fireConfetti(){
+  try{
+    var cv=document.createElement('canvas');
+    cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99999';
+    document.body.appendChild(cv);
+    var ctx=cv.getContext('2d'),W=cv.width=window.innerWidth,H=cv.height=window.innerHeight;
+    var colors=['#d4b67a','#e8c890','#7da877','#ffffff','#c4a478','#5fd49a'],parts=[];
+    for(var i=0;i<150;i++){parts.push({x:W/2+(Math.random()-0.5)*240,y:H*0.34,vx:(Math.random()-0.5)*15,vy:Math.random()*-17-4,g:0.42+Math.random()*0.22,s:5+Math.random()*6,c:colors[(Math.random()*colors.length)|0],r:Math.random()*6.28,vr:(Math.random()-0.5)*0.4});}
+    var start=Date.now();
+    (function frame(){
+      var e=Date.now()-start;ctx.clearRect(0,0,W,H);
+      parts.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.globalAlpha=Math.max(0,1-e/2700);ctx.fillStyle=p.c;ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.62);ctx.restore();});
+      if(e<2700)requestAnimationFrame(frame);else cv.remove();
+    })();
+  }catch(err){}
+}
 if(dateInput){
 const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);
 dateInput.min=tomorrow.toISOString().split('T')[0];}
@@ -2810,6 +2827,7 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
     }else{
       acResult.className='av-result show available';
       acResult.innerHTML='<div class="av-result-card"><span class="av-result-icon">✓</span><span>אני פנוי ב־'+formatted+'</span><button class="av-result-cta" onclick="window.openLeadForm(\''+date+'\')">השאירו פרטים ←</button></div>';
+      fireConfetti();
     }
   }catch(err){
     acResult.className='av-result show taken';
