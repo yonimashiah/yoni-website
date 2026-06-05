@@ -2977,7 +2977,7 @@ function closeCard(){
     }
   },400);
 }
-fab.addEventListener('click',function(){
+if(fab)fab.addEventListener('click',function(){
   if(card.classList.contains('show')){closeCard();return}
   fab.classList.add('open');card.classList.add('show');
   var b=fab.querySelector('.wa-badge');if(b)b.style.display='none';
@@ -3061,7 +3061,7 @@ form.addEventListener('submit',async function(e){
     eventType:form.eventType.value,
     groomName:form.groomName?form.groomName.value.trim():'',
     brideName:form.brideName?form.brideName.value.trim():'',
-    eventDate:form.eventDate.value,
+    eventDate:form.eventDate.value||window._pendingDate||'',
     receptionTime:form.receptionTime.value,
     guests:form.guests.value.trim(),
     location:form.location.value.trim(),
@@ -3069,11 +3069,15 @@ form.addEventListener('submit',async function(e){
     notes:form.notes.value.trim(),
   };
   try{
-    await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-  }catch(err){}
-  body.style.display='none';
-  thanks.classList.add('show');
-  setTimeout(makeConfetti,200);
+    var response=await fetch('https://admin.yonimashiah.com/auth/lead-form-submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!response.ok)throw new Error('server_error');
+    body.style.display='none';
+    thanks.classList.add('show');
+    setTimeout(makeConfetti,200);
+  }catch(err){
+    submit.classList.remove('loading');submit.disabled=false;
+    alert('משהו השתבש, נסו שוב');
+  }
 });
 })();
 </script>
