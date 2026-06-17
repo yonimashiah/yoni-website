@@ -3,6 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6HPVVMWNVT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6HPVVMWNVT', {'send_page_view': true, 'anonymize_ip': true});
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wqet961q0v");
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1644572126687124');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1644572126687124&ev=PageView&noscript=1"/></noscript>
+
 <title>Yoni Mashiah Photography — צלם חתונות מקצועי | יוני משיח</title>
 
 <!-- SEO -->
@@ -2899,7 +2926,10 @@ if(checkBtn) checkBtn.addEventListener('click',async()=>{
                 <input type="time" class="wa-input wa-time-input" name="receptionTime" value="19:30">
               </label>
             </div>
-            <input type="date" class="wa-input wa-cond-margin" name="eventDate">
+            <label class="wa-time-label wa-cond-margin">
+              <span class="wa-time-prefix">תאריך האירוע</span>
+              <input type="date" class="wa-input wa-time-input" name="eventDate">
+            </label>
             <input type="text" class="wa-input wa-cond-margin" name="guests" placeholder="כמות מוזמנים">
             <input type="text" class="wa-input wa-cond-margin" name="location" placeholder="מיקום האירוע (עיר/אולם)">
           </div>
@@ -3067,12 +3097,17 @@ form.addEventListener('submit',async function(e){
     location:form.location.value.trim(),
     source:form.source.value,
     notes:form.notes.value.trim(),
+    utm_source:(new URLSearchParams(location.search).get('utm_source')||''),
+    utm_campaign:(new URLSearchParams(location.search).get('utm_campaign')||''),
+    utm_content:(new URLSearchParams(location.search).get('utm_content')||''),
+    fbclid:(new URLSearchParams(location.search).get('fbclid')||''),
   };
   try{
     var response=await fetch('https://admin.yonimashiah.com/auth/lead-form-submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(!response.ok)throw new Error('server_error');
     body.style.display='none';
     thanks.classList.add('show');
+    try{ if(window.fbq) fbq('track','Lead'); if(window.gtag) gtag('event','generate_lead'); }catch(_e){}
     setTimeout(makeConfetti,200);
   }catch(err){
     submit.classList.remove('loading');submit.disabled=false;
